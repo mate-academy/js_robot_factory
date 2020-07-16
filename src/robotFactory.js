@@ -42,13 +42,13 @@ function FlyingRobot(name, weight, coords, chipVersion) {
 }
 FlyingRobot.prototype.__proto__ = BaseRobot.prototype;
 
-FlyingRobot.prototype.goUp = function(step = 1) {
+FlyingRobot.prototype.__proto__.goUp = function(step = 1) {
   this.coords.z += step;
 
   return this;
 };
 
-FlyingRobot.prototype.goDown = function(step = -1) {
+FlyingRobot.prototype.__proto__.goDown = function(step = -1) {
   this.coords.z += step;
 
   return this;
@@ -71,7 +71,7 @@ DeliveryDrone.prototype.hookLoad = function(kg) {
 
 DeliveryDrone.prototype.__proto__ = FlyingRobot.prototype;
 
-DeliveryDrone.prototype.hookLoad = function(kg) {
+DeliveryDrone.prototype.__proto__.hookLoad = function(kg) {
   if (kg.weight < this.maxLoadWeight) {
     this.currentLoad = kg;
   }
@@ -79,7 +79,7 @@ DeliveryDrone.prototype.hookLoad = function(kg) {
   return this;
 };
 
-DeliveryDrone.prototype.unhookLoad = function() {
+DeliveryDrone.prototype.__proto__.unhookLoad = function() {
   this.currentLoad = null;
 
   return this;
