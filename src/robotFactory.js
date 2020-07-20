@@ -52,7 +52,7 @@ function FlyingRobot(name, weight,
   this.coords.z = 0;
 }
 
-FlyingRobot.prototype = Object.create(BaseRobot.prototype);
+Object.setPrototypeOf(FlyingRobot.prototype, BaseRobot.prototype);
 
 FlyingRobot.prototype.goUp = function(step = 1) {
   this.coords.z += step;
@@ -75,7 +75,7 @@ function DeliveryDrone(name, weight,
   this.currentLoad = currentLoad;
 }
 
-DeliveryDrone.prototype = Object.create(FlyingRobot.prototype);
+Object.setPrototypeOf(DeliveryDrone.prototype, FlyingRobot.prototype);
 
 DeliveryDrone.prototype.hookLoad = function(cargo) {
   if (cargo.weight < this.maxLoadWeight) {
