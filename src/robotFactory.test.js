@@ -152,7 +152,7 @@ describe('FlyingRobot testing', () => {
     robot.goDown(-27);
 
     expect(robot.coords.z)
-      .toBe(-14);
+      .toBe(24);
   });
 });
 
