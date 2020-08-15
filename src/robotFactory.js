@@ -29,7 +29,7 @@ BaseRobot.prototype.getInfo = function() {
 };
 
 function FlyingRobot(name, weight, coords, chipVersion) {
-  Object.assign(this, new BaseRobot(name, weight, coords, chipVersion));
+  BaseRobot.call(this, name, weight, coords, chipVersion);
   this.coords.z = 0;
 }
 
@@ -44,7 +44,7 @@ Object.setPrototypeOf(FlyingRobot.prototype, BaseRobot.prototype);
 
 function DeliveryDrone(name, weight, coords,
   chipVersion, maxLoadWeight, currentLoad) {
-  Object.assign(this, new FlyingRobot(name, weight, coords, chipVersion));
+  FlyingRobot.call(this, name, weight, coords, chipVersion);
   this.maxLoadWeight = maxLoadWeight;
   this.currentLoad = currentLoad;
 };
