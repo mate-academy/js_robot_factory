@@ -58,7 +58,7 @@ function DeliveryDrone(name, weight, coords, chipVersion,
 
 DeliveryDrone.prototype = {
   hookLoad(object) {
-    if (object.weight < (this.maxLoadWeight - this.weight)) {
+    if (object.weight <= this.maxLoadWeight) {
       this.currentLoad = object;
     }
   },
