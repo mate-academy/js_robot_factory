@@ -43,8 +43,6 @@ FlyingRobot.prototype = {
 
   goDown(step = 1) {
     this.coords.z -= step;
-
-    return this;
   },
 };
 
