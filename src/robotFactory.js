@@ -1,7 +1,6 @@
 'use strict';
 
 function BaseRobot(name, weight, coords, chipVersion) {
-  // set them to his instances
   this.name = name;
   this.weight = weight;
   this.coords = coords;
@@ -30,11 +29,7 @@ BaseRobot.prototype = {
 // flying robot
 
 function FlyingRobot(name, weight, coords, chipVersion) {
-  // set them to his instances
-  this.name = name;
-  this.weight = weight;
-  this.coords = coords;
-  this.chipVersion = chipVersion;
+  BaseRobot.call(this, name, weight, coords, chipVersion);
   this.coords.z = 0;
 }
 
@@ -52,11 +47,7 @@ FlyingRobot.prototype.goDown = function(step = 1) {
 
 function DeliveryDrone(name, weight, coords, chipVersion,
   maxLoadWeight, currentLoad) {
-  // set them to his instances
-  this.name = name;
-  this.weight = weight;
-  this.coords = coords;
-  this.chipVersion = chipVersion;
+  FlyingRobot.call(this, name, weight, coords, chipVersion);
   this.maxLoadWeight = maxLoadWeight;
   this.currentLoad = currentLoad;
 };
