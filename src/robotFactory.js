@@ -9,20 +9,14 @@ function BaseRobot(name, weight, coords, chipVersion) {
 
 BaseRobot.prototype.goForward = function(step = 1) {
   this.coords.y += step;
-
-  return this;
 };
 
 BaseRobot.prototype.goBack = function(step = 1) {
   this.coords.y -= step;
-
-  return this;
 };
 
 BaseRobot.prototype.goLeft = function(step = 1) {
   this.coords.x -= step;
-
-  return this;
 };
 
 BaseRobot.prototype.goRight = function(step = 1) {
@@ -47,14 +41,10 @@ FlyingRobot.prototype = BaseRobot.prototype;
 
 FlyingRobot.prototype.goUp = function(step = 1) {
   this.coords.z += step;
-
-  return this;
 };
 
 FlyingRobot.prototype.goDown = function(step = 1) {
   this.coords.z -= step;
-
-  return this;
 };
 
 function DeliveryDrone(
