@@ -29,17 +29,8 @@ BaseRobot.prototype = {
 };
 
 function FlyingRobot(name, weight, coords, chipVersion) {
-  BaseRobot.apply(this);
-  this.name = name;
-
-  this.coords = {
-    ...coords,
-    x: 0,
-    y: 0,
-    z: 0,
-  };
-  this.chipVersion = chipVersion;
-  this.weight = weight;
+  BaseRobot.call(this, name, weight, coords, chipVersion);
+  this.coords.z = 0;
 }
 
 FlyingRobot.prototype = {
@@ -54,17 +45,7 @@ FlyingRobot.prototype = {
 
 function DeliveryDrone(name, weight, coords, chipVersion,
   maxLoadWeight, currentLoad) {
-  FlyingRobot.apply(this);
-  this.name = name;
-
-  this.coords = {
-    ...coords,
-    x: 0,
-    y: 0,
-    z: 0,
-  };
-  this.chipVersion = chipVersion;
-  this.weight = weight;
+  FlyingRobot.call(this, name, weight, coords, chipVersion);
   this.maxLoadWeight = maxLoadWeight;
   this.currentLoad = currentLoad;
 }
