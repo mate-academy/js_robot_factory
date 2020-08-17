@@ -4,39 +4,9 @@ function BaseRobot(name, weight, coords, chipVersion) {
   this.name = name;
   this.weight = weight;
 
-  this.coords = {
-    x: coords ? coords.x : 0,
-    y: coords ? coords.y : 0,
-  };
+  this.coords = coords;
 
   this.chipVersion = chipVersion;
-};
-
-function FlyingRobot(name, weight, coords, chipVersion) {
-  this.name = name;
-  this.weight = weight;
-
-  this.coords = {
-    x: coords ? coords.x : 0,
-    y: coords ? coords.y : 0,
-    z: 0,
-  };
-  this.chipVersion = chipVersion;
-};
-
-function DeliveryDrone(name, weight, coords,
-  chipVersion, maxLoadWeight, currentLoad) {
-  this.name = name;
-  this.weight = weight;
-
-  this.coords = {
-    x: coords ? coords.x : 0,
-    y: coords ? coords.y : 0,
-    z: 0,
-  };
-  this.chipVersion = chipVersion;
-  this.maxLoadWeight = maxLoadWeight;
-  this.currentLoad = currentLoad || 0;
 };
 
 BaseRobot.prototype.goForward = function(step = 1) {
@@ -60,6 +30,12 @@ BaseRobot.prototype.getInfo = function() {
     .chipVersion}, Weight: ${this.weight}`;
 };
 
+function FlyingRobot(name, weight, coords, chipVersion) {
+  this.coords = {
+    z: 0,
+  };
+};
+
 FlyingRobot.prototype = BaseRobot.prototype;
 
 FlyingRobot.prototype.goUp = function(step = 1) {
@@ -68,6 +44,12 @@ FlyingRobot.prototype.goUp = function(step = 1) {
 
 FlyingRobot.prototype.goDown = function(step = 1) {
   this.coords.z -= step;
+};
+
+function DeliveryDrone(name, weight, coords,
+  chipVersion, maxLoadWeight, currentLoad) {
+  this.maxLoadWeight = maxLoadWeight;
+  this.currentLoad = currentLoad;
 };
 
 DeliveryDrone.prototype = FlyingRobot.prototype;
