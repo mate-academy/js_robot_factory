@@ -2,7 +2,7 @@
 Let's consolidate our knowledge of prototypes and constructors!
 This task has 3 parts.
 
-The first part is to build base robot's constructor and its prototype according to the following requirements:
+The first part is to build base robot's constructor and its prototype according to the following requirements
 - BaseRobot function constructor takes `name`, `weight`, `coords`, `chipVersion` and sets them for his instances;
 - BaseRobot prototype has methods `goForward`, `goBack`, `goRight`, `goLeft`, which can take `step` prop or move the robot by 1 in the appropriate direction in the case when `step` is undefined;
 - BaseRobot prototype has method `getInfo`, which returns a string in the format `Robot: %name%, Chip version: %chipVersion%, Weight: %weight%`;
