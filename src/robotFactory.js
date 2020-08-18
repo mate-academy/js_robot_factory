@@ -5,7 +5,6 @@ function BaseRobot(name, weight, coords, chipVersion) {
   this.weight = weight;
   this.coords = coords;
   this.chipVersion = chipVersion;
-  // implement
 }
 
 BaseRobot.prototype.goForward = function(step = 1) {
@@ -29,12 +28,10 @@ BaseRobot.prototype.getInfo = function() {
     + `Weight: ${this.weight}`;
 };
 
-FlyingRobot.prototype = BaseRobot.prototype;
+Object.setPrototypeOf(FlyingRobot.prototype, BaseRobot.prototype);
 
 function FlyingRobot(name, weight, coords, chipVersion) {
-  const baseRob = new BaseRobot(name, weight, coords, chipVersion);
-
-  Object.assign(this, baseRob);
+  BaseRobot.call(this, name, weight, coords, chipVersion);
   this.coords.z = 0;
 }
 
@@ -46,13 +43,12 @@ FlyingRobot.prototype.goDown = function(step = 1) {
   this.coords.z -= step;
 };
 
-DeliveryDrone.prototype = FlyingRobot.prototype;
+Object.setPrototypeOf(DeliveryDrone.prototype, FlyingRobot.prototype);
 
 function DeliveryDrone(name, weight, coords, chipVersion,
   maxLoadWeight, currentLoad) {
-  const flyingRob = new FlyingRobot(name, weight, coords, chipVersion);
-
-  Object.assign(this, flyingRob);
+  FlyingRobot.call(this, name, weight, coords, chipVersion,
+    maxLoadWeight, currentLoad);
   this.maxLoadWeight = maxLoadWeight;
   this.currentLoad = currentLoad;
 }
