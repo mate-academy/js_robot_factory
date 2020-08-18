@@ -38,6 +38,29 @@ BaseRobot.prototype = {
   },
 };
 
+FlyingRobot.prototype = {
+  goUp(step = 1) {
+    this.coords.z += step;
+  },
+  goDown(step = 1) {
+    this.coords.z -= step;
+  },
+};
+
+DeliveryDrone.prototype = {
+  hookLoad(cargo) {
+    if (cargo.weight < this.maxLoadWeight) {
+      this.currentLoad = cargo;
+    }
+  },
+  unhookLoad() {
+    this.currentLoad = null;
+  },
+};
+
+Object.setPrototypeOf(FlyingRobot.prototype, BaseRobot.prototype);
+Object.setPrototypeOf(DeliveryDrone.prototype, FlyingRobot.prototype);
+
 module.exports = {
   BaseRobot,
   FlyingRobot,
