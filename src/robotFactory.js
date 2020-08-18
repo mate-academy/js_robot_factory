@@ -10,23 +10,15 @@ function BaseRobot(name, weight, coords, chipVersion) {
 BaseRobot.prototype = {
   goForward: function(step = 1) {
     this.coords.y += step;
-
-    return this.coords.y;
   },
   goBack: function(step = 1) {
     this.coords.y -= step;
-
-    return this.coords.y;
   },
   goRight: function(step = 1) {
     this.coords.x += step;
-
-    return this.coords.x;
   },
   goLeft: function(step = 1) {
     this.coords.x += step;
-
-    return this.coords.x;
   },
   getInfo: function() {
     const robot = `Robot: ${this.name}, `;
@@ -43,13 +35,9 @@ function FlyingRobot(name, weight, coords, chipVersion) {
 FlyingRobot.prototype = {
   goUp: function(step = 1) {
     this.coords.z += step;
-
-    return this.coords.z;
   },
   goDown: function(step = 1) {
     this.coords.z -= step;
-
-    return this.coords.z;
   },
 };
 
@@ -65,14 +53,10 @@ function DeliveryDrone(name, weight,
 DeliveryDrone.prototype = {
   unhookLoad: function() {
     this.currentLoad = null;
-
-    return this.currnetLoad;
   },
   hookLoad: function(obj) {
     if (obj.weight < this.maxLoadWeight) {
       this.currentLoad = obj;
-
-      return this.currentLoad;
     }
   },
 };
