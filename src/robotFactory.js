@@ -2,24 +2,16 @@
 
 BaseRobot.prototype = {
   goForward(step = 1) {
-    if (step > 0) {
-      this.coords.y += step;
-    }
+    this.coords.y += step;
   },
   goBack(step = 1) {
-    if (step > 0) {
-      this.coords.y -= step;
-    }
+    this.coords.y -= step;
   },
   goLeft(step = 1) {
-    if (step > 0) {
-      this.coords.x -= step;
-    }
+    this.coords.x -= step;
   },
   goRight(step = 1) {
-    if (step > 0) {
-      this.coords.x += step;
-    }
+    this.coords.x += step;
   },
   getInfo() {
     return `Robot: ${this.name}, Chip version: ${
