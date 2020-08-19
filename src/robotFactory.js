@@ -40,6 +40,7 @@ FlyingRobot.prototype = {
   goUp: function(step = 1) {
     this.coords.z += step;
   },
+
   goDown: function(step = 1) {
     this.coords.z -= step;
   },
@@ -59,6 +60,7 @@ DeliveryDrone.prototype = {
   unhookLoad: function() {
     this.currentLoad = null;
   },
+
   hookLoad: function(obj) {
     if (obj.weight < this.maxLoadWeight) {
       this.currentLoad = obj;
