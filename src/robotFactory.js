@@ -3,7 +3,7 @@
 function BaseRobot(name, weight, coords, chipVersion) {
   this.name = name;
   this.weight = weight;
-  this.coords = { ...coords };
+  this.coords = coords;
   this.chipVersion = chipVersion;
 }
 
