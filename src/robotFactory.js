@@ -8,17 +8,17 @@ function BaseRobot(name, weight, coords, chipVersion) {
 }
 
 BaseRobot.prototype = {
-  goForward(y = 1) {
-    this.coords.y += y;
+  goForward(step = 1) {
+    this.coords.y += step;
   },
-  goBack(y = 1) {
-    this.coords.y -= y;
+  goBack(step = 1) {
+    this.coords.y -= step;
   },
-  goRight(x = 1) {
-    this.coords.x += x;
+  goRight(step = 1) {
+    this.coords.x += step;
   },
-  goLeft(x = 1) {
-    this.coords.x -= x;
+  goLeft(step = 1) {
+    this.coords.x -= step;
   },
   getInfo() {
     return 'Robot: ' + this.name
@@ -36,18 +36,24 @@ function FlyingRobot(name, weight, coords, chipVersion) {
 }
 
 FlyingRobot.prototype = {
-  goUp(z = 1) {
-    this.coords.z += z;
+  goUp(step = 1) {
+    this.coords.z += step;
   },
-  goDown(z = 1) {
-    this.coords.z -= z;
+  goDown(step = 1) {
+    this.coords.z -= step;
   },
 };
 
 Object.setPrototypeOf(FlyingRobot.prototype, BaseRobot.prototype);
 
-function DeliveryDrone(name, weight, coords,
-  chipVersion, maxLoadWeight, currentLoad) {
+function DeliveryDrone(
+  name,
+  weight,
+  coords,
+  chipVersion,
+  maxLoadWeight,
+  currentLoad
+) {
   this.name = name;
   this.weight = weight;
   this.coords = coords;
