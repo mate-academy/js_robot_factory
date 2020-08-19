@@ -52,7 +52,7 @@ function DeliveryDrone(
 }
 
 DeliveryDrone.prototype.hookLoad = function(cargo) {
-  if (cargo.weight < this.maxLoadWeight) {
+  if (cargo.weight <= this.maxLoadWeight) {
     this.currentLoad = cargo;
   }
 };
