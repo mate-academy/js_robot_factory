@@ -29,6 +29,8 @@ BaseRobot.prototype.goRight = function(step = 1) {
   this.coords.x += step;
 };
 
+Object.setPrototypeOf(FlyingRobot.prototype, BaseRobot.prototype);
+
 function FlyingRobot(name, weight, coords, chipVersion) {
   BaseRobot.call(this, name, weight, coords, chipVersion);
 
@@ -36,22 +38,6 @@ function FlyingRobot(name, weight, coords, chipVersion) {
     z: 0,
   };
 }
-
-FlyingRobot.prototype.goForward = function(step = 1) {
-  this.coords.y += step;
-};
-
-FlyingRobot.prototype.goBack = function(step = 1) {
-  this.coords.y -= step;
-};
-
-FlyingRobot.prototype.goLeft = function(step = 1) {
-  this.coords.x -= step;
-};
-
-FlyingRobot.prototype.goRight = function(step = 1) {
-  this.coords.x += step;
-};
 
 FlyingRobot.prototype.goUp = function(step = 0) {
   this.coords.z += step;
