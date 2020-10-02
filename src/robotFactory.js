@@ -42,9 +42,23 @@ FlyingRobot.prototype = {
   },
 };
 
-function DeliveryDrone() {
-  // implement
-}
+function DeliveryDrone(name, weight, coords, chipVersion, maxLoadWeight,
+  currentLoad) {
+  FlyingRobot.call(this, ...arguments);
+  this.maxLoadWeight = maxLoadWeight;
+  this.currentLoad = currentLoad;
+};
+
+DeliveryDrone.prototype = {
+  ...FlyingRobot.prototype,
+  hookLoad(cargo) {
+    this.currentLoad = this.maxLoadWeight > cargo.weight
+      ? cargo : this.currentLoad;
+  },
+  unhookLoad() {
+    this.currentLoad = null;
+  },
+};
 
 module.exports = {
   BaseRobot,
