@@ -31,43 +31,43 @@ BaseRobot.prototype = {
 };
 
 function FlyingRobot(name, weight, coords, chipVersion) {
-  const flyingBaseRobot = new BaseRobot(name, weight, coords, chipVersion);
+  BaseRobot.call(this, ...arguments);
 
-  flyingBaseRobot.coords.z = 0;
-
-  return flyingBaseRobot;
-}
-
-FlyingRobot.prototype = BaseRobot.prototype;
-
-FlyingRobot.prototype.goUp = function(step = 1) {
-  this.coords.z += step;
+  this.coords.z = 0;
 };
 
-FlyingRobot.prototype.goDown = function(step = 1) {
-  this.coords.z -= step;
+FlyingRobot.prototype = {
+  ...BaseRobot.prototype,
+
+  goUp(step = 1) {
+    this.coords.z += step;
+  },
+
+  goDown(step = 1) {
+    this.coords.z -= step;
+  },
 };
 
 // eslint-disable-next-line max-len
 function DeliveryDrone(name, weight, coords, chipVersion, maxLoadWeight, currentLoad) {
-  const drone = new FlyingRobot(name, weight, coords, chipVersion);
+  FlyingRobot.call(this, ...arguments);
 
-  drone.maxLoadWeight = maxLoadWeight;
-  drone.currentLoad = currentLoad;
-
-  return drone;
+  this.maxLoadWeight = maxLoadWeight;
+  this.currentLoad = currentLoad;
 };
 
-DeliveryDrone.prototype = FlyingRobot.prototype;
+DeliveryDrone.prototype = {
+  ...FlyingRobot.prototype,
 
-DeliveryDrone.prototype.hookLoad = function(load) {
-  if (load.weight <= this.maxLoadWeight) {
-    this.currentLoad = load;
-  }
-};
+  hookLoad(load) {
+    if (load.weight <= this.maxLoadWeight) {
+      this.currentLoad = load;
+    }
+  },
 
-DeliveryDrone.prototype.unhookLoad = function() {
-  this.currentLoad = null;
+  unhookLoad() {
+    this.currentLoad = null;
+  },
 };
 
 module.exports = {
