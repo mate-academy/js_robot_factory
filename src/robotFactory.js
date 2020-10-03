@@ -48,8 +48,14 @@ FlyingRobot.prototype = {
   },
 };
 
-// eslint-disable-next-line max-len
-function DeliveryDrone(name, weight, coords, chipVersion, maxLoadWeight, currentLoad) {
+function DeliveryDrone(
+  name,
+  weight,
+  coords,
+  chipVersion,
+  maxLoadWeight,
+  currentLoad
+) {
   FlyingRobot.call(this, ...arguments);
 
   this.maxLoadWeight = maxLoadWeight;
