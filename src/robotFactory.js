@@ -7,26 +7,28 @@ function BaseRobot(name, weight, coords, chipVersion) {
   this.chipVersion = chipVersion;
 }
 
-BaseRobot.prototype.getInfo = function() {
-  const { name, chipVersion, weight } = this;
+BaseRobot.prototype = {
+  getInfo() {
+    const { name, chipVersion, weight } = this;
 
-  return `Robot: ${name}, Chip version: ${chipVersion}, Weight: ${weight}`;
-};
+    return `Robot: ${name}, Chip version: ${chipVersion}, Weight: ${weight}`;
+  },
 
-BaseRobot.prototype.goForward = function(step = 1) {
-  this.coords.y += step;
-};
+  goForward(step = 1) {
+    this.coords.y += step;
+  },
 
-BaseRobot.prototype.goBack = function(step = 1) {
-  this.coords.y -= step;
-};
+  goBack(step = 1) {
+    this.coords.y -= step;
+  },
 
-BaseRobot.prototype.goRight = function(step = 1) {
-  this.coords.x += step;
-};
+  goRight(step = 1) {
+    this.coords.x += step;
+  },
 
-BaseRobot.prototype.goLeft = function(step = 1) {
-  this.coords.x -= step;
+  goLeft(step = 1) {
+    this.coords.x -= step;
+  },
 };
 
 function FlyingRobot(...arg) {
