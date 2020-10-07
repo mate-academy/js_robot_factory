@@ -50,9 +50,9 @@ function DeliveryDrone(name, weight, coords, chipVersion, maxLoadWeight, current
 }
 
 DeliveryDrone.prototype = {
-  hookLoad(cargo) {
-    if (cargo.weight < this.maxLoadWeight) {
-      this.currentLoad = cargo;
+  hookLoad(weightValue) {
+    if (weightValue.weight < this.maxLoadWeight) {
+      this.currentLoad = weightValue;
     }
   },
   unhookLoad() {
