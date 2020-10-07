@@ -45,7 +45,7 @@ FlyingRobot.prototype = {
     this.coords.z -= step;
   },
 
-  __proto__: BaseRobot.prototype,
+  ...BaseRobot.prototype,
 };
 
 function DeliveryDrone(name,
@@ -67,7 +67,7 @@ DeliveryDrone.prototype = {
     this.currentLoad = null;
   },
 
-  __proto__: FlyingRobot.prototype,
+  ...FlyingRobot.prototype,
 };
 
 module.exports = {
