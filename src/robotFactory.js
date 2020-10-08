@@ -25,8 +25,8 @@ BaseRobot.prototype.goLeft = function(step = 1) {
 };
 
 BaseRobot.prototype.getInfo = function() {
-  // eslint-disable-next-line
-  return `Robot: ${this.name}, Chip version: ${this.chipVersion}, Weight: ${this.weight}`;
+  return `Robot: ${this.name}, `
+    + `Chip version: ${this.chipVersion}, Weight: ${this.weight}`;
 };
 
 // FLYING ROBOT
