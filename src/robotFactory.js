@@ -10,26 +10,18 @@ function BaseRobot(name, weight, coords, chipVersion) {
 BaseRobot.prototype = {
   goForward(step = 1) {
     this.coords.y += step;
-
-    return this;
   },
 
   goBack(step = 1) {
     this.coords.y -= step;
-
-    return this;
   },
 
   goLeft(step = 1) {
     this.coords.x -= step;
-
-    return this;
   },
 
   goRight(step = 1) {
     this.coords.x += step;
-
-    return this;
   },
 
   getInfo() {
@@ -47,21 +39,23 @@ function FlyingRobot(name, weight, coords, chipVersion) {
 FlyingRobot.prototype = {
   goUp(step = 1) {
     this.coords.z += step;
-
-    return this;
   },
 
   goDown(step = 1) {
     this.coords.z -= step;
-
-    return this;
   },
 
   ...BaseRobot.prototype,
 };
 
-// eslint-disable-next-line max-len
-function DeliveryDrone(name, weight, coords, chipVersion, maxLoadWeight, currentLoad) {
+function DeliveryDrone(
+  name,
+  weight,
+  coords,
+  chipVersion,
+  maxLoadWeight,
+  currentLoad
+) {
   FlyingRobot.call(this, ...arguments);
 
   this.maxLoadWeight = maxLoadWeight;
@@ -69,18 +63,14 @@ function DeliveryDrone(name, weight, coords, chipVersion, maxLoadWeight, current
 }
 
 DeliveryDrone.prototype = {
-  hookLoad(obj) {
-    if (obj.weight < this.maxLoadWeight) {
-      this.currentLoad = obj;
+  hookLoad(load) {
+    if (load.weight < this.maxLoadWeight) {
+      this.currentLoad = load;
     }
-
-    return this;
   },
 
   unhookLoad() {
     this.currentLoad = null;
-
-    return this;
   },
 
   ...FlyingRobot.prototype,
