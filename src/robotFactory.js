@@ -1,16 +1,76 @@
 'use strict';
 
-function BaseRobot() {
-  // implement
+// BASE ROBOT
+function BaseRobot(name, weight, coords, chipVersion) {
+  this.name = name;
+  this.weight = weight;
+  this.coords = coords;
+  this.chipVersion = chipVersion;
 }
 
-function FlyingRobot() {
-  // implement
+BaseRobot.prototype.goForward = function(step = 1) {
+  this.coords.y += step;
+};
+
+BaseRobot.prototype.goBack = function(step = 1) {
+  this.coords.y -= step;
+};
+
+BaseRobot.prototype.goRight = function(step = 1) {
+  this.coords.x += step;
+};
+
+BaseRobot.prototype.goLeft = function(step = 1) {
+  this.coords.x -= step;
+};
+
+BaseRobot.prototype.getInfo = function() {
+  // eslint-disable-next-line
+  return `Robot: ${this.name}, Chip version: ${this.chipVersion}, Weight: ${this.weight}`;
+};
+
+// FLYING ROBOT
+function FlyingRobot(name, weight, coords, chipVersion) {
+  BaseRobot.call(this, ...arguments);
+
+  this.coords.z = 0;
 }
 
-function DeliveryDrone() {
-  // implement
+FlyingRobot.prototype.goUp = function(step = 1) {
+  this.coords.z += step;
+};
+
+FlyingRobot.prototype.goDown = function(step = 1) {
+  this.coords.z -= step;
+};
+
+Object.setPrototypeOf(FlyingRobot.prototype, BaseRobot.prototype);
+
+// DELIVERY DRONE
+function DeliveryDrone(
+  name,
+  weight,
+  coords,
+  chipVersion,
+  maxLoadWeight,
+  currentLoad) {
+  BaseRobot.call(this, ...arguments);
+
+  this.maxLoadWeight = maxLoadWeight;
+  this.currentLoad = currentLoad;
 }
+
+DeliveryDrone.prototype.hookLoad = function(load) {
+  if (load.weight < this.maxLoadWeight) {
+    this.currentLoad = load;
+  }
+};
+
+DeliveryDrone.prototype.unhookLoad = function() {
+  this.currentLoad = null;
+};
+
+Object.setPrototypeOf(DeliveryDrone.prototype, FlyingRobot.prototype);
 
 module.exports = {
   BaseRobot,
