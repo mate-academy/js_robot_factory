@@ -7,25 +7,28 @@ function BaseRobot(name, weight, coords, chipWersion) {
   this.chipVersion = chipWersion;
 }
 
-BaseRobot.prototype.goForward = function(step = 1) {
-  this.coords.y += step;
-};
+BaseRobot.prototype = {
 
-BaseRobot.prototype.goBack = function(step = 1) {
-  this.coords.y -= step;
-};
+  goForward(step = 1) {
+    this.coords.y += step;
+  },
 
-BaseRobot.prototype.goLeft = function(step = 1) {
-  this.coords.x -= step;
-};
+  goBack(step = 1) {
+    this.coords.y -= step;
+  },
 
-BaseRobot.prototype.goRight = function(step = 1) {
-  this.coords.x += step;
-};
+  goLeft(step = 1) {
+    this.coords.x -= step;
+  },
 
-BaseRobot.prototype.getInfo = function() {
+  goRight(step = 1) {
+    this.coords.x += step;
+  },
+
+  getInfo() {
   // eslint-disable-next-line max-len
-  return `Robot: ${this.name}, Chip version: ${this.chipVersion}, Weight: ${this.weight}`;
+    return `Robot: ${this.name}, Chip version: ${this.chipVersion}, Weight: ${this.weight}`;
+  },
 };
 
 function FlyingRobot(name, weight, coords, chipWersion) {
@@ -34,14 +37,16 @@ function FlyingRobot(name, weight, coords, chipWersion) {
   this.coords.z = 0;
 }
 
-FlyingRobot.prototype = BaseRobot.prototype;
+FlyingRobot.prototype = {
+  ...BaseRobot.prototype,
 
-FlyingRobot.prototype.goUp = function(step = 1) {
-  this.coords.z += step;
-};
+  goUp(step = 1) {
+    this.coords.z += step;
+  },
 
-FlyingRobot.prototype.goDown = function(step = 1) {
-  this.coords.z -= step;
+  goDown(step = 1) {
+    this.coords.z -= step;
+  },
 };
 
 // eslint-disable-next-line max-len
@@ -52,16 +57,18 @@ function DeliveryDrone(name, weight, coords, chipVersion, maxLoadWeight, current
   this.currentLoad = currentLoad;
 }
 
-DeliveryDrone.prototype = FlyingRobot.prototype;
+DeliveryDrone.prototype = {
+  ...FlyingRobot.prototype,
 
-DeliveryDrone.prototype.hookLoad = function(load) {
-  if (load.weight <= this.maxLoadWeight) {
-    this.currentLoad = load;
-  }
-};
+  hookLoad(load) {
+    if (load.weight <= this.maxLoadWeight) {
+      this.currentLoad = load;
+    }
+  },
 
-DeliveryDrone.prototype.unhookLoad = function() {
-  this.currentLoad = null;
+  unhookLoad() {
+    this.currentLoad = null;
+  },
 };
 
 module.exports = {
