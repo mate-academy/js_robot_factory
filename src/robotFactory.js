@@ -42,8 +42,8 @@ FlyingRobot.prototype = {
 
 Object.setPrototypeOf(FlyingRobot.prototype, BaseRobot.prototype);
 
-// eslint-disable-next-line max-len
-function DeliveryDrone(name, weight, coords, chipVersion, maxLoadWeight, currentLoad) {
+function DeliveryDrone(name, weight, coords, chipVersion,
+  maxLoadWeight, currentLoad) {
   FlyingRobot.call(this, ...arguments);
   this.maxLoadWeight = maxLoadWeight;
   this.currentLoad = currentLoad;
