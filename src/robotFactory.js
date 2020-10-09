@@ -30,14 +30,12 @@ BaseRobot.prototype = {
 };
 
 function FlyingRobot(name, weight, coords, chipVersion) {
-  BaseRobot.call(this, ...arguments);
+  BaseRobot.call(this, name, weight, coords, chipVersion);
 
   this.coords.z = 0;
 }
 
 FlyingRobot.prototype = {
-  ...BaseRobot.prototype,
-
   goUp(step = 1) {
     this.coords.z += step;
   },
@@ -47,19 +45,17 @@ FlyingRobot.prototype = {
   },
 };
 
-Object.setPrototypeOf(FlyingRobot, BaseRobot);
+Object.setPrototypeOf(FlyingRobot.prototype, BaseRobot.prototype);
 
 // eslint-disable-next-line max-len
 function DeliveryDrone(name, weight, coords, chipVersion, maxLoadWeight, currentLoad) {
-  FlyingRobot.call(this, ...arguments);
+  FlyingRobot.call(this, name, weight, coords, chipVersion);
 
   this.maxLoadWeight = maxLoadWeight;
   this.currentLoad = currentLoad;
 }
 
 DeliveryDrone.prototype = {
-  ...FlyingRobot.prototype,
-
   hookLoad(load) {
     if (load.weight < this.maxLoadWeight) {
       this.currentLoad = load;
@@ -71,7 +67,7 @@ DeliveryDrone.prototype = {
   },
 };
 
-Object.setPrototypeOf(DeliveryDrone, FlyingRobot);
+Object.setPrototypeOf(DeliveryDrone.prototype, FlyingRobot.prototype);
 
 module.exports = {
   BaseRobot,
