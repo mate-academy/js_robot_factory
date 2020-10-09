@@ -11,15 +11,19 @@ BaseRobot.prototype = {
   goForward(step = 1) {
     this.coords.y += step;
   },
+
   goBack(step = 1) {
     this.coords.y -= step;
   },
+
   goLeft(step = 1) {
     this.coords.x -= step;
   },
+
   goRight(step = 1) {
     this.coords.x += step;
   },
+
   getInfo() {
     return 'Robot: ' + this.name
       + ', Chip version: ' + this.chipVersion
@@ -41,11 +45,12 @@ FlyingRobot.prototype = {
   goDown(step = 1) {
     this.coords.z -= step;
   },
+
+  ...BaseRobot.prototype,
 };
 
-Object.setPrototypeOf(FlyingRobot.prototype, BaseRobot.prototype);
-
-function DeliveryDrone(name,
+function DeliveryDrone(
+  name,
   weight,
   coords,
   chipVersion,
@@ -63,12 +68,13 @@ DeliveryDrone.prototype = {
       this.currentLoad = load;
     }
   },
+
   unhookLoad() {
     this.currentLoad = null;
   },
-};
 
-Object.setPrototypeOf(DeliveryDrone.prototype, FlyingRobot.prototype);
+  ...FlyingRobot.prototype,
+};
 
 module.exports = {
   BaseRobot,
