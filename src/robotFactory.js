@@ -8,25 +8,27 @@ function BaseRobot(name, weight, coords, chipVersion) {
   this.chipVersion = chipVersion;
 }
 
-BaseRobot.prototype.goForward = function(step = 1) {
-  this.coords.y += step;
-};
+BaseRobot.prototype = {
+  goForward(step = 1) {
+    this.coords.y += step;
+  },
 
-BaseRobot.prototype.goBack = function(step = 1) {
-  this.coords.y -= step;
-};
+  goBack(step = 1) {
+    this.coords.y -= step;
+  },
 
-BaseRobot.prototype.goRight = function(step = 1) {
-  this.coords.x += step;
-};
+  goRight(step = 1) {
+    this.coords.x += step;
+  },
 
-BaseRobot.prototype.goLeft = function(step = 1) {
-  this.coords.x -= step;
-};
+  goLeft(step = 1) {
+    this.coords.x -= step;
+  },
 
-BaseRobot.prototype.getInfo = function() {
-  return `Robot: ${this.name}, `
-    + `Chip version: ${this.chipVersion}, Weight: ${this.weight}`;
+  getInfo() {
+    return `Robot: ${this.name}, `
+      + `Chip version: ${this.chipVersion}, Weight: ${this.weight}`;
+  },
 };
 
 // FLYING ROBOT
@@ -36,12 +38,14 @@ function FlyingRobot(name, weight, coords, chipVersion) {
   this.coords.z = 0;
 }
 
-FlyingRobot.prototype.goUp = function(step = 1) {
-  this.coords.z += step;
-};
+FlyingRobot.prototype = {
+  goUp(step = 1) {
+    this.coords.z += step;
+  },
 
-FlyingRobot.prototype.goDown = function(step = 1) {
-  this.coords.z -= step;
+  goDown(step = 1) {
+    this.coords.z -= step;
+  },
 };
 
 Object.setPrototypeOf(FlyingRobot.prototype, BaseRobot.prototype);
