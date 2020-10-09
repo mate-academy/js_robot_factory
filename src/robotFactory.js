@@ -37,14 +37,16 @@ function FlyingRobot(name, weight, coords, chipVersion) {
   this.coords.z = 0;
 }
 
-FlyingRobot.prototype = BaseRobot.prototype;
+FlyingRobot.prototype = {
+  ...BaseRobot.prototype,
 
-FlyingRobot.prototype.goUp = function(step = 1) {
-  this.coords.z += step;
-};
+  goUp(step = 1) {
+    this.coords.z += step;
+  },
 
-FlyingRobot.prototype.goDown = function(step = 1) {
-  this.coords.z -= step;
+  goDown(step = 1) {
+    this.coords.z -= step;
+  },
 };
 
 function DeliveryDrone(name,
@@ -60,7 +62,6 @@ function DeliveryDrone(name,
 }
 
 DeliveryDrone.prototype = {
-
   ...FlyingRobot.prototype,
 
   hookLoad(cargo) {
