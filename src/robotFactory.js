@@ -45,7 +45,7 @@ function FlyingRobot(name, weight, coords, chipVersion) {
 };
 
 FlyingRobot.prototype = {
-  ...BaseRobot.prototype,
+  __proto__: BaseRobot.prototype,
 
   goUp(step = 1) {
     this.coords.z += step;
@@ -75,7 +75,7 @@ function DeliveryDrone(
 };
 
 DeliveryDrone.prototype = {
-  ...FlyingRobot.prototype,
+  __proto__: FlyingRobot.prototype,
 
   hookLoad(load) {
     if (load.weight < this.maxLoadWeight) {
