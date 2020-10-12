@@ -43,8 +43,8 @@ FlyingRobot.prototype = {
 
 Object.setPrototypeOf(FlyingRobot.prototype, BaseRobot.prototype);
 
-function DeliveryDrone(name, weight, coords,
-  chipVersion, maxLoadWeight, currentLoad) {
+function DeliveryDrone(
+  name, weight, coords, chipVersion, maxLoadWeight, currentLoad) {
   this.maxLoadWeight = maxLoadWeight;
   this.currentLoad = currentLoad;
 }
