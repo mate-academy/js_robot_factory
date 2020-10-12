@@ -24,11 +24,6 @@ function BaseRobot(name, weight, coords, chipVersion) {
   this.weight = weight;
   this.coords = coords;
   this.chipVersion = chipVersion;
-  /* this.coords = {
-    x = 0,
-    y = 0,
-    z = 0,
-  } */
 }
 
 FlyingRobot.prototype = {
