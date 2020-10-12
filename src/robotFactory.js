@@ -9,8 +9,8 @@ function BaseRobot(name, weight, coords, chipVersion) {
 
 BaseRobot.prototype = {
   getInfo() {
-    return 'Robot: ' + this.name
-    + ', Chip version: ' + this.chipVersion + ', Weight: ' + this.weight;
+    // eslint-disable-next-line max-len
+    return `Robot: ${this.name}, Chip version: ${this.chipVersion}, Weight: ${this.weight}`;
   },
 
   goForward(step = 1) {
@@ -54,16 +54,18 @@ FlyingRobot.prototype = {
 Object.setPrototypeOf(FlyingRobot.prototype, BaseRobot.prototype);
 
 function DeliveryDrone(
-  name, weight,
-  coords, chipVersion,
+  name,
+  weight,
+  coords,
+  chipVersion,
   maxLoadWeight,
   currentLoad,
 ) {
-  const prev = new FlyingRobot(name, weight, coords, chipVersion);
+  const newFlyingRobot = new FlyingRobot(name, weight, coords, chipVersion);
 
-  for (const key in prev) {
-    if (prev.hasOwnProperty(key)) {
-      this[key] = prev[key];
+  for (const key in newFlyingRobot) {
+    if (newFlyingRobot.hasOwnProperty(key)) {
+      this[key] = newFlyingRobot[key];
     }
   }
 
@@ -72,13 +74,13 @@ function DeliveryDrone(
 }
 
 DeliveryDrone.prototype = {
-  hookLoad(loadObject) {
-    if (loadObject.weight < this.maxLoadWeight) {
-      this.currentLoad = loadObject;
+  hookLoad(load) {
+    if (load.weight < this.maxLoadWeight) {
+      this.currentLoad = load;
     }
   },
 
-  unhookLoad(loadedObject) {
+  unhookLoad() {
     this.currentLoad = null;
   },
 };
