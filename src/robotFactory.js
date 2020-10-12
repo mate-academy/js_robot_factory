@@ -53,8 +53,10 @@ function DeliveryDrone(
   coords,
   chipVersion,
   maxLoadWeight,
-  currentLoad) {
+  currentLoad
+) {
   FlyingRobot.call(this, ...arguments);
+
   this.maxLoadWeight = maxLoadWeight;
   this.currentLoad = currentLoad;
 };
