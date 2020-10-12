@@ -38,8 +38,6 @@ function FlyingRobot(name, weight, coords, chipVersion) {
 }
 
 FlyingRobot.prototype = {
-  ...BaseRobot.prototype,
-
   goUp(step = 1) {
     this.coords.z += step;
   },
@@ -49,12 +47,15 @@ FlyingRobot.prototype = {
   },
 };
 
+Object.setPrototypeOf(FlyingRobot.prototype, BaseRobot.prototype);
+
 function DeliveryDrone(name,
   weight,
   coords,
   chipVersion,
   maxLoadWeight,
-  currentLoad) {
+  currentLoad
+) {
   FlyingRobot.call(this, ...arguments);
 
   this.maxLoadWeight = maxLoadWeight;
@@ -62,8 +63,6 @@ function DeliveryDrone(name,
 }
 
 DeliveryDrone.prototype = {
-  ...FlyingRobot.prototype,
-
   hookLoad(cargo) {
     if (cargo.weight < this.maxLoadWeight) {
       this.currentLoad = cargo;
@@ -74,6 +73,8 @@ DeliveryDrone.prototype = {
     this.currentLoad = null;
   },
 };
+
+Object.setPrototypeOf(DeliveryDrone.prototype, FlyingRobot.prototype);
 
 module.exports = {
   BaseRobot,
