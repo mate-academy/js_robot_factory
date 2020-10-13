@@ -47,9 +47,12 @@ FlyingRobot.prototype = {
 };
 
 function DeliveryDrone(
-  name, weight, coords,
+  name,
+  weight,
+  coords,
   chipVersion,
-  maxLoadWeight, currentLoad
+  maxLoadWeight,
+  currentLoad
 ) {
   // implement
   FlyingRobot.call(this, ...arguments);
