@@ -70,8 +70,13 @@ DeliveryDrone.prototype = {
   },
 };
 
-// eslint-disable-next-line max-len
-function DeliveryDrone(name, weight, coords, chipVersion, maxLoadWeight, currentLoad) {
+function DeliveryDrone(
+  name,
+  weight,
+  coords,
+  chipVersion,
+  maxLoadWeight,
+  currentLoad) {
   this.maxLoadWeight = maxLoadWeight;
   this.currentLoad = currentLoad;
 }
