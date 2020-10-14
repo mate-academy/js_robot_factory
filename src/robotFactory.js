@@ -8,26 +8,28 @@ function BaseRobot(name, weight, coords, chipVersion) {
   this.coords = { ...coords };
 }
 
-BaseRobot.prototype.goForward = function(step = 1) {
-  this.coords.y += step;
-};
+BaseRobot.prototype = {
+  goForward(step = 1) {
+    this.coords.y += step;
+  },
 
-BaseRobot.prototype.goBack = function(step = 1) {
-  this.coords.y -= step;
-};
+  goBack(step = 1) {
+    this.coords.y -= step;
+  },
 
-BaseRobot.prototype.goLeft = function(step = 1) {
-  this.coords.x -= step;
-};
+  goLeft(step = 1) {
+    this.coords.x -= step;
+  },
 
-BaseRobot.prototype.goRight = function(step = 1) {
-  this.coords.x += step;
-};
+  goRight(step = 1) {
+    this.coords.x += step;
+  },
 
-BaseRobot.prototype.getInfo = function() {
-  return `Robot: ${this.name}, `
-    + `Chip version: ${this.chipVersion}, `
-    + `Weight: ${this.weight}`;
+  getInfo() {
+    return `Robot: ${this.name}, `
+      + `Chip version: ${this.chipVersion}, `
+      + `Weight: ${this.weight}`;
+  },
 };
 
 function FlyingRobot(name, weight, coords, chipVersion) {
@@ -36,36 +38,43 @@ function FlyingRobot(name, weight, coords, chipVersion) {
   this.coords.z = 0;
 }
 
-FlyingRobot.prototype = Object.create(BaseRobot.prototype);
-FlyingRobot.prototype.constructor = FlyingRobot;
+FlyingRobot.prototype = {
+  ...BaseRobot.prototype,
 
-FlyingRobot.prototype.goUp = function(step = 1) {
-  this.coords.z += step;
+  goUp(step = 1) {
+    this.coords.z += step;
+  },
+
+  goDown(step = 1) {
+    this.coords.z -= step;
+  },
 };
 
-FlyingRobot.prototype.goDown = function(step = 1) {
-  this.coords.z -= step;
-};
-
-function DeliveryDrone(name, weight, coords,
-  chipVersion, maxLoadWeight, currentLoad) {
+function DeliveryDrone(
+  name,
+  weight,
+  coords,
+  chipVersion,
+  maxLoadWeight,
+  currentLoad) {
   FlyingRobot.call(this, name, weight, coords, chipVersion);
 
   this.maxLoadWeight = maxLoadWeight;
   this.currentLoad = currentLoad;
 }
 
-DeliveryDrone.prototype = Object.create(FlyingRobot.prototype);
-DeliveryDrone.prototype.constructor = DeliveryDrone;
+DeliveryDrone.prototype = {
+  ...FlyingRobot.prototype,
 
-DeliveryDrone.prototype.hookLoad = function(cargo) {
-  if (cargo.weight < this.maxLoadWeight) {
-    this.currentLoad = cargo;
-  }
-};
+  hookLoad(cargo) {
+    if (cargo.weight < this.maxLoadWeight) {
+      this.currentLoad = cargo;
+    }
+  },
 
-DeliveryDrone.prototype.unhookLoad = function() {
-  this.currentLoad = null;
+  unhookLoad() {
+    this.currentLoad = null;
+  },
 };
 
 module.exports = {
