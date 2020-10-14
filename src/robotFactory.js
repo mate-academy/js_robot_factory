@@ -1,58 +1,47 @@
 'use strict';
 
 function BaseRobot(name, weight, coords, chipVersion) {
-  // implement
   this.name = name;
   this.weight = weight;
   this.chipVersion = chipVersion;
   this.coords = coords;
 }
 
-BaseRobot.prototype.goForward = function(step = 1) {
-  // write code here
-  this.coords.y += step;
+BaseRobot.prototype = {
+  goForward(step = 1) {
+    this.coords.y += step;
+  },
+  goBack(step = 1) {
+    this.coords.y -= step;
+  },
+  goRight(step = 1) {
+    this.coords.x += step;
+  },
+  goLeft(step = 1) {
+    this.coords.x += step;
+  },
+  getInfo() {
+    return 'Robot: ' + this.name
+    + ', Chip version: ' + this.chipVersion + ', Weight: ' + this.weight;
+  },
 };
 
-BaseRobot.prototype.goBack = function(step = 1) {
-  // write code here
-  this.coords.y -= step;
-};
+function FlyingRobot(name, weight, coords, chipWersion) {
+  BaseRobot.apply(this, arguments);
 
-BaseRobot.prototype.goRight = function(step = 1) {
-  // write code here
-  this.coords.x += step;
-};
-
-BaseRobot.prototype.goLeft = function(step = 1) {
-  // write code here
-  this.coords.x += step;
-};
-
-BaseRobot.prototype.getInfo = function() {
-  return 'Robot: ' + this.name
-  + ', Chip version: ' + this.chipVersion + ', Weight: ' + this.weight;
-};
-
-function FlyingRobot(name, weight, coords, chipVersion) {
-  const testRobot = new BaseRobot(name, weight, coords, chipVersion);
-
-  for (const key in testRobot) {
-    if (testRobot.hasOwnProperty(key)) {
-      this[key] = testRobot[key];
-    }
-  }
-  // Object.setPrototypeOf(FlyingRobot, testRobot);
   this.coords.z = 0;
 }
 
-FlyingRobot.prototype = BaseRobot.prototype;
+FlyingRobot.prototype = {
+  ...BaseRobot.prototype,
 
-FlyingRobot.prototype.goUp = function(step = 1) {
-  this.coords.z += step;
-};
+  goUp(step = 1) {
+    this.coords.z += step;
+  },
 
-FlyingRobot.prototype.goDown = function(step = 1) {
-  this.coords.z -= step;
+  goDown(step = 1) {
+    this.coords.z -= step;
+  },
 };
 
 function DeliveryDrone(
@@ -61,28 +50,23 @@ function DeliveryDrone(
   maxLoadWeight,
   currentLoad
 ) {
-  const prev = new FlyingRobot(name, weight, coords, chipVersion);
-
-  for (const key in prev) {
-    if (prev.hasOwnProperty(key)) {
-      this[key] = prev[key];
-    }
-  }
+  FlyingRobot.apply(this, arguments);
 
   this.maxLoadWeight = maxLoadWeight;
   this.currentLoad = currentLoad;
 }
 
-DeliveryDrone.prototype = FlyingRobot.prototype;
+DeliveryDrone.prototype = {
+  ...FlyingRobot.prototype,
 
-DeliveryDrone.prototype.hookLoad = function(loadObject) {
-  if (loadObject.weight < this.maxLoadWeight) {
-    this.currentLoad = loadObject;
-  }
-};
-
-DeliveryDrone.prototype.unhookLoad = function(loadedObject) {
-  this.currentLoad = null;
+  hookLoad(loadObject) {
+    if (loadObject.weight < this.maxLoadWeight) {
+      this.currentLoad = loadObject;
+    }
+  },
+  unhookLoad() {
+    this.currentLoad = null;
+  },
 };
 
 module.exports = {
