@@ -152,7 +152,7 @@ describe('FlyingRobot testing', () => {
     robot.goDown(-27);
 
     expect(robot.coords.z)
-      .toBe(24);
+      .toBe(-14);
   });
 });
 
@@ -231,8 +231,52 @@ describe('DeliveryDrone testing', () => {
       weight: 57, description: 'cargo 57 weight',
     };
 
-    const cargo2 = {
+    robot.hookLoad(cargo);
+
+    expect(robot.currentLoad)
+      .toEqual(cargo);
+  });
+
+  test('hookLoad method shouldn\'t save the load object '
+    + 'to currentLoad of DeliveryDrone instances '
+    + 'if weight of cargo more than maxLoadWeight of drone', () => {
+    const robot = new DeliveryDrone('X', 9, {}, 0.7, 78, null);
+
+    const cargo = {
       weight: 98, description: 'cargo 98 weight',
+    };
+
+    robot.hookLoad(cargo);
+
+    expect(robot.currentLoad)
+      .toBe(null);
+  });
+
+  test('hookLoad method should save the load object '
+    + 'to currentLoad of DeliveryDrone instances '
+    + 'if weight of cargo equal to maxLoadWeight of drone', () => {
+    const robot = new DeliveryDrone('X', 9, {}, 0.7, 78, null);
+
+    const cargo = {
+      weight: 78, description: 'cargo 78 weight',
+    };
+
+    robot.hookLoad(cargo);
+
+    expect(robot.currentLoad)
+      .toEqual(cargo);
+  });
+
+  test('hookLoad method shouldn\'t save the load object '
+    + 'to currentLoad of DeliveryDrone instances '
+    + 'if currentLoad isn\'t null', () => {
+    const robot = new DeliveryDrone('X', 9, {}, 0.7, 80, null);
+
+    const cargo = {
+      weight: 30, description: 'cargo 30 weight',
+    };
+    const cargo2 = {
+      weight: 40, description: 'cargo 40 weight',
     };
 
     robot.hookLoad(cargo);
