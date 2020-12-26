@@ -32,7 +32,7 @@ describe('BaseRobot testing', () => {
       .toBe(0.1);
   });
 
-  test('BaseRobot prototype should has methods '
+  test('BaseRobot prototype should have methods '
     + 'goForward, goBack, goRight, goLeft, getInfo', () => {
     expect(typeof BaseRobot.prototype.goForward)
       .toBe('function');
