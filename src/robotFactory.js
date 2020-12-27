@@ -36,9 +36,9 @@ BaseRobot.prototype.goRight = function(step = 1) {
 };
 
 BaseRobot.prototype.getInfo = function() {
-  return `Robot: ${this.name},
-    Chip version: ${this.chipVersion},
-    Weight: ${this.weight}`;
+  return `Robot: ${
+    this.name}, Chip version: ${
+    this.chipVersion}, Weight: ${this.weight}`;
 };
 
 function FlyingRobot(
