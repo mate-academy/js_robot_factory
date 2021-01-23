@@ -47,8 +47,8 @@ function BaseRobot(name, weight, coords = {}, chipVersion) {
   };
 }
 
-Object.setPrototypeOf(FlyingRobot, BaseRobot);
-Object.setPrototypeOf(DeliveryDrone, FlyingRobot);
+Object.setPrototypeOf(FlyingRobot.prototype, new BaseRobot());
+Object.setPrototypeOf(DeliveryDrone.prototype, new FlyingRobot());
 
 function FlyingRobot(name, weight, coords = {}, chipVersion) {
   const {
