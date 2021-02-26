@@ -8,22 +8,18 @@ function BaseRobot(name, weight, coords, chipVersion) {
 }
 
 BaseRobot.prototype.goForward = function(step = 1) {
-  // write code here
   this.coords.y += step;
 };
 
 BaseRobot.prototype.goBack = function(step = 1) {
-  // write code here
   this.coords.y -= step;
 };
 
 BaseRobot.prototype.goLeft = function(step = 1) {
-  // write code here
   this.coords.x -= step;
 };
 
 BaseRobot.prototype.goRight = function(step = 1) {
-  // write code here
   this.coords.x += step;
 };
 
