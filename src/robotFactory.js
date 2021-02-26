@@ -11,26 +11,18 @@ function BaseRobot(name, weight, coords, chipVersion) {
 
 BaseRobot.prototype.goForward = function(value = 1) {
   this.coords.y += value;
-
-  return this;
 };
 
 BaseRobot.prototype.goBack = function(value = 1) {
   this.coords.y -= value;
-
-  return this;
 };
 
 BaseRobot.prototype.goLeft = function(value = 1) {
   this.coords.x -= value;
-
-  return this;
 };
 
 BaseRobot.prototype.goRight = function(value = 1) {
   this.coords.x += value;
-
-  return this;
 };
 
 BaseRobot.prototype.getInfo = function() {
@@ -46,14 +38,10 @@ function FlyingRobot(name, weight, coords, chipVersion) {
 
 FlyingRobot.prototype.goUp = function(value = 1) {
   this.coords.z += value;
-
-  return this;
 };
 
 FlyingRobot.prototype.goDown = function(value = 1) {
   this.coords.z -= value;
-
-  return this;
 };
 
 Object.setPrototypeOf(FlyingRobot.prototype, BaseRobot.prototype);
@@ -66,7 +54,7 @@ function DeliveryDrone(
   maxLoadWeight,
   currentLoad) {
   // implement
-  FlyingRobot.call(this, name, weight, coords, chipVersion);
+  FlyingRobot.call(this, ...arguments);
   this.maxLoadWeight = maxLoadWeight;
   this.currentLoad = currentLoad;
 }
