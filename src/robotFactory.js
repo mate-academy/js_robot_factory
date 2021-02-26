@@ -34,11 +34,11 @@ function FlyingRobot(name, weight, coords, chipVersion) {
   this.coords.z = 0;
 }
 
-BaseRobot.prototype.goUp = function(step = 1) {
+FlyingRobot.prototype.goUp = function(step = 1) {
   this.coords.z += step;
 };
 
-BaseRobot.prototype.goDown = function(step = 1) {
+FlyingRobot.prototype.goDown = function(step = 1) {
   this.coords.z -= step;
 };
 
