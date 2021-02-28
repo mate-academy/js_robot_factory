@@ -8,27 +8,19 @@ function BaseRobot(name, weight, coords, chipVersion) {
 }
 
 BaseRobot.prototype.goForward = function(step = 1) {
-  if (step > 0) {
-    this.coords.y += step;
-  }
+  this.coords.y += step;
 };
 
 BaseRobot.prototype.goBack = function(step = 1) {
-  if (step > 0) {
-    this.coords.y -= step;
-  }
+  this.coords.y -= step;
 };
 
 BaseRobot.prototype.goLeft = function(step = 1) {
-  if (step > 0) {
-    this.coords.x -= step;
-  }
+  this.coords.x -= step;
 };
 
 BaseRobot.prototype.goRight = function(step = 1) {
-  if (step > 0) {
-    this.coords.x += step;
-  }
+  this.coords.x += step;
 };
 
 BaseRobot.prototype.getInfo = function(name, chipVersion, weight) {
@@ -38,7 +30,6 @@ BaseRobot.prototype.getInfo = function(name, chipVersion, weight) {
 
 function FlyingRobot(name, weight, coords, chipVersion) {
   BaseRobot.call(this, name, weight, coords, chipVersion);
-
   this.coords.z = 0;
 }
 
