@@ -33,9 +33,7 @@ BaseRobot.prototype = {
 function FlyingRobot(name, weight, coords, chipVersion) {
   BaseRobot.call(this, name, weight, coords, chipVersion);
 
-  this.coords = {
-    z: 0,
-  };
+  this.coords.z = 0;
 }
 
 FlyingRobot.prototype = {
