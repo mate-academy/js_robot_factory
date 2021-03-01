@@ -1,6 +1,11 @@
 'use strict';
 
-function BaseRobot(name, weight, coords, chipVersion) {
+function BaseRobot(
+  name,
+  weight,
+  coords,
+  chipVersion
+) {
   this.name = name;
   this.weight = weight;
   this.coords = coords;
@@ -30,8 +35,19 @@ BaseRobot.prototype = {
   },
 };
 
-function FlyingRobot(name, weight, coords, chipVersion) {
-  BaseRobot.call(this, name, weight, coords, chipVersion);
+function FlyingRobot(
+  name,
+  weight,
+  coords,
+  chipVersion
+) {
+  BaseRobot.call(
+    this,
+    name,
+    weight,
+    coords,
+    chipVersion
+  );
   this.coords.z = 0;
 }
 
@@ -48,9 +64,21 @@ FlyingRobot.prototype = {
 
 Object.setPrototypeOf(FlyingRobot.prototype, BaseRobot.prototype);
 
-function DeliveryDrone(name, weight, coords,
-  chipVersion, maxLoadWeight, currentLoad) {
-  FlyingRobot.call(this, name, weight, coords, chipVersion);
+function DeliveryDrone(
+  name,
+  weight,
+  coords,
+  chipVersion,
+  maxLoadWeight,
+  currentLoad
+) {
+  FlyingRobot.call(
+    this,
+    name,
+    weight,
+    coords,
+    chipVersion
+  );
   this.maxLoadWeight = maxLoadWeight;
   this.currentLoad = currentLoad;
 }
