@@ -9,7 +9,6 @@ function BaseRobot(name, weight, coords, chipVersion) {
 }
 
 BaseRobot.prototype = {
-  ...BaseRobot.prototype,
   goForward(step = 1) {
     this.coords.y += step;
   },
@@ -38,7 +37,6 @@ function FlyingRobot(name, weight, coords, chipVersion) {
 }
 
 FlyingRobot.prototype = {
-  ...BaseRobot.prototype,
   goUp(step = 1) {
     this.coords.z += step;
   },
@@ -46,6 +44,8 @@ FlyingRobot.prototype = {
     this.coords.z -= step;
   },
 };
+
+Object.assign(FlyingRobot.prototype, BaseRobot.prototype);
 
 function DeliveryDrone(
   name, weight, coords, chipVersion, maxLoadWeight, currentLoad) {
@@ -67,6 +67,8 @@ DeliveryDrone.prototype = {
     this.currentLoad = null;
   },
 };
+
+Object.assign(DeliveryDrone.prototype, FlyingRobot.prototype);
 
 module.exports = {
   BaseRobot,
