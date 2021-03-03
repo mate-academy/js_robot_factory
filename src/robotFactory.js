@@ -36,9 +36,9 @@ function FlyingRobot(name, weight, coords, chipVersion) {
   );
 
   this.coords.z = 0;
-
-  Object.setPrototypeOf(FlyingRobot.prototype, BaseRobot.prototype);
 };
+
+Object.setPrototypeOf(FlyingRobot.prototype, BaseRobot.prototype);
 
 FlyingRobot.prototype.goUp = function(step = 1) {
   this.coords.z += step;
