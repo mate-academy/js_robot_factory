@@ -85,15 +85,11 @@ function DeliveryDrone(
 DeliveryDrone.prototype.hookLoad = function(load) {
   if (load.weight <= this.maxLoadWeight && this.currentLoad === null) {
     this.currentLoad = load;
-
-    return load;
   }
 };
 
 DeliveryDrone.prototype.unhookLoad = function() {
   this.currentLoad = null;
-
-  return this.currentLoad;
 };
 
 module.exports = {
