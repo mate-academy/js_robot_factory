@@ -8,27 +8,19 @@ function BaseRobot(name, weight, coords, chipVersion) {
 }
 
 BaseRobot.prototype.goForward = function(step = 1) {
-  if (step >= 1) {
-    this.coords.y += step;
-  }
+  this.coords.y += step;
 };
 
 BaseRobot.prototype.goBack = function(step = 1) {
-  if (step >= 1) {
-    this.coords.y -= step;
-  }
+  this.coords.y -= step;
 };
 
 BaseRobot.prototype.goRight = function(step = 1) {
-  if (step >= 1) {
-    this.coords.x += step;
-  }
+  this.coords.x += step;
 };
 
 BaseRobot.prototype.goLeft = function(step = 1) {
-  if (step >= 1) {
-    this.coords.x -= step;
-  }
+  this.coords.x -= step;
 };
 
 BaseRobot.prototype.getInfo = function() {
