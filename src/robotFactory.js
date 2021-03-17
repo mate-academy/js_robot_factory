@@ -2,27 +2,19 @@
 
 BaseRobot.prototype = {
   goForward(steps = 1) {
-    if (steps >= 1) {
-      this.coords.y += steps;
-    }
+    this.coords.y += steps;
   },
 
   goBack(steps = 1) {
-    if (steps >= 1) {
-      this.coords.y -= steps;
-    }
+    this.coords.y -= steps;
   },
 
   goRight(steps = 1) {
-    if (steps >= 1) {
-      this.coords.x += steps;
-    }
+    this.coords.x += steps;
   },
 
   goLeft(steps = 1) {
-    if (steps >= 1) {
-      this.coords.x -= steps;
-    }
+    this.coords.x -= steps;
   },
 
   getInfo() {
