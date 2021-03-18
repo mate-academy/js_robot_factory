@@ -25,7 +25,7 @@ BaseRobot.prototype.goLeft = function(step = 1) {
 
 BaseRobot.prototype.getInfo = function() {
   return `Robot: ${this.name}, Chip version: ${this.chipVersion}`
-  + `, Weight: ${this.weight}`;
+    + `, Weight: ${this.weight}`;
 };
 
 function FlyingRobot(name, weight, coords, chipVersion) {
