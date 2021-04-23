@@ -47,8 +47,7 @@ FlyingRobot.prototype.goDown = function(step = 1) {
 };
 
 function DeliveryDrone(
-  name, weight, coords, chipVersion,
-  maxLoadWeight, currentLoad
+  name, weight, coords, chipVersion, maxLoadWeight, currentLoad
 ) {
   FlyingRobot.call(this, name, weight, coords, chipVersion);
   this.maxLoadWeight = maxLoadWeight;
