@@ -36,7 +36,7 @@ function FlyingRobot(name, weight, coords, chipVersion) {
   };
 }
 
-FlyingRobot.prototype = Object.create(BaseRobot.prototype);
+Object.setPrototypeOf(FlyingRobot.prototype, BaseRobot.prototype);
 
 FlyingRobot.prototype.goUp = function(step = 1) {
   this.coords.z += step;
@@ -46,14 +46,16 @@ FlyingRobot.prototype.goDown = function(step = 1) {
   this.coords.z -= step;
 };
 
-function
-DeliveryDrone(name, weight, coords, chipVersion, maxLoadWeight, currentLoad) {
+function DeliveryDrone(
+  name, weight, coords, chipVersion,
+  maxLoadWeight, currentLoad
+) {
   FlyingRobot.call(this, name, weight, coords, chipVersion);
   this.maxLoadWeight = maxLoadWeight;
   this.currentLoad = currentLoad;
 }
 
-DeliveryDrone.prototype = Object.create(FlyingRobot.prototype);
+Object.setPrototypeOf(DeliveryDrone.prototype, FlyingRobot.prototype);
 
 DeliveryDrone.prototype.hookLoad = function(hook) {
   if (this.maxLoadWeight >= hook.weight && this.currentLoad === null) {
