@@ -24,11 +24,9 @@ BaseRobot.prototype.goLeft = function(step = 1) {
 };
 
 BaseRobot.prototype.getInfo = function() {
-  const name = `Robot: ${this.name}, `;
-  const version = `Chip version: ${this.chipVersion}, `;
-  const weight = `Weight: ${this.weight}`;
-
-  return name + version + weight;
+  return `Robot: ${this.name}, `
+    + `Chip version: ${this.chipVersion}, `
+    + `Weight: ${this.weight}`;
 };
 
 function FlyingRobot(name, weight, coords, chipVersion) {
@@ -47,8 +45,14 @@ FlyingRobot.prototype.goDown = function(step = 1) {
   this.coords.z -= step;
 };
 
-function DeliveryDrone(name, weight, coords, chipVersion,
-  maxLoadWeight, currentLoad) {
+function DeliveryDrone(
+  name,
+  weight,
+  coords,
+  chipVersion,
+  maxLoadWeight,
+  currentLoad
+) {
   FlyingRobot.call(this, name, weight, coords, chipVersion);
 
   this.maxLoadWeight = maxLoadWeight;
