@@ -1,5 +1,5 @@
 'use strict';
-/* global require, describe, test, expect */
+// /* global require, describe, test, expect */
 
 const { BaseRobot, FlyingRobot, DeliveryDrone } = require('./robotFactory');
 
@@ -201,7 +201,7 @@ describe('DeliveryDrone testing', () => {
       {
         weight: 57,
         description: 'Some cargo',
-      }
+      },
     );
 
     expect(robot.maxLoadWeight)
