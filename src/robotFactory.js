@@ -71,13 +71,6 @@ class DeliveryDrone extends FlyingRobot {
   }
 }
 
-// DeliveryDrone.prototype = {
-//   unhookCount: 0,
-//   counter() {
-//     this.unhookCount++;
-//   },
-// };
-
 module.exports = {
   BaseRobot,
   FlyingRobot,
