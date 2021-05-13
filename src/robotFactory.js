@@ -1,26 +1,16 @@
 'use strict';
 
 class BaseRobot {
-  constructor(
-    name,
-    weight,
-    coords = {
-      x: 0,
-      y: 0,
-    },
-    chipVersion
-  ) {
+  constructor(name, weight, coords = {}, chipVersion) {
     this.name = name;
     this.weight = weight;
 
-    if (Object.keys(coords).length === 0) {
-      this.coords = {
-        x: 0,
-        y: 0,
-      };
-    } else {
-      this.coords = { ...coords };
-    }
+    const { x = 0, y = 0 } = coords;
+
+    this.coords = {
+      x,
+      y,
+    };
     this.chipVersion = chipVersion;
   }
 
@@ -41,29 +31,24 @@ class BaseRobot {
   }
 
   getInfo() {
-    return `Robot: ${
-      this.name}, Chip version: ${this.chipVersion}, Weight: ${this.weight}`;
+    return (
+      `Robot: ${this.name}, Chip version: ${this.chipVersion}, `
+      + `Weight: ${this.weight}`
+    );
   }
 }
 
 class FlyingRobot extends BaseRobot {
-  constructor(
-    name,
-    weight,
-    coords = {
-      x: 0,
-      y: 0,
-      z: 0,
-    },
-    chipVersion,
-  ) {
+  constructor(name, weight, coords = {}, chipVersion) {
     super(name, weight, coords, chipVersion);
 
-    if (Object.keys(coords).length === 2) {
-      this.coords.z = 0;
-    } else {
-      this.coords = { ...coords };
-    }
+    const { x = 0, y = 0, z = 0 } = coords;
+
+    this.coords = {
+      x,
+      y,
+      z,
+    };
   }
 
   goUp(step = 1) {
