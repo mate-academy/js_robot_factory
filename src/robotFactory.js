@@ -4,10 +4,9 @@ class BaseRobot {
   constructor(name, weight, position, chipVersion) {
     this.name = name;
     this.weight = weight;
-
-    this.coords = position.x ? position : {
-      x: 0, y: 0,
-    };
+    this.coords = {};
+    this.coords.x = position.x ? position.x : 0;
+    this.coords.y = position.y ? position.y : 0;
     this.chipVersion = chipVersion;
   }
   getInfo() {
@@ -36,12 +35,7 @@ class BaseRobot {
 class FlyingRobot extends BaseRobot {
   constructor(name, weight, position, chipVersion) {
     super(name, weight, position, chipVersion);
-
-    this.coords = position.z ? position : {
-      x: 0,
-      y: 0,
-      z: 0,
-    };
+    this.coords.z = position.z ? position.z : 0;
   }
 
   goUp(step = 1) {
