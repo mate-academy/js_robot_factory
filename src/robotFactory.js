@@ -55,31 +55,10 @@ class FlyingRobot extends BaseRobot {
   goDown(step = 1) {
     this.coords.z -= step;
   }
-
-  goForward(step = 1) {
-    super.goForward();
-  }
-
-  goBack(step = 1) {
-    super.goBack();
-  }
-
-  goRight(step = 1) {
-    super.goRight();
-  }
-
-  goLeft(step = 1) {
-    super.goLeft();
-  }
-
-  getInfo() {
-    super.getInfo();
-  }
 }
 
 class DeliveryDrone extends FlyingRobot {
-  constructor(name, weight, coords, chipVersion,
-    maxLoadWeight, currentLoad) {
+  constructor(name, weight, coords, chipVersion, maxLoadWeight, currentLoad) {
     super(name, weight, coords, chipVersion);
 
     this.maxLoadWeight = maxLoadWeight;
@@ -95,34 +74,6 @@ class DeliveryDrone extends FlyingRobot {
 
   unhookLoad() {
     this.currentLoad = null;
-  }
-
-  goUp(step = 1) {
-    super.goUp();
-  }
-
-  goDown(step = 1) {
-    super.goDown();
-  }
-
-  goForward(step = 1) {
-    super.goForward();
-  }
-
-  goBack(step = 1) {
-    super.goBack();
-  }
-
-  goRight(step = 1) {
-    super.goRight();
-  }
-
-  goLeft(step = 1) {
-    super.goLeft();
-  }
-
-  getInfo() {
-    super.getInfo();
   }
 }
 
