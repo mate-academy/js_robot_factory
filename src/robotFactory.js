@@ -2,15 +2,16 @@
 
 class BaseRobot {
   constructor(name, weight, coords, chipVersion) {
-    const coordsZero = {
-      x: 0,
-      y: 0,
-    };
+    const { x = 0, y = 0 } = coords;
 
     this.name = name;
     this.weight = weight;
-    this.coords = Object.keys(coords).length ? coords : coordsZero;
     this.chipVersion = chipVersion;
+
+    this.coords = {
+      x,
+      y,
+    };
   }
 
   goForward(step = 1) {
@@ -31,7 +32,8 @@ class BaseRobot {
 
   getInfo() {
     return `Robot: ${this.name},`
-      + ` Chip version: ${this.chipVersion}, Weight: ${this.weight}`;
+      + ` Chip version: ${this.chipVersion}, `
+      + `Weight: ${this.weight}`;
   }
 }
 
