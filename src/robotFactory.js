@@ -9,8 +9,8 @@ class BaseRobot {
 
     if (Object.keys(coords).length === 0) {
       this.coords = {
-        x: 0,
-        y: 0,
+        x: coords.x || 0,
+        y: coords.y || 0,
       };
     };
   }
@@ -43,7 +43,7 @@ class FlyingRobot extends BaseRobot {
     super(name, weight, coords, chipVersion);
 
     if (!this.coords.z) {
-      this.coords.z = 0;
+      this.coords.z = coords.z || 0;
     }
   }
 
@@ -57,7 +57,14 @@ class FlyingRobot extends BaseRobot {
 }
 
 class DeliveryDrone extends FlyingRobot {
-  constructor(name, weight, coords, chipVersion, maxLoadWeight, currentLoad) {
+  constructor(
+    name,
+    weight,
+    coords,
+    chipVersion,
+    maxLoadWeight,
+    currentLoad = null,
+  ) {
     super(name, weight, coords, chipVersion);
 
     this.maxLoadWeight = maxLoadWeight;
