@@ -69,11 +69,7 @@ class DeliveryDrone extends FlyingRobot {
   constructor(
     name,
     weight,
-    coords = {
-      x: 0,
-      y: 0,
-      z: 0,
-    },
+    coords,
     chipVersion,
     maxLoadWeight,
     currentLoad
