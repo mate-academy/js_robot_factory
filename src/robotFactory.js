@@ -29,18 +29,21 @@ class BaseRobot {
   };
 
   getInfo() {
-    return 'Robot: ' + this.name + ', Chip version: '
-      + this.chipVersion + ', Weight: ' + this.weight;
+    return (
+      'Robot: ' + this.name + ', Chip version: '
+      + this.chipVersion + ', Weight: ' + this.weight
+    );
   };
 };
 
 class FlyingRobot extends BaseRobot {
   constructor(name, weight, { x = 0, y = 0, z = 0 }, chipVersion) {
-    super(name, weight, {
-      x,
-      y,
-      z,
-    }, chipVersion);
+    super(
+      name,
+      weight,
+      {x, y, z},
+      chipVersion
+    );
 
     this.coords = {
       x,
