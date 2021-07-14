@@ -1,5 +1,4 @@
 'use strict';
-
 class BaseRobot {
   constructor(name, weight, coords, chipVersion) {
     this.name = name;
@@ -29,7 +28,7 @@ class BaseRobot {
   }
 
   getInfo() {
-    return `Robot: ${this.name}, ` + `Chip version: ${this.chipVersion}, `
+    return `Robot: ${this.name}, Chip version: ${this.chipVersion}, `
      + `Weight: ${this.weight}`;
   }
 }
@@ -41,12 +40,12 @@ class FlyingRobot extends BaseRobot {
     this.coords.z = coords.z || 0;
   }
 
-  goDown(a = 1) {
-    this.coords.z -= a;
+  goDown(step = 1) {
+    this.coords.z -= step;
   };
 
-  goUp(a = 1) {
-    this.coords.z += a;
+  goUp(step = 1) {
+    this.coords.z += step;
   };
 }
 
