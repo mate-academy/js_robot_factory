@@ -29,8 +29,6 @@ class BaseRobot {
 
   goLeft(step = 1) {
     this.coords.x -= step;
-
-    return this;
   };
 
   getInfo() {
