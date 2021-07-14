@@ -11,6 +11,7 @@ class BaseRobot {
       y: coords.y || 0,
     };
   }
+
   goBack(step = 1) {
     this.coords.y -= step;
   }
@@ -59,15 +60,16 @@ class DeliveryDrone extends FlyingRobot {
     currentLoad = null
   ) {
     super(name, weight, coords, chipVersion);
-
     this.currentLoad = currentLoad;
     this.maxLoadWeight = maxLoadWeight;
   }
+
   unhookLoad() {
     this.currentLoad = null;
   }
+
   hookLoad(cargo) {
-    if (this.currentLoad === null
+    if (!this.currentLoad
       && cargo.weight <= this.maxLoadWeight) {
       this.currentLoad = cargo;
     }
