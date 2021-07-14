@@ -18,24 +18,25 @@ class BaseRobot {
   }
 
   goForward(step = 1) {
-    this.coords.y = this.coords.y + step;
+    this.coords.y += step;
   }
 
   goBack(step = 1) {
-    this.coords.y = this.coords.y - step;
+    this.coords.y -= step;
   }
 
   goRight(step = 1) {
-    this.coords.x = this.coords.x + step;
+    this.coords.x += step;
   }
 
   goLeft(step = 1) {
-    this.coords.x = this.coords.x - step;
+    this.coords.x -= step;
   }
 
   getInfo() {
-    // eslint-disable-next-line max-len
-    return `Robot: ${this.name}, Chip version: ${this.chipVersion}, Weight: ${this.weight}`;
+    return `Robot: ${this.name}, `
+    + `Chip version: ${this.chipVersion}, `
+    + `Weight: ${this.weight}`;
   }
 }
 
@@ -50,34 +51,27 @@ class FlyingRobot extends BaseRobot {
   }
 
   goUp(step = 1) {
-    this.coords.z = this.coords.z + step;
+    this.coords.z += step;
   }
 
   goDown(step = 1) {
-    this.coords.z = this.coords.z - step;
+    this.coords.z -= step;
   }
 }
 
 class DeliveryDrone extends FlyingRobot {
-  // eslint-disable-next-line max-len
   constructor(name, weight, position, chipVersion, maxLoadWeight, currentLoad) {
     super(name, weight, position, chipVersion);
     this.maxLoadWeight = maxLoadWeight;
 
     if (currentLoad) {
-      this.currentLoad = {
-        weight: currentLoad.weight,
-        description: currentLoad.description,
-      };
+      this.currentLoad = currentLoad;
     }
   }
 
   hookLoad(cargo) {
     if (!this.currentLoad && cargo.weight <= this.maxLoadWeight) {
-      this.currentLoad = {
-        weight: cargo.weight,
-        description: cargo.description,
-      };
+      this.currentLoad = cargo;
     } else if (!this.currentLoad && cargo.weight > this.maxLoadWeight) {
       this.currentLoad = null;
     }
