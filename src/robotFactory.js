@@ -11,39 +11,24 @@ class BaseRobot {
     this.chipVersion = chipVersion;
 
     this.coords = {
-      x,
-      y,
+      x, y,
     };
   }
 
   goForward(step = 1) {
-    if (step > 0) {
-      this.coords.y += step;
-    }
-
-    return this;
+    this.coords.y += step;
   };
 
   goBack(step = 1) {
-    if (step > 0) {
-      this.coords.y -= step;
-    }
-
-    return this;
+    this.coords.y -= step;
   };
 
   goRight(step = 1) {
-    if (step > 0) {
-      this.coords.x += step;
-    }
-
-    return this;
+    this.coords.x += step;
   };
 
   goLeft(step = 1) {
-    if (step > 0) {
-      this.coords.x -= step;
-    }
+    this.coords.x -= step;
 
     return this;
   };
@@ -63,22 +48,16 @@ class FlyingRobot extends BaseRobot {
     super(...arguments);
 
     this.coords = {
-      x,
-      y,
-      z,
+      x, y, z,
     };
   }
 
   goUp(step = 1) {
-    if (step > 0) {
-      this.coords.z += step;
-    }
+    this.coords.z += step;
   }
 
   goDown(step = 1) {
-    if (step > 0) {
-      this.coords.z -= step;
-    }
+    this.coords.z -= step;
   }
 }
 
