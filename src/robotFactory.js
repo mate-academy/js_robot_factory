@@ -2,19 +2,16 @@
 
 class BaseRobot {
   constructor(name, weight, position, chipVersion) {
+    const { x = 0, y = 0 } = position;
+
+    this.coords = {
+      x,
+      y,
+    };
+
     this.name = name;
     this.weight = weight;
     this.chipVersion = chipVersion;
-
-    this.coords = {
-      x: 0,
-      y: 0,
-    };
-
-    if ('x' in position && 'y' in position) {
-      this.coords.x = position.x;
-      this.coords.y = position.y;
-    }
   }
 
   goForward(step = 1) {
