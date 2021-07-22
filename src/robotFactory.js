@@ -40,7 +40,7 @@ class BaseRobot {
 }
 
 class FlyingRobot extends BaseRobot {
-  constructor(name, weight, coords, chipVersion) {
+  constructor(...args) {
     super(name, weight, coords, chipVersion);
 
     if (!coords.z) {
