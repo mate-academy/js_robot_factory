@@ -5,7 +5,7 @@ class BaseRobot {
     this.name = name;
     this.weight = weight;
 
-    if (Object.keys(coords).length === 0) {
+    if (!coords.x || !coords.y) {
       this.coords = {
         x: 0,
         y: 0,
