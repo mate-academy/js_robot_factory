@@ -47,8 +47,6 @@ class FlyingRobot extends BaseRobot {
 
   goDown(step = 1) {
     this.coords.z -= step;
-
-    return this;
   }
 }
 
