@@ -2,14 +2,11 @@
 
 class BaseRobot {
   constructor(name, weight, coords, chipVersion) {
-    if (Object.keys(coords).length === 0) {
-      this.coords = {
-        x: 0,
-        y: 0,
-      };
-    } else {
-      this.coords = coords;
-    }
+    this.coords = {
+      x: 0,
+      y: 0,
+      ...coords,
+    };
     this.name = name;
     this.weight = weight;
     this.chipVersion = chipVersion;
