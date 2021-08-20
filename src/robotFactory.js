@@ -8,8 +8,7 @@ class BaseRobot {
     this.weight = weight;
 
     this.coords = {
-      x: x,
-      y: y,
+      x, y,
     };
     this.chipVersion = chipVersion;
   }
@@ -44,9 +43,9 @@ class FlyingRobot extends BaseRobot {
     super(name, weight, coords, chipVersion);
 
     this.coords = {
-      x: x,
-      y: y,
-      z: z,
+      x,
+      y,
+      z,
     };
   }
   goUp(step = 1) {
