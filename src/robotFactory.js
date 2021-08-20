@@ -104,19 +104,3 @@ module.exports = {
   FlyingRobot,
   DeliveryDrone,
 };
-
-// DeliveryDrone {
-//   name: string
-//   weight: number
-//   chipVersion: number
-//   maxLoadWeight: number
-//   currentLoad: null || {
-//     weight: number,
-//     description: string
-//   }
-//   coords: {
-//     x: number
-//     y: number
-//     z: number
-//   }
-// }
