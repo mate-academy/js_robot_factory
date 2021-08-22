@@ -6,7 +6,7 @@ class BaseRobot {
     this.weight = weight;
     this.chipVersion = chipVersion;
 
-    if (Object.keys(coords).length === 0) {
+    if (!Object.keys(coords).length) {
       this.coords = {
         x: 0,
         y: 0,
@@ -42,11 +42,7 @@ class FlyingRobot extends BaseRobot {
   constructor(name, weight, coords, chipVersion) {
     super(name, weight, coords, chipVersion);
 
-    if (this.coords.z) {
-      this.coords.z = coords.z;
-    } else {
-      this.coords.z = 0;
-    }
+    this.coords.z = coords.z || 0;
   }
 
   goUp(step = 1) {
