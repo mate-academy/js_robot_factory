@@ -37,12 +37,9 @@ class BaseRobot {
   }
 }
 
-class FlyingRobot {
+class FlyingRobot extends BaseRobot {
   constructor(name, weight, coords, chipVersion) {
-    this.name = name;
-    this.weight = weight;
-    this.coords = coords;
-    this.chipVersion = chipVersion;
+    super(name, weight, coords, chipVersion);
 
     const { x = 0, y = 0, z = 0 } = coords;
 
@@ -62,14 +59,11 @@ class FlyingRobot {
   }
 }
 
-class DeliveryDrone {
+class DeliveryDrone extends FlyingRobot {
   constructor(name, weight, coords, chipVersion, maxLoadWeight, currentLoad) {
+    super(name, weight, coords, chipVersion);
     this.maxLoadWeight = maxLoadWeight;
     this.currentLoad = currentLoad;
-    this.name = name;
-    this.weight = weight;
-    this.coords = coords;
-    this.chipVersion = chipVersion;
   }
 
   hookLoad(cargo) {
@@ -82,9 +76,6 @@ class DeliveryDrone {
     this.currentLoad = null;
   }
 }
-
-Object.setPrototypeOf(FlyingRobot.prototype, BaseRobot.prototype);
-Object.setPrototypeOf(DeliveryDrone.prototype, FlyingRobot.prototype);
 
 module.exports = {
   BaseRobot,
