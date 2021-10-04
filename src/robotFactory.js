@@ -4,6 +4,10 @@ class BaseRobot {
   constructor(name, weight, coords, chipVersion) {
     this.name = name;
     this.weight = weight;
+    this.coords = {
+      x: (coords.x || 0),
+      y: (coords.y || 0),
+    };
     this.chipVersion = chipVersion;
   }
 
