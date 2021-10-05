@@ -74,7 +74,7 @@ class DeliveryDrone extends FlyingRobot {
   }
 
   hookLoad(cargo) {
-    if (this.currentLoad === null && this.maxLoadWeight >= cargo.weight) {
+    if (!this.currentLoad && this.maxLoadWeight >= cargo.weight) {
       this.currentLoad = cargo;
     }
   }
