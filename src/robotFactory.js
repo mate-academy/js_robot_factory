@@ -6,14 +6,11 @@ class BaseRobot {
     this.weight = weight;
     this.chipVersion = chipVersion;
 
-    this.coords = BaseRobot.setCoords(coords);
-  }
-
-  static setCoords(coords) {
-    const result = {
+    this.coords = {
       x: 0,
       y: 0,
     };
+  }
 
     for (const coord in coords) {
       if (coords[coord] === undefined) {
