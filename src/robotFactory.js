@@ -49,10 +49,10 @@ class BaseRobot {
 class FlyingRobot extends BaseRobot {
   constructor(...args) {
     super(...args);
-
-    this.coords.z = this.coords.z === undefined
-      ? 0
-      : this.coords.z;
+    
+    if (this.coords.z === undefined) {
+      this.coords.z = 0;
+    }
   }
 
   goUp(step = 1) {
@@ -72,11 +72,7 @@ class DeliveryDrone extends FlyingRobot {
   }
 
   hookLoad(cargo) {
-    if (this.currentLoad) {
-      return;
-    }
-
-    if (cargo.weight > this.maxLoadWeight) {
+    if (this.currentLoad || cargo.weight > this.maxLoadWeight) {
       return;
     }
 
