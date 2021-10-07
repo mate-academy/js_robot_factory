@@ -50,9 +50,7 @@ class FlyingRobot extends BaseRobot {
   constructor(...args) {
     super(...args);
     
-    if (this.coords.z === undefined) {
-      this.coords.z = 0;
-    }
+    this.coords.z = coords.z || 0;
   }
 
   goUp(step = 1) {
