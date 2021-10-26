@@ -18,35 +18,25 @@ class BaseRobot {
   }
   goForward(step = 1) {
     this.coords.y += step;
-
-    return this;
   }
 
   goRight(step = 1) {
     this.coords.x += step;
-
-    return this;
   }
 
   goLeft(step = 1) {
     this.coords.x -= step;
-
-    return this;
   }
 
   goBack(step = 1) {
     this.coords.y -= step;
-
-    return this;
   }
-
+/* eslint-disable */
   getInfo() {
-    return `
-    Robot: ${this.name}, Chip version: ${this.chipVersion},
-    Weight: ${this.weight}`;
+    return `Robot: ${this.name}, Chip version: ${this.chipVersion}, Weight: ${this.weight}`;
   }
 }
-
+/* eslint-disable */
 class FlyingRobot extends BaseRobot {
   constructor(name, weight, coords, chipVersion) {
     super(name, weight, coords, chipVersion);
@@ -58,14 +48,10 @@ class FlyingRobot extends BaseRobot {
 
   goUp(step = 1) {
     this.coords.z += step;
-
-    return this;
   }
 
   goDown(step = 1) {
     this.coords.z -= step;
-
-    return this;
   }
 }
 
