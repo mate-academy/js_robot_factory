@@ -38,14 +38,9 @@ class BaseRobot {
 
 class FlyingRobot extends BaseRobot {
   constructor(name, weight, coords, chipVersion) {
-    super(name, weight, {}, chipVersion);
+    super(name, weight, coords, chipVersion);
 
-    this.coords = {
-      x: 0,
-      y: 0,
-      z: 0,
-      ...coords,
-    };
+    this.coords.z = coords.z || 0;
   }
 
   goUp(step = 1) {
