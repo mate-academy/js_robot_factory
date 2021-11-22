@@ -6,17 +6,21 @@ class BaseRobot {
     this.weight = weight;
     this.chipVersion = chipVersion;
 
-    this.coords = coords.x
-      ? coords
-      : {
-        x: 0,
-        y: 0,
-      };
+    this.coords = Object.keys(coords).length ? coords : {
+      x: 0, y: 0,
+    };
   }
 
   getInfo() {
-    // eslint-disable-next-line
-    return `Robot: ${this.name}, Chip version: ${this.chipVersion}, Weight: ${this.weight}`;
+    const str
+      = 'Robot: '
+      + this.name
+      + ', Chip version: '
+      + this.chipVersion
+      + ', Weight: '
+      + this.weight;
+
+    return str;
   }
   goForward(step = 1) {
     this.coords.y += step;
@@ -35,14 +39,7 @@ class BaseRobot {
 class FlyingRobot extends BaseRobot {
   constructor(name, weight, coords, chipVersion) {
     super(name, weight, coords, chipVersion);
-
-    this.coords = coords.z
-      ? coords
-      : {
-        x: 0,
-        y: 0,
-        z: 0,
-      };
+    this.coords.z = coords.z ? coords.z : 0;
   }
   goUp(step = 1) {
     this.coords.z += step;
