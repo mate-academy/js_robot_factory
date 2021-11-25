@@ -6,8 +6,8 @@ class BaseRobot {
     this.weight = weight;
 
     this.coords = {
-      x: coords.x || 0,
-      y: coords.y || 0,
+      x: 0,
+      y: 0,
       ...coords,
     };
     this.chipVersion = chipVersion;
