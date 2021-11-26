@@ -4,7 +4,7 @@ class BaseRobot {
   constructor(name, weight, coords, chipVersion) {
     this.name = name;
     this.weight = weight;
-    this.coords = coords;
+    this.coords = {};
     this.coords.x = coords.x || 0;
     this.coords.y = coords.y || 0;
     this.chipVersion = chipVersion;
@@ -23,8 +23,9 @@ class BaseRobot {
     this.coords.x += step;
   }
   getInfo() {
-    return `Robot: ${this.name}, Chip version: ${
-      this.chipVersion}, Weight: ${this.weight}`;
+    return `Robot: ${this.name},`
+      + ` Chip version: ${this.chipVersion},`
+      + ` Weight: ${this.weight}`;
   }
 }
 
