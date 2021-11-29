@@ -6,12 +6,11 @@ class BaseRobot {
     this.weight = weight;
     this.chipVersion = chipVersion;
 
-    coords.x === undefined
-      ? this.coords = {
-        x: 0,
-        y: 0,
-      }
-      : this.coords = coords;
+    this.coords = {
+      x: 0,
+      y: 0,
+      ...coords,
+    };
   }
 
   goForward(step = 1) {
@@ -32,17 +31,14 @@ class BaseRobot {
 
   getInfo() {
     return `Robot: ${this.name}, Chip version: ${this.chipVersion}, `
-    + `Weight: ${this.weight}`;
+      + `Weight: ${this.weight}`;
   }
 }
 
 class FlyingRobot extends BaseRobot {
   constructor(name, weight, coords, chipVersion) {
     super(name, weight, coords, chipVersion);
-
-    coords.z === undefined
-      ? this.coords.z = 0
-      : this.coords.z = coords.z;
+    this.coords.z = coords.z || 0;
   }
 
   goUp(step = 1) {
@@ -63,9 +59,9 @@ class DeliveryDrone extends FlyingRobot {
   }
 
   hookLoad(cargo) {
-    (this.currentLoad === null && this.maxLoadWeight >= cargo.weight)
-      ? this.currentLoad = cargo
-      : this.currentLoad = this.currentLoad;
+    if (!this.currentLoad && this.maxLoadWeight >= cargo.weight) {
+      this.currentLoad = cargo;
+    }
   }
 
   unhookLoad() {
