@@ -5,14 +5,10 @@ class BaseRobot {
     this.name = name;
     this.weight = weight;
 
-    if (!coords.hasOwnProperty('x')) {
-      this.coords = {
-        x: 0,
-        y: 0,
-      };
-    } else {
-      this.coords = coords;
-    }
+    this.coords = {
+      x: coords.x || 0,
+      y: coords.y || 0,
+    };
     this.chipVersion = chipVersion;
   }
 
@@ -42,15 +38,7 @@ class FlyingRobot extends BaseRobot {
   constructor(name, weight, coords, chipVersion) {
     super(name, weight, coords, chipVersion);
 
-    if (!coords.hasOwnProperty('z')) {
-      this.coords = {
-        x: 0,
-        y: 0,
-        z: 0,
-      };
-    } else {
-      this.coords = coords;
-    }
+    this.coords.z = coords.z || 0;
   }
 
   goUp(step = 1) {
@@ -72,8 +60,7 @@ class DeliveryDrone extends FlyingRobot {
   hookLoad(cargo) {
     if (this.currentLoad !== null
       && this.currentLoad.hasOwnProperty('weight')) {
-    } else if (this.currentLoad === {}
-      || cargo.weight <= this.maxLoadWeight) {
+    } else if (cargo.weight <= this.maxLoadWeight) {
       this.currentLoad = cargo;
     }
   }
