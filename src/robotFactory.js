@@ -7,8 +7,8 @@ class BaseRobot {
     this.chipVersion = chipVersion;
 
     this.coords = {
-      x: this.coords.x || 0,
-      y: this.coords.y || 0,
+      x: coords.x || 0,
+      y: coords.y || 0,
     };
   }
 
