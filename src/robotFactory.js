@@ -58,7 +58,8 @@ class FlyingRobot extends BaseRobot {
 }
 
 class DeliveryDrone extends FlyingRobot {
-  constructor(name,
+  constructor(
+    name,
     weight,
     position,
     chipVersion,
