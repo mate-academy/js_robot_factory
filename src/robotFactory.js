@@ -66,7 +66,5 @@ class DeliveryDrone extends FlyingRobot {
 }
 
 module.exports = {
-  BaseRobot,
-  FlyingRobot,
-  DeliveryDrone,
+  BaseRobot, FlyingRobot, DeliveryDrone,
 };
