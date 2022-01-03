@@ -6,14 +6,14 @@ Let's implement 3 classes with inheritance
 - `coords` should be set to 0 if not passed
 - `goForward`, `goBack`, `goRight` and `goLeft` methods take a `step` argument
   (1 by default) and move the robot by `step` in the appropriate direction
-- `getInfo` method returns a string in the next format `Robot: %name%, Chip 
+- `getInfo` method returns a string in the next format `Robot: %name%, Chip
   version: %chipVersion%, Weight: %weight%`
 
 **FlyingRobot**
 - inherits all the methods from `BaseRobot`
 - takes the same args as `BaseRobot` and passes them to the parent's constructor
 - can work with `z` `coords`
-- has methods `goUp` and `goDown` changing `z` coordinate by a given `step`
+- has methods `goUp` and `goDown` changing `z` coordin§ate by a given `step`
 
 **DeliveryDrone**
 - inherits all the methods from `FlyingRobot` and calls its constructor
