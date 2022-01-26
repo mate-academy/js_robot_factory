@@ -2,17 +2,12 @@
 
 class BaseRobot {
   constructor(name, weight, coords, chipVersion) {
-    if (coords.x === undefined) {
-      this.coords = {
-        x: 0,
-        y: 0,
-      };
-    } else {
-      this.coords = coords;
-    }
+    this.coords = {
+      x: coords.x || 0,
+      y: coords.y || 0,
+    };
     this.name = name;
     this.weight = weight;
-
     this.chipVersion = chipVersion;
   };
 
@@ -41,12 +36,8 @@ class BaseRobot {
 
 class FlyingRobot extends BaseRobot {
   constructor(name, weight, coords, chipVersion) {
-    const flyingCoords = coords;
-
-    if (flyingCoords.z === undefined) {
-      flyingCoords.z = 0;
-    }
-    super(name, weight, flyingCoords, chipVersion);
+    super(name, weight, coords, chipVersion);
+    this.coords.z = coords.z || 0;
   };
 
   goUp(step = 1) {
