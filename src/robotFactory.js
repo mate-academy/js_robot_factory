@@ -1,10 +1,89 @@
 'use strict';
 
-class BaseRobot {}
+class BaseRobot {
+  constructor(name, weight, coords, chipVersion) {
+    this.name = name;
+    this.weight = weight;
+    this.chipVersion = chipVersion;
 
-class FlyingRobot {}
+    this.coords = {
+      x: coords.x || 0,
+      y: coords.y || 0,
+    };
+  }
 
-class DeliveryDrone {}
+  goForward(step = 1) {
+    this.coords.y += step;
+  }
+
+  goBack(step = 1) {
+    this.coords.y -= step;
+  }
+
+  goRight(step = 1) {
+    this.coords.x += step;
+  }
+
+  goLeft(step = 1) {
+    this.coords.x -= step;
+  }
+
+  getInfo() {
+    return `Robot: ${this.name}, Chip version: ${this.chipVersion}, `
+    + `Weight: ${this.weight}`;
+  }
+}
+
+class FlyingRobot extends BaseRobot {
+  constructor(name, weight, coords, chipVersion) {
+    super(name, weight, coords, chipVersion);
+
+    this.coords = {
+      x: coords.x || 0,
+      y: coords.y || 0,
+      z: coords.z || 0,
+    };
+  }
+
+  goUp(step = 1) {
+    this.coords.z += step;
+  }
+
+  goDown(step = 1) {
+    this.coords.z -= step;
+  }
+}
+
+class DeliveryDrone extends FlyingRobot {
+  constructor(name, weight, coords, chipVersion,
+    maxLoadWeight, currentLoad) {
+    super(name, weight, coords, chipVersion);
+
+    this.maxLoadWeight = maxLoadWeight;
+
+    if (currentLoad === null) {
+      this.currentLoad = currentLoad;
+    } else {
+      this.currentLoad = {
+        weight: currentLoad.weight,
+        description: currentLoad.description,
+      };
+    }
+  }
+
+  hookLoad(cargo) {
+    if (cargo.weight <= this.maxLoadWeight && this.currentLoad === null) {
+      this.currentLoad = {
+        weight: cargo.weight,
+        description: cargo.description,
+      };
+    }
+  }
+
+  unhookLoad() {
+    this.currentLoad = null;
+  }
+}
 
 module.exports = {
   BaseRobot,
