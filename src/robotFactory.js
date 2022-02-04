@@ -14,27 +14,19 @@ class BaseRobot {
   }
 
   goRight(step = 1) {
-    if (step > 0) {
-      this.coords.x += step;
-    }
+    this.coords.x += step;
   }
 
   goLeft(step = 1) {
-    if (step > 0) {
-      this.coords.x -= step;
-    }
+    this.coords.x -= step;
   }
 
   goForward(step = 1) {
-    if (step > 0) {
-      this.coords.y += step;
-    }
+    this.coords.y += step;
   }
 
   goBack(step = 1) {
-    if (step > 0) {
-      this.coords.y -= step;
-    }
+    this.coords.y -= step;
   }
 
   getInfo() {
@@ -51,15 +43,11 @@ class FlyingRobot extends BaseRobot {
   }
 
   goUp(step = 1) {
-    if (step > 0) {
-      this.coords.z += step;
-    }
+    this.coords.z += step;
   }
 
   goDown(step = 1) {
-    if (step > 0) {
-      this.coords.z -= step;
-    }
+    this.coords.z -= step;
   }
 }
 
