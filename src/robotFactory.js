@@ -9,7 +9,7 @@ class BaseRobot {
       x: coords.x || 0,
       y: coords.y || 0,
     };
-    this.chipVersion = chipVersion;
+    this.chipVersion = chipVersion || 0;
   }
   goForward(step = 1) {
     this.coords.y += step;
