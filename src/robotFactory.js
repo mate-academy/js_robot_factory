@@ -58,7 +58,7 @@ class DeliveryDrone extends FlyingRobot {
     }, chipVersion);
 
     this.maxLoadWeight = maxLoadWeight;
-    this.currentLoad = null || cargo;
+    this.currentLoad = cargo || null;
   }
 
   hookLoad(cargo) {
@@ -68,7 +68,7 @@ class DeliveryDrone extends FlyingRobot {
   }
 
   unhookLoad() {
-    return (this.currentLoad = null);
+    this.currentLoad = null;
   }
 }
 
