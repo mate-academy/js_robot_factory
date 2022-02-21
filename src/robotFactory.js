@@ -23,32 +23,24 @@ class BaseRobot {
     if (step > 0) {
       this.coords.y += step;
     }
-
-    return this;
   }
 
   goBack(step = 1) {
     if (step > 0) {
       this.coords.y -= step;
     }
-
-    return this;
   }
 
   goLeft(step = 1) {
     if (step > 0) {
       this.coords.x -= step;
     }
-
-    return this;
   }
 
   goRight(step = 1) {
     if (step > 0) {
       this.coords.x += step;
     }
-
-    return this;
   }
 }
 
@@ -63,22 +55,13 @@ class FlyingRobot extends BaseRobot {
   }
 
   goUp(step = 1) {
-    if (step > 0) {
-      this.coords.z += step;
-    }
-
-    return this;
+    this.coords.z += step;
   }
 
   goDown(step = 1) {
-    if (step > 0) {
-      this.coords.z -= step;
-    }
-
-    return this;
+    this.coords.z -= step;
   }
 }
-
 class DeliveryDrone extends FlyingRobot {
   constructor(name, weight, coords, chipVersion, maxLoadWeight, currentLoad) {
     super(name, weight, coords, chipVersion);
