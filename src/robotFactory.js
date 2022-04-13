@@ -39,8 +39,7 @@ class FlyingRobot extends BaseRobot {
     super(name, weight, coords, chipVersion);
 
     this.coords = {
-      x: coords.x || 0,
-      y: coords.y || 0,
+      ...this.coords,
       z: coords.z || 0,
     };
   }
@@ -51,26 +50,6 @@ class FlyingRobot extends BaseRobot {
 
   goDown(step = 1) {
     this.coords.z -= step;
-  }
-
-  goForward(step) {
-    super.goForward(step);
-  }
-
-  goBack(step) {
-    super.goBack(step);
-  }
-
-  goLeft(step) {
-    super.goLeft(step);
-  }
-
-  goRight(step) {
-    super.goRight(step);
-  }
-
-  getInfo() {
-    super.getInfo();
   }
 }
 
@@ -89,34 +68,6 @@ class DeliveryDrone extends FlyingRobot {
 
   unhookLoad() {
     this.currentLoad = null;
-  }
-
-  goUp() {
-    super.goUp();
-  }
-
-  goDown() {
-    super.goDown();
-  }
-
-  goForward(step) {
-    super.goForward(step);
-  }
-
-  goBack(step) {
-    super.goBack(step);
-  }
-
-  goLeft(step) {
-    super.goLeft(step);
-  }
-
-  goRight(step) {
-    super.goRight(step);
-  }
-
-  getInfo() {
-    super.getInfo();
   }
 }
 
