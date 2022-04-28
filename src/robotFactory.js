@@ -5,11 +5,10 @@ class BaseRobot {
     this.name = name;
     this.weight = weight;
     this.chipVersion = chipVersion;
-    this.coords = coords;
 
     this.coords = {
       x: coords.x || 0,
-      y: coords.y = 0,
+      y: coords.y || 0,
     };
   }
 
