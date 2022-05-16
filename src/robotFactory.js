@@ -5,7 +5,8 @@ class BaseRobot {
     name,
     weight,
     coords,
-    chipVersion) {
+    chipVersion
+  ) {
     this.name = name;
     this.weight = weight;
 
@@ -71,10 +72,11 @@ class DeliveryDrone extends FlyingRobot {
     coords,
     chipVersion,
     maxLoadWeight,
-    currentLoad) {
+    currentLoad
+  ) {
     super(name, weight, coords, chipVersion);
 
-    (currentLoad) ? this.currentLoad = currentLoad : this.currentLoad = null;
+    this.currentLoad = currentLoad;
     this.maxLoadWeight = maxLoadWeight;
   }
 
