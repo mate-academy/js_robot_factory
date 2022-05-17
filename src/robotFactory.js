@@ -34,8 +34,9 @@ class BaseRobot {
   }
 }
 
-class FlyingRobot {
+class FlyingRobot extends BaseRobot {
   constructor(name, weight, coords, chipVersion) {
+    super(name, weight, coords, chipVersion);
     this.name = name;
     this.weight = weight;
 
@@ -73,9 +74,6 @@ class DeliveryDrone extends FlyingRobot {
     this.currentLoad = null;
   }
 }
-
-Object.setPrototypeOf(FlyingRobot.prototype, BaseRobot.prototype);
-Object.setPrototypeOf(DeliveryDrone.prototype, FlyingRobot.prototype);
 
 module.exports = {
   BaseRobot,
