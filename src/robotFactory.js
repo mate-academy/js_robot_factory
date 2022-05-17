@@ -29,7 +29,7 @@ class BaseRobot {
   }
 
   getInfo() {
-    return `Robot: ${this.name}`
+    return `Robot: ${this.name}, `
       + `Chip version: ${this.chipVersion}, Weight: ${this.weight}`;
   }
 }
@@ -41,11 +41,11 @@ class FlyingRobot extends BaseRobot {
     this.coords.z = coords.z || 0;
   }
 
-  goUp(step) {
+  goUp(step = 1) {
     this.coords.z += step;
   }
 
-  goDown(step) {
+  goDown(step = 1) {
     this.coords.z -= step;
   }
 }
@@ -58,8 +58,9 @@ class DeliveryDrone extends FlyingRobot {
   }
 
   hookLoad(cargo) {
-    if (cargo.weight < this.maxLoadWeight && !this.currentLoad) {
-    } this.currentLoad = cargo;
+    if (this.currentLoad === null && cargo.weight <= this.maxLoadWeight) {
+      this.currentLoad = cargo;
+    }
   }
 
   unhookLoad() {
