@@ -4,9 +4,7 @@ class BaseRobot {
   constructor(
     name,
     weight,
-    coords = {
-      x: 0, y: 0, z: 0,
-    },
+    coords,
     chipVersion
   ) {
     this.name = name;
@@ -21,26 +19,18 @@ class BaseRobot {
 
   goForward(step = 1) {
     this.coords.y += step;
-
-    return this;
   }
 
   goBack(step = 1) {
     this.coords.y -= step;
-
-    return this;
   }
 
   goLeft(step = 1) {
     this.coords.x -= step;
-
-    return this;
   }
 
   goRight(step = 1) {
     this.coords.x += step;
-
-    return this;
   }
 
   getInfo() {
