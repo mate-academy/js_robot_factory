@@ -14,27 +14,19 @@ class BaseRobot {
   }
 
   goForward(step = 1) {
-    const move = this.coords.y += step;
-
-    return move;
+    this.coords.y += step;
   };
 
   goBack(step = 1) {
-    const move = this.coords.y -= step;
-
-    return move;
+    this.coords.y -= step;
   };
 
   goRight(step = 1) {
-    const move = this.coords.x += step;
-
-    return move;
+    this.coords.x += step;
   };
 
   goLeft(step = 1) {
-    const move = this.coords.x -= step;
-
-    return move;
+    this.coords.x -= step;
   };
 
   getInfo() {
@@ -44,32 +36,18 @@ class BaseRobot {
 }
 
 class FlyingRobot extends BaseRobot {
-  constructor(name, weight, { x, y, z }, chipVersion) {
-    super(name, weight, {
-      x,
-      y,
-      z,
-    },
+  constructor(name, weight, coords, chipVersion) {
+    super(name, weight, coords, chipVersion);
 
-    chipVersion);
-
-    this.coords = {
-      x: x || 0,
-      y: y || 0,
-      z: z || 0,
-    };
+    this.coords.z = coords.z || 0;
   }
 
   goUp(step = 1) {
-    const move = this.coords.z += step;
-
-    return move;
+    this.coords.z += step;
   };
 
   goDown(step = 1) {
-    const move = this.coords.z -= step;
-
-    return move;
+    this.coords.z -= step;
   };
 }
 
