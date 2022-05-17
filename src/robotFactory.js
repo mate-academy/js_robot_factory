@@ -34,13 +34,7 @@ class BaseRobot {
 
 class FlyingRobot extends BaseRobot {
   constructor(name, weight, coords = {}, chipVersion = 0) {
-    super(coords);
-    this.name = name;
-    this.weight = weight;
-    this.chipVersion = chipVersion;
-    this.coords = coords;
-    this.coords.x = coords.x || 0;
-    this.coords.y = coords.y || 0;
+    super(name, weight, coords, chipVersion);
     this.coords.z = coords.z || 0;
   }
 
@@ -56,13 +50,8 @@ class FlyingRobot extends BaseRobot {
 class DeliveryDrone extends FlyingRobot {
   constructor(name, weight, coords = {}, chipVersion = 0,
     maxLoadWeight, currentLoad) {
-    super(maxLoadWeight, currentLoad);
-    this.name = name;
-    this.weight = weight;
-    this.chipVersion = chipVersion;
-    this.coords = coords;
-    this.coords.x = coords.x || 0;
-    this.coords.y = coords.y || 0;
+    super(name, weight, coords, chipVersion,
+      maxLoadWeight, currentLoad);
     this.currentLoad = currentLoad;
     this.maxLoadWeight = maxLoadWeight;
   }
@@ -75,8 +64,7 @@ class DeliveryDrone extends FlyingRobot {
 
   unhookLoad() {
     this.currentLoad = null;
-  }
-
+  };
 }
 
 module.exports = {
