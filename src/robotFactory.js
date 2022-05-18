@@ -6,7 +6,8 @@ class BaseRobot {
     this.weight = weight;
 
     this.coords = {
-      x: coords.x || 0, y: coords.y || 0,
+      x: coords.x || 0,
+      y: coords.y || 0,
     };
     this.chipVersion = chipVersion;
   }
@@ -28,8 +29,8 @@ class BaseRobot {
   }
 
   getInfo() {
-    return `Robot: ${this.name}, Chip version: ${
-      this.chipVersion}, Weight: ${this.weight}`;
+    return `Robot: ${this.name}, Chip version: ${this.chipVersion}, `
+      + `Weight: ${this.weight}`;
   }
 }
 
