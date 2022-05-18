@@ -50,8 +50,14 @@ class FlyingRobot extends BaseRobot {
 }
 
 class DeliveryDrone extends FlyingRobot {
-  constructor(name, weight, coords, chipVersion,
-    maxLoadWeight, currentLoad) {
+  constructor(
+    name, 
+    weight, 
+    coords, 
+    chipVersion,
+    maxLoadWeight, 
+    currentLoad
+  ) {
     super(name, weight, coords, chipVersion);
     this.maxLoadWeight = maxLoadWeight;
     this.currentLoad = currentLoad;
