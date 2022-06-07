@@ -1,6 +1,17 @@
 'use strict';
 
 class BaseRobot {
+  constructor(name, weight, coords, chipVersion) {
+    this.name = name;
+    this.weight = weight;
+
+    this.coords = {
+      x: coords.x || 0,
+      y: coords.y || 0,
+    };
+    this.chipVersion = chipVersion;
+  }
+
   goForward(step = 1) {
     this.coords.y += step;
   };
@@ -20,17 +31,6 @@ class BaseRobot {
   getInfo() {
     return `Robot: ${this.name}, `
       + `Chip version: ${this.chipVersion}, Weight: ${this.weight}`;
-  }
-
-  constructor(name, weight, coords, chipVersion) {
-    this.name = name;
-    this.weight = weight;
-
-    this.coords = {
-      x: coords.x || 0,
-      y: coords.y || 0,
-    };
-    this.chipVersion = chipVersion;
   }
 }
 
