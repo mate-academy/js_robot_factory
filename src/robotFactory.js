@@ -37,15 +37,10 @@ class BaseRobot {
 }
 
 class FlyingRobot extends BaseRobot {
-  constructor(name, weight, { x = 0, y = 0, z = 0 } = {}, chipVersion) {
-    // eslint-disable-next-line object-curly-newline
-    super(name, weight, { x, y }, chipVersion);
+  constructor(name, weight, coords, chipVersion) {
+    super(name, weight, coords, chipVersion);
 
-    this.coords = {
-      x,
-      y,
-      z,
-    };
+    this.coords.z = coords.z || 0;
   }
 
   goUp(step = 1) {
