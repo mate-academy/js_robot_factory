@@ -33,6 +33,7 @@ class BaseRobot {
     + `Weight: ${this.weight}`;
   }
 }
+
 class FlyingRobot extends BaseRobot {
   constructor(name, weight, coords, chipVersion) {
     super(name, weight, coords, chipVersion);
