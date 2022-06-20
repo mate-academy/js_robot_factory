@@ -19,7 +19,9 @@ class BaseRobot {
   }
 
   getInfo() {
-    return `Robot: ${this.name}, Chip version: ${this.chipVersion}, Weight: ${this.weight}`;
+    const { name, chipVersion, weight } = this;
+
+    return `Robot: ${name}, Chip version: ${chipVersion}, Weight: ${weight}`;
   }
 
   goForward(y = 1) {
@@ -45,8 +47,6 @@ class FlyingRobot extends BaseRobot {
     weight,
     coords,
     chipVersion,
-    maxLoadWeight,
-    currentLoad
   ) {
     super(name, weight, coords, chipVersion);
 
