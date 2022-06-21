@@ -13,35 +13,19 @@ class BaseRobot {
   }
 
   goForward(value = 1) {
-    if (value > 0) {
-      this.coords.y += value;
-    }
-
-    return this;
+    this.coords.y += value;
   };
 
   goBack(value = 1) {
-    if (value > 0) {
-      this.coords.y -= value;
-    }
-
-    return this;
+    this.coords.y -= value;
   };
 
   goLeft(value = 1) {
-    if (value > 0) {
-      this.coords.x -= value;
-    }
-
-    return this;
+    this.coords.x -= value;
   };
 
   goRight(value = 1) {
-    if (value > 0) {
-      this.coords.x += value;
-    }
-
-    return this;
+    this.coords.x += value;
   };
 
   getInfo() {
@@ -63,15 +47,11 @@ class FlyingRobot extends BaseRobot {
   }
 
   goUp(value = 1) {
-    if (value > 0) {
-      this.coords.z += value;
-    }
+    this.coords.z += value;
   }
 
   goDown(value = 1) {
-    if (value > 0) {
-      this.coords.z -= value;
-    }
+    this.coords.z -= value;
   }
 }
 
