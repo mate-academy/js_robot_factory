@@ -13,9 +13,9 @@ class BaseRobot {
   }
 
   getInfo() {
-    const { name: naming, chipVersion: chipVers, weight: dimensions } = this;
+    const { name, chipVersion, weight } = this;
 
-    return `Robot: ${naming}, Chip version: ${chipVers}, Weight: ${dimensions}`;
+    return `Robot: ${name}, Chip version: ${chipVersion}, Weight: ${weight}`;
   }
 
   goForward(step = 1) {
@@ -56,7 +56,7 @@ class DeliveryDrone extends FlyingRobot {
     super(name, weight, coords, chipVersion);
 
     this.maxLoadWeight = maxLoadWeight;
-    this.currentLoad = cargo;
+    this.currentLoad = cargo || null;
   }
 
   hookLoad(cargo) {
