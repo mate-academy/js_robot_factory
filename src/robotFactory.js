@@ -6,17 +6,11 @@ class BaseRobot {
     this.weight = weight;
     this.chipVersion = chipVersion;
 
-    if (
-      coords.x === undefined
-      || coords.y === undefined
-    ) {
-      this.coords = {
-        x: 0,
-        y: 0,
-      };
-    } else {
-      this.coords = coords;
-    }
+    this.coords = {
+      x: 0,
+      y: 0,
+      ...coords,
+    };
   }
 
   goForward(step = 1) {
@@ -36,14 +30,10 @@ class BaseRobot {
   }
 
   getInfo() {
+    const { name, chipVersion, weight } = this;
+
     return (
-      `Robot: ${
-        this.name
-      }, Chip version: ${
-        this.chipVersion
-      }, Weight: ${
-        this.weight
-      }`
+      `Robot: ${name}, Chip version: ${chipVersion}, Weight: ${weight}`
     );
   }
 }
