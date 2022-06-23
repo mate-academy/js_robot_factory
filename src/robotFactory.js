@@ -1,18 +1,16 @@
 'use strict';
 
-const initCoords = {
-  x: 0,
-  y: 0,
-};
-
 class BaseRobot {
   constructor(name, weight, coords, chipVersion) {
     this.name = name;
     this.weight = weight;
     this.chipVersion = chipVersion;
 
-    this.coords = Object.values(coords).length ? coords : initCoords;
-  }
+    this.coords = {
+      x: coords.x || 0,
+      y: coords.y || 0,
+    };
+  };
 
   goForward(step = 1) {
     this.coords.y += step;
