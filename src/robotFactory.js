@@ -52,11 +52,18 @@ class FlyingRobot extends BaseRobot {
 }
 
 class DeliveryDrone extends FlyingRobot {
-  constructor(name, weight, coords, chipVersion, maxLoadWeight, currentLoad) {
+  constructor(
+    name,
+    weight,
+    coords,
+    chipVersion,
+    maxLoadWeight = 0,
+    currentLoad = 0
+  ) {
     super(name, weight, coords, chipVersion);
 
-    this.maxLoadWeight = maxLoadWeight || 0;
-    this.currentLoad = currentLoad || 0;
+    this.maxLoadWeight = maxLoadWeight;
+    this.currentLoad = currentLoad;
   }
 
   hookLoad(cargo) {
