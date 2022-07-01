@@ -24,10 +24,11 @@ class BaseRobot {
     this.coords.x -= step;
   }
   getInfo() {
-    return `Robot: ${
-      this.name}, Chip version: ${
-      this.chipVersion}, Weight: ${
-      this.weight}`;
+    const first = `Robot: ${this.name}, `;
+    const second = `Chip version: ${this.chipVersion}, `;
+    const third = `Weight: ${this.weight}`;
+
+    return first + second + third;
   }
 }
 
@@ -45,8 +46,14 @@ class FlyingRobot extends BaseRobot {
 }
 
 class DeliveryDrone extends FlyingRobot {
-  constructor(name, weight,
-    coords, chipVersion, maxLoadWeight, currentLoad = null) {
+  constructor(
+    name,
+    weight,
+    coords,
+    chipVersion,
+    maxLoadWeight,
+    currentLoad = null
+  ) {
     super(name, weight, coords, chipVersion);
     this.maxLoadWeight = maxLoadWeight;
     this.currentLoad = currentLoad;
