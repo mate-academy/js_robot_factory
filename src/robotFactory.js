@@ -1,23 +1,19 @@
 'use strict';
 
 class BaseRobot {
-  constructor(name, weight, coords, chipVersion) {
+  constructor(name, weight, coords =
+  {
+    x: 0,
+    y: 0,
+  }, chipVersion) {
     this.name = name;
     this.weight = weight;
 
-    if (typeof coords === 'number') {
-      this.coords = {
-        x: 0,
-        y: 0,
-      };
-
-      this.chipVersion = coords;
-    } else {
-      this.coords = coords;
-      this.coords.x = this.coords.x || 0;
-      this.coords.y = this.coords.y || 0;
-      this.chipVersion = chipVersion;
-    }
+    this.coords = {
+      x: coords.x || 0,
+      y: coords.y || 0,
+    };
+    this.chipVersion = chipVersion;
   }
 
   goForward(step = 1) {
@@ -40,18 +36,15 @@ class BaseRobot {
 }
 
 class FlyingRobot extends BaseRobot {
-  constructor(name, weight, coords, chipVersion) {
+  constructor(name, weight, coords =
+  {
+    x: 0,
+    y: 0,
+    z: 0,
+  }, chipVersion) {
     super(name, weight, coords, chipVersion);
 
-    if (typeof coords === 'number') {
-      this.coords = {
-        x: 0,
-        y: 0,
-        z: 0,
-      };
-    }
-
-    this.coords.z = this.coords.z || 0;
+    this.coords.z = coords.z || 0;
   }
 
   goUp(step = 1) {
