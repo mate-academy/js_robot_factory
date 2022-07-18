@@ -14,7 +14,7 @@ class BaseRobot {
       if (!coords.y) {
         coords.y = 0;
       }
-      this.coords = coords;
+      this.coords = { ...coords };
     } else {
       this.coords = {
         x: 0, y: 0,
@@ -23,7 +23,8 @@ class BaseRobot {
   }
 
   getInfo() {
-    return `Robot: ${this.name}, Chip version: ${this.chipVersion}, Weight: ${this.weight}`;
+    return `Robot: ${this.name}, Chip version: ${this.chipVersion},\
+    Weight: ${this.weight}`;
   }
   goForward(step = 1) {
     this.coords.y += step;
