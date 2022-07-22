@@ -7,12 +7,9 @@ class BaseRobot {
     this.coords = coords;
     this.chipVersion = chipVersion;
 
-    if (!this.coords.hasOwnProperty('x')) {
-      this.coords['x'] = 0;
-    };
-
-    if (!this.coords.hasOwnProperty('y')) {
-      this.coords['y'] = 0;
+    this.coords = {
+      x: coords.x || 0,
+      y: coords.y || 0,
     };
   };
 
