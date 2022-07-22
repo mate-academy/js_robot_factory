@@ -11,19 +11,24 @@ class BaseRobot {
     };
     this.chipVersion = chipVersion;
   };
+
   getInfo() {
     // eslint-disable-next-line max-len
     return `Robot: ${this.name}, Chip version: ${this.chipVersion}, Weight: ${this.weight}`;
   }
+
   goForward(step = 1) {
     this.coords.y += step;
   };
+
   goBack(step = 1) {
     this.coords.y -= step;
   };
+
   goRight(step = 1) {
     this.coords.x += step;
   };
+
   goLeft(step = 1) {
     this.coords.x -= step;
   };
@@ -37,6 +42,7 @@ class FlyingRobot extends BaseRobot {
   goUp(step = 1) {
     this.coords.z += step;
   };
+
   goDown(step = 1) {
     this.coords.z -= step;
   };
@@ -54,6 +60,7 @@ class DeliveryDrone extends FlyingRobot {
       this.currentLoad = cargo;
     }
   };
+
   unhookLoad() {
     this.currentLoad = null;
   };
