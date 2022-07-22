@@ -7,17 +7,9 @@ class BaseRobot {
     this.chipVersion = chipVersion;
 
     this.coords = {
-      x: 0,
-      y: 0,
+      x: coords.x || 0,
+      y: coords.y || 0,
     };
-
-    this.coords.x = 'x' in coords
-      ? coords.x
-      : 0;
-
-    this.coords.y = 'y' in coords
-      ? coords.y
-      : 0;
   }
 
   getInfo() {
@@ -29,32 +21,24 @@ class BaseRobot {
     if (step > 0) {
       this.coords.y += step;
     }
-
-    return this;
   }
 
   goBack(step = 1) {
     if (step > 0) {
       this.coords.y -= step;
     }
-
-    return this;
   }
 
   goRight(step = 1) {
     if (step > 0) {
       this.coords.x += step;
     }
-
-    return this;
   }
 
   goLeft(step = 1) {
     if (step > 0) {
       this.coords.x -= step;
     }
-
-    return this;
   }
 }
 
@@ -64,9 +48,7 @@ class FlyingRobot extends BaseRobot {
 
     this.coords = {
       ...this.coords,
-      z: 'z' in coords
-        ? coords.z
-        : 0,
+      z: coords.z || 0,
     };
   };
 
@@ -74,16 +56,12 @@ class FlyingRobot extends BaseRobot {
     if (step > 0) {
       this.coords.z += step;
     }
-
-    return this;
   }
 
   goDown(step = 1) {
     if (step > 0) {
       this.coords.z -= step;
     }
-
-    return this;
   }
 }
 
