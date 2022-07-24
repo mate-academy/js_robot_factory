@@ -7,13 +7,10 @@ class BaseRobot {
     this.chipVersion = chipVersion;
     this.coords = coords;
 
-    this.coords.x = coords.x
-      ? coords.x
-      : 0;
-
-    this.coords.y = coords.y
-      ? coords.y
-      : 0;
+    this.coords = {
+      x: coords.x || 0,
+      y: coords.y || 0,
+    };
   }
 
   goForward(step = 1) {
