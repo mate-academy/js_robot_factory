@@ -4,11 +4,7 @@ class BaseRobot {
   constructor(name, weight, { x = 0, y = 0 }, chipVersion) {
     this.name = name;
     this.weight = weight;
-
-    this.coords = {
-      x,
-      y,
-    };
+    this.coords = { x, y };
     this.chipVersion = chipVersion;
   }
 
@@ -51,8 +47,14 @@ class FlyingRobot extends BaseRobot {
 }
 
 class DeliveryDrone extends FlyingRobot {
-  constructor(name, weight, coords,
-    chipVersion, maxLoadWeight, currentLoad) {
+  constructor(
+    name,
+    weight,
+    coords,
+    chipVersion,
+    maxLoadWeight,
+    currentLoad
+  ) {
     super(name, weight, coords, chipVersion);
 
     this.maxLoadWeight = maxLoadWeight;
