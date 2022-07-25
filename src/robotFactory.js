@@ -45,11 +45,15 @@ class BaseRobot {
 
 class FlyingRobot extends BaseRobot {
   constructor(name, weight, { x = 0, y = 0, z = 0 }, chipVersion) {
-    // eslint-disable-next-line object-curly-newline
-    super(name, weight, { x, y }, chipVersion);
+    super(name, weight, {
+      x, y,
+    }, chipVersion);
 
-    // eslint-disable-next-line object-curly-newline
-    this.coords = { x, y, z };
+    this.coords = {
+      x,
+      y,
+      z,
+    };
   }
 
   goUp(step = 1) {
@@ -73,13 +77,9 @@ class DeliveryDrone extends FlyingRobot {
     maxLoadWeight,
     currentLoad = null
   ) {
-    super(
-      name,
-      weight,
-      chipVersion,
-      // eslint-disable-next-line object-curly-newline
-      { x, y, z }
-    );
+    super(name, weight, chipVersion, {
+      x, y, z,
+    });
 
     this.maxLoadWeight = maxLoadWeight;
     this.currentLoad = currentLoad;
