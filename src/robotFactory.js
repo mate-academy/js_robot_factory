@@ -6,51 +6,42 @@ class BaseRobot {
     this.weight = weight;
 
     this.coords = {
-      x: 0,
-      y: 0,
+      x: coords.x || 0,
+      y: coords.y || 0,
     };
-    this.coords = Object.assign(this.coords, coords);
     this.chipVersion = chipVersion;
   }
 
   goForward(value = 1) {
     if (value <= 0) {
-      return this;
+      return;
     }
 
     this.coords.y += value;
-
-    return this;
   }
 
   goBack(value = 1) {
     if (value <= 0) {
-      return this;
+      return;
     }
 
     this.coords.y -= value;
-
-    return this;
   }
 
   goRight(value = 1) {
     if (value <= 0) {
-      return this;
+      return;
     }
 
     this.coords.x += value;
-
-    return this;
   }
 
   goLeft(value = 1) {
     if (value <= 0) {
-      return this;
+      return;
     }
 
     this.coords.x -= value;
-
-    return this;
   }
 
   getInfo() {
@@ -64,11 +55,10 @@ class FlyingRobot extends BaseRobot {
     super(name, weight, coords, chipVersion);
 
     this.coords = {
-      x: 0,
-      y: 0,
-      z: 0,
+      x: coords.x || 0,
+      y: coords.y || 0,
+      z: coords.z || 0,
     };
-    this.coords = Object.assign(this.coords, coords);
   }
 
   goUp(value = 1) {
