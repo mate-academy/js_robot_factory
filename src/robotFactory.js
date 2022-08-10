@@ -12,28 +12,32 @@ class BaseRobot {
     };
   }
 
-  goForward(step = 1) {
-    if (step > 0) {
-      this.coords.y += step;
+  move(axis = '', step = 1, positive = true) {
+    if (!axis || !this.coords.hasOwnProperty(axis)) {
+      throw new Error(`Robot doesn't recognize axis "${axis}"`);
     }
+
+    if (step <= 0) {
+      throw new Error(`Step needs to be > 0`);
+    }
+
+    this.coords[axis] += positive ? step : -step;
   }
 
-  goBack(step = 1) {
-    if (step > 0) {
-      this.coords.y -= step;
-    }
+  goForward(step) {
+    this.move('y', step);
   }
 
-  goRight(step = 1) {
-    if (step > 0) {
-      this.coords.x += step;
-    }
+  goBack(step) {
+    this.move('y', step, false);
   }
 
-  goLeft(step = 1) {
-    if (step > 0) {
-      this.coords.x -= step;
-    }
+  goRight(step) {
+    this.move('x', step);
+  }
+
+  goLeft(step) {
+    this.move('x', step, false);
   }
 
   getInfo() {
@@ -51,15 +55,11 @@ class FlyingRobot extends BaseRobot {
   }
 
   goUp(step = 1) {
-    if (step > 0) {
-      this.coords.z += step;
-    }
+    this.move('z', step);
   }
 
   goDown(step = 1) {
-    if (step > 0) {
-      this.coords.z -= step;
-    }
+    this.move('z', step, false);
   }
 }
 
