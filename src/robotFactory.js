@@ -43,7 +43,25 @@ class BaseRobot {
   }
 }
 
-class FlyingRobot {}
+class FlyingRobot extends BaseRobot {
+  constructor(name, weight, coords, chipVersion) {
+    super(name, weight, coords, chipVersion);
+
+    this.coords.z = coords.z || 0;
+  }
+
+  goUp(step = 1) {
+    if (step > 0) {
+      this.coords.z += step;
+    }
+  }
+
+  goDown(step = 1) {
+    if (step > 0) {
+      this.coords.z -= step;
+    }
+  }
+}
 
 class DeliveryDrone {}
 
