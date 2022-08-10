@@ -63,7 +63,37 @@ class FlyingRobot extends BaseRobot {
   }
 }
 
-class DeliveryDrone {}
+class DeliveryDrone extends FlyingRobot {
+  constructor(
+    name,
+    weight,
+    coords,
+    chipVersion,
+    maxLoadWeight,
+    currentLoad = null,
+  ) {
+    super(name, weight, coords, chipVersion);
+
+    this.maxLoadWeight = maxLoadWeight;
+    this.currentLoad = currentLoad;
+  }
+
+  hookLoad(cargo) {
+    if (this.currentLoad) {
+      return;
+    }
+
+    if (cargo.weight > this.maxLoadWeight) {
+      return;
+    }
+
+    this.currentLoad = { ...cargo };
+  }
+
+  unhookLoad() {
+    this.currentLoad = null;
+  }
+}
 
 module.exports = {
   BaseRobot,
