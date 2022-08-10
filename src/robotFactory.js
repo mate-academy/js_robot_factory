@@ -14,11 +14,11 @@ class BaseRobot {
 
   move(axis = '', step = 1, positive = true) {
     if (!axis || !this.coords.hasOwnProperty(axis)) {
-      throw new Error(`Robot doesn't recognize axis "${axis}"`);
+      return;
     }
 
     if (step <= 0) {
-      throw new Error(`Step needs to be > 0`);
+      return;
     }
 
     this.coords[axis] += positive ? step : -step;
