@@ -225,28 +225,12 @@ describe('FlyingRobot class', () => {
       .toBe(93);
   });
 
-  test('should take robot coords including Z', () => {
-    const position = { x: 3, y: 5, z: 7 };
-    const robot = new FlyingRobot('Elon', 93, position, 0.1);
-
-    expect(robot.coords)
-      .toEqual({ x: 3, y: 5, z: 7 });
-  });
-
   test('should set Z coordinate to 0 by default', () => {
     const position = { x: 3, y: 5 };
     const robot = new FlyingRobot('Elon', 93, position, 0.1);
 
     expect(robot.coords.z)
       .toBe(0);
-  });
-
-  test('should save the 4th constructor argument as a chipVersion', () => {
-    const position = { x: 0, y: 0 };
-    const robot = new FlyingRobot('Elon', 93, position, 0.1);
-
-    expect(robot.chipVersion)
-      .toBe(0.1);
   });
 
   test(`should have an own 'goUp' method`, () => {
@@ -263,48 +247,6 @@ describe('FlyingRobot class', () => {
 
     expect(FlyingRobot.prototype.hasOwnProperty('goDown'))
       .toBe(true);
-  });
-});
-
-describe(`FlyingRobot instance`, () => {
-  it('should go up by a given step', () => {
-    const position = { x: -5, y: -8, z: -3 };
-    const robot = new FlyingRobot('Elon', 93, position, 0.1);
-
-    robot.goUp(10);
-
-    expect(robot.coords)
-      .toEqual({ x: -5, y: -8, z: 7 });
-  });
-
-  it('should go up by 1 if step is not passed', () => {
-    const position = { x: -5, y: -8, z: -3 };
-    const robot = new FlyingRobot('Elon', 93, position, 0.1);
-
-    robot.goUp();
-
-    expect(robot.coords)
-      .toEqual({ x: -5, y: -8, z: -2 });
-  });
-
-  it('should go down by a given step', () => {
-    const position = { x: -5, y: -8, z: -3 };
-    const robot = new FlyingRobot('Elon', 93, position, 0.1);
-
-    robot.goDown(10);
-
-    expect(robot.coords)
-      .toEqual({ x: -5, y: -8, z: -13 });
-  });
-
-  it('should go down by 1 if step is not passed', () => {
-    const position = { x: -5, y: -8, z: -3 };
-    const robot = new FlyingRobot('Elon', 93, position, 0.1);
-
-    robot.goDown();
-
-    expect(robot.coords)
-      .toEqual({ x: -5, y: -8, z: -4 });
   });
 });
 
