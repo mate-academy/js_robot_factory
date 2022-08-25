@@ -17,20 +17,20 @@ class BaseRobot {
     + ` Weight: ${this.weight}`;
   }
 
-  goLeft(step) {
-    this.coords.x -= step || 1;
+  goLeft(step = 1) {
+    this.coords.x -= step;
   };
 
-  goRight(step) {
-    this.coords.x += step || 1;
+  goRight(step = 1) {
+    this.coords.x += step;
   };
 
-  goForward(step) {
-    this.coords.y += step || 1;
+  goForward(step = 1) {
+    this.coords.y += step;
   };
 
-  goBack(step) {
-    this.coords.y -= step || 1;
+  goBack(step = 1) {
+    this.coords.y -= step;
   };
 }
 
@@ -40,12 +40,12 @@ class FlyingRobot extends BaseRobot {
     this.coords.z = coords.z || 0;
   }
 
-  goUp(step) {
-    this.coords.z += step || 1;
+  goUp(step = 1) {
+    this.coords.z += step;
   }
 
-  goDown(step) {
-    this.coords.z -= step || 1;
+  goDown(step = 1) {
+    this.coords.z -= step;
   }
 }
 
