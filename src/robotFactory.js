@@ -29,8 +29,11 @@ class BaseRobot {
   }
 
   getInfo() {
-    // eslint-disable-next-line max-len
-    return `Robot: ${this.name}, Chip version: ${this.chipVersion}, Weight: ${this.weight}`;
+    const nameOutput = `Robot: ${this.name},`;
+    const chipVersionOutput = ` Chip version: ${this.chipVersion},`;
+    const weightOutput = ` Weight: ${this.weight}`;
+
+    return nameOutput + chipVersionOutput + weightOutput;
   }
 }
 
