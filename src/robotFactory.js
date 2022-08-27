@@ -45,7 +45,8 @@ class FlyingRobot extends BaseRobot {
     name,
     weight,
     coords,
-    chipVersion) {
+    chipVersion
+  ) {
     super(
       name,
       weight,
@@ -65,7 +66,36 @@ class FlyingRobot extends BaseRobot {
   }
 }
 
-class DeliveryDrone {}
+class DeliveryDrone extends FlyingRobot {
+  constructor(
+    name,
+    weight,
+    coords,
+    chipVersion,
+    maxLoadWeight,
+    currentLoad = null
+  ) {
+    super(
+      name,
+      weight,
+      coords,
+      chipVersion
+    );
+
+    this.maxLoadWeight = maxLoadWeight;
+    this.currentLoad = currentLoad;
+  }
+
+  hookLoad(cargo) {
+    this.currentLoad = cargo.weight <= this.maxLoadWeight
+    && this.currentLoad === null
+      ? cargo
+      : this.currentLoad;
+  }
+  unhookLoad() {
+    this.currentLoad = null;
+  }
+}
 
 module.exports = {
   BaseRobot,
