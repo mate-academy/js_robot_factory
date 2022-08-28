@@ -46,22 +46,6 @@ class FlyingRobot extends BaseRobot {
     this.coords.z = coords.z || 0;
   };
 
-  goForward() {
-    super.goForward();
-  }
-
-  goBack() {
-    super.goBack();
-  }
-
-  goRight() {
-    super.goRight();
-  }
-
-  goLeft() {
-    super.goLeft();
-  }
-
   goDown(step = 1) {
     if (step > 0) {
       this.coords.z -= step;
@@ -84,11 +68,7 @@ class DeliveryDrone extends FlyingRobot {
   };
 
   hookLoad(cargo) {
-    if (this.currentLoad) {
-      return;
-    }
-
-    if (cargo.weight <= this.maxLoadWeight) {
+    if (!this.currentLoad && cargo.weight <= this.maxLoadWeight) {
       this.currentLoad = cargo;
     }
   }
