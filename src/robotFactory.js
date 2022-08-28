@@ -14,26 +14,18 @@ class BaseRobot {
 
   goForward(step = 1) {
     this.coords.y += step;
-
-    return this.coords;
   }
 
   goBack(step = 1) {
     this.coords.y -= step;
-
-    return this.coords;
   }
 
   goLeft(step = 1) {
     this.coords.x -= step;
-
-    return this.coords;
   }
 
   goRight(step = 1) {
     this.coords.x += step;
-
-    return this.coords;
   }
 
   getInfo() {
