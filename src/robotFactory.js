@@ -15,19 +15,19 @@ class BaseRobot {
 
   goForward(step = 1) {
     this.coords.y += step;
-  };
+  }
 
   goBack(step = 1) {
     this.coords.y -= step;
-  };
+  }
 
   goLeft(step = 1) {
     this.coords.x -= step;
-  };
+  }
 
   goRight(step = 1) {
     this.coords.x += step;
-  };
+  }
 
   getInfo() {
     return `Robot: ${this.name}, `
@@ -45,11 +45,11 @@ class FlyingRobot extends BaseRobot {
 
   goUp(step = 1) {
     this.coords.z += step;
-  };
+  }
 
   goDown(step = 1) {
     this.coords.z -= step;
-  };
+  }
 }
 
 class DeliveryDrone extends FlyingRobot {
@@ -66,7 +66,7 @@ class DeliveryDrone extends FlyingRobot {
     if (this.currentLoad === null && cargo.weight <= this.maxLoadWeight) {
       this.currentLoad = cargo;
     }
-  };
+  }
 
   unhookLoad() {
     this.currentLoad = null;
