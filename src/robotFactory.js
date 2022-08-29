@@ -13,35 +13,19 @@ class BaseRobot {
   }
 
   goForward(step = 1) {
-    if (step > 0) {
-      this.coords.y += step;
-    }
-
-    return this;
+    this.coords.y += step;
   }
 
   goBack(step = 1) {
-    if (step > 0) {
-      this.coords.y -= step;
-    }
-
-    return this;
+    this.coords.y -= step;
   }
 
   goRight(step = 1) {
-    if (step > 0) {
-      this.coords.x += step;
-    }
-
-    return this;
+    this.coords.x += step;
   }
 
   goLeft(step = 1) {
-    if (step > 0) {
-      this.coords.x -= step;
-    }
-
-    return this;
+    this.coords.x -= step;
   }
 
   getInfo() {
