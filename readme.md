@@ -20,8 +20,7 @@ Let's implement 3 classes with inheritance
 - in addition to `FlyingRobot`'s args it takes `maxLoadWeight` and `currentLoad`
   and saves them.
 - `currentLoad` should be set to `null` if not passed
-- has `hookLoad` method taking a `cargo` object and saving it to a `currentLoad`
-  property if it is empty and the `cargo.weight` is not greater than the
+- has `hookLoad` method taking a `cargo` object and saving it to a `currentLoad` property if it is empty and the `cargo.weight` is not greater than the
   `maxLoadWeight` of the drone.
 - if the drone already has `currentLoad` do not change it
 - has `unhookLoad` method, that `currentLoad` property to `null`
