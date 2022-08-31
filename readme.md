@@ -11,8 +11,8 @@ Let's implement 3 classes with inheritance
 
 **FlyingRobot**
 - inherits all the methods from `BaseRobot`
-- takes the same args as `BaseRobot` and passes them to the parent's constructor
-- can work with `z` `coords`
+@??? - takes the same args as `BaseRobot` and passes them to the parent's constructor
+@??? - can work with `z` `coords`
 - has methods `goUp` and `goDown` changing `z` coordinate by a given `step`
 
 **DeliveryDrone**
