@@ -1,3 +1,4 @@
+
 'use strict';
 /* global require, describe, test, expect */
 /* eslint-disable object-curly-newline, max-len */
