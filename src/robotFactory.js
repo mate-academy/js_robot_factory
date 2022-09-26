@@ -53,22 +53,6 @@ class FlyingRobot extends BaseRobot {
     }
   }
 
-  goForward() {
-    super.goForward();
-  }
-
-  goBack() {
-    super.goBack();
-  }
-
-  goLeft() {
-    super.goLeft();
-  }
-
-  goRight() {
-    super.goRight();
-  }
-
   goUp(step = 1) {
     this.coords.z += step;
   }
@@ -84,30 +68,6 @@ class DeliveryDrone extends FlyingRobot {
 
     this.maxLoadWeight = maxLoadWeight;
     this.currentLoad = currentLoad || null;
-  }
-
-  goForward() {
-    super.goForward();
-  }
-
-  goBack() {
-    super.goBack();
-  }
-
-  goLeft() {
-    super.goLeft();
-  }
-
-  goRight() {
-    super.goRight();
-  }
-
-  goUp() {
-    super.goUp();
-  }
-
-  goDown() {
-    super.goDown();
   }
 
   hookLoad(cargo) {
