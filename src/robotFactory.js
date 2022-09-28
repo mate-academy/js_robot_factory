@@ -11,13 +11,13 @@ class BaseRobot {
     };
     this.chipVersion = chipVersion;
 
-    if (coords.x) {
-      this.coords.x = coords.x;
-    }
+    // if (coords.x) {
+    //   this.coords.x = coords.x;
+    // }
 
-    if (coords.y) {
-      this.coords.y = coords.y;
-    }
+    // if (coords.y) {
+    //   this.coords.y = coords.y;
+    // }
   }
 
   goForward(step = 1) {
