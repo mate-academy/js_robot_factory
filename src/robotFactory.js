@@ -1,16 +1,13 @@
 'use strict';
 
 class BaseRobot {
-  constructor(name, weight, coords, chipVersion) {
+  constructor(name, weight, { x = 0, y = 0 }, chipVersion) {
     this.name = name;
     this.weight = weight;
 
     this.coords = {
-      ...{
-        x: 0,
-        y: 0,
-      },
-      ...coords,
+      x,
+      y,
     };
     this.chipVersion = chipVersion;
   }
