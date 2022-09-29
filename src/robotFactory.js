@@ -12,27 +12,27 @@ class BaseRobot {
     };
   }
 
-  Moves(value = 1) {
-    return value < 0 ? 0 : value;
+  Moves(step = 1) {
+    return step < 0 ? 0 : step;
   };
 
-  goRight(value) {
-    this.coords.x += this.Moves(value);
-
-    return this;
-  };
-  goLeft(value) {
-    this.coords.x -= this.Moves(value);
+  goRight(step) {
+    this.coords.x += this.Moves(step);
 
     return this;
   };
-  goBack(value) {
-    this.coords.y -= this.Moves(value);
+  goLeft(step) {
+    this.coords.x -= this.Moves(step);
 
     return this;
   };
-  goForward(value) {
-    this.coords.y += this.Moves(value);
+  goBack(step) {
+    this.coords.y -= this.Moves(step);
+
+    return this;
+  };
+  goForward(step) {
+    this.coords.y += this.Moves(step);
 
     return this;
   };
@@ -50,14 +50,14 @@ class FlyingRobot extends BaseRobot {
     this.coords.z = coords.z || 0;
   }
 
-  goUp(value) {
-    this.coords.z += this.Moves(value);
+  goUp(step) {
+    this.coords.z += this.Moves(step);
 
     return this;
   };
 
-  goDown(value) {
-    this.coords.z -= this.Moves(value);
+  goDown(step) {
+    this.coords.z -= this.Moves(step);
 
     return this;
   };
