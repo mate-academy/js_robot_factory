@@ -20,12 +20,12 @@ class BaseRobot {
     this.coords.y -= step;
   };
 
-  goLeft(step = 1) {
-    this.coords.x -= step;
-  }
-
   goRight(step = 1) {
     this.coords.x += step;
+  }
+
+  goLeft(step = 1) {
+    this.coords.x -= step;
   }
 
   getInfo() {
@@ -50,8 +50,13 @@ class FlyingRobot extends BaseRobot {
 }
 
 class DeliveryDrone extends FlyingRobot {
-  constructor(name, weight, coords, chipVersion,
-    maxLoadWeight, currentLoad = null) {
+  constructor(
+    name,
+    weight,
+    coords,
+    chipVersion,
+    maxLoadWeight,
+    currentLoad = null) {
     super(name, weight, coords, chipVersion);
     this.maxLoadWeight = maxLoadWeight;
     this.currentLoad = currentLoad;
