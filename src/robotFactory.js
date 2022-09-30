@@ -6,17 +6,10 @@ class BaseRobot {
     this.weight = weight;
     this.chipVersion = chipVersion;
 
-    if (Object.keys(coords).length === 0) {
-      this.coords = {
-        x: 0,
-        y: 0,
-      };
-    } else {
-      this.coords = {
-        x: coords.x || 0,
-        y: coords.y || 0,
-      };
-    }
+    this.coords = {
+      x: coords.x || 0,
+      y: coords.y || 0,
+    };
   }
 
   goForward(step = 1) {
@@ -36,9 +29,9 @@ class BaseRobot {
   }
 
   getInfo() {
-    return 'Robot: ' + this.name + ', '
-      + 'Chip version: ' + this.chipVersion + ', '
-      + 'Weight: ' + this.weight;
+    const { name, chipVersion, weight } = this;
+
+    return `Robot: ${name}, Chip version: ${chipVersion}, Weight: ${weight}`;
   }
 }
 
