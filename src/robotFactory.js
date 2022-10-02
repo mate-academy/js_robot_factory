@@ -10,14 +10,6 @@ class BaseRobot {
       y: coords.y || 0,
     };
     this.chipVersion = chipVersion;
-
-    // if (coords.x) {
-    //   this.coords.x = coords.x;
-    // }
-
-    // if (coords.y) {
-    //   this.coords.y = coords.y;
-    // }
   }
 
   goForward(step = 1) {
@@ -72,7 +64,7 @@ class DeliveryDrone extends FlyingRobot {
   }
 
   hookLoad(cargo) {
-    if (this.currentLoad === null && cargo.weight <= this.maxLoadWeight) {
+    if (!this.currentLoad && cargo.weight <= this.maxLoadWeight) {
       this.currentLoad = { ...cargo };
     }
   }
