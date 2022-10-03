@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 'use strict';
 
 class BaseRobot {
@@ -39,7 +38,7 @@ class BaseRobot {
 class FlyingRobot extends BaseRobot {
   constructor(name, weight, coords, chipVersion) {
     super(name, weight, coords, chipVersion);
-    
+
     this.coords.z = coords.z || 0;
   }
 
@@ -61,12 +60,12 @@ class DeliveryDrone extends FlyingRobot {
     currentLoad = null
   ) {
     super(name, weight, coords, chipVersion);
-    
+
     this.currentLoad = currentLoad;
     this.maxLoadWeight = maxLoadWeight;
   }
   hookLoad(cargo) {
-    if (this.currentLoad <= 0 && cargo.weight <= this.maxLoadWeight) {
+    if (!this.currentLoad && cargo.weight <= this.maxLoadWeight) {
       this.currentLoad = cargo;
     }
   }
