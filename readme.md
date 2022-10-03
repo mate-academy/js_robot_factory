@@ -1,5 +1,5 @@
-# Robot factory
 Let's implement 3 classes with inheritance
+# Robot factory
 
 **BaseRobot**
 - constructor takes `name`, `weight`, `coords`, `chipVersion` and saves them
