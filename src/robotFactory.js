@@ -5,17 +5,11 @@ class BaseRobot {
     this.name = name;
     this.weight = weight;
 
-    if (Object.keys(coords).length < 2) {
-      const axises = ['x', 'y'];
+    this.coords = {
+      x: coords.x || 0,
+      y: coords.y || 0,
+    };
 
-      for (const axis of axises) {
-        if (!coords[axis]) {
-          coords[axis] = 0;
-        }
-      }
-    }
-
-    this.coords = coords;
     this.chipVersion = chipVersion;
   }
 
@@ -45,17 +39,7 @@ class FlyingRobot extends BaseRobot {
   constructor(name, weight, coords, chipVersion) {
     super(name, weight, coords, chipVersion);
 
-    if (Object.keys(coords).length < 3) {
-      const axises = ['x', 'y', 'z'];
-
-      for (const axis of axises) {
-        if (!coords[axis]) {
-          coords[axis] = 0;
-        }
-      }
-    }
-
-    this.coords = coords;
+    this.coords.z = coords.z || 0;
   }
 
   goUp(step = 1) {
