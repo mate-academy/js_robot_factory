@@ -6,8 +6,7 @@ Let's implement 3 classes with inheritance
 - `coords` should be set to 0 if not passed
 - `goForward`, `goBack`, `goRight` and `goLeft` methods take a `step` argument
   (1 by default) and move the robot by `step` in the appropriate direction
-- `getInfo` method returns a string in the next format `Robot: %name%, Chip
-  version: %chipVersion%, Weight: %weight%`
+- `getInfo` method returns a string in the next format `Robot: %name%, Chip version: %chipVersion%, Weight: %weight%`
 
 **FlyingRobot**
 - inherits all the methods from `BaseRobot`
@@ -20,9 +19,7 @@ Let's implement 3 classes with inheritance
 - in addition to `FlyingRobot`'s args it takes `maxLoadWeight` and `currentLoad`
   and saves them.
 - `currentLoad` should be set to `null` if not passed
-- has `hookLoad` method taking a `cargo` object and saving it to a `currentLoad`
-  property if it is empty and the `cargo.weight` is not greater than the
-  `maxLoadWeight` of the drone.
+- has `hookLoad` method taking a `cargo` object and saving it to a `currentLoad` property if it is empty and the `cargo.weight` is not greater than the `maxLoadWeight` of the drone.
 - if the drone already has `currentLoad` do not change it
 - has `unhookLoad` method, that `currentLoad` property to `null`
 
