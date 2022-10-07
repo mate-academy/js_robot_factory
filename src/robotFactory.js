@@ -14,26 +14,18 @@ class BaseRobot {
 
   goForward(step = 1) {
     this.coords.y += step;
-
-    return this;
   }
 
   goBack(step = 1) {
     this.coords.y -= step;
-
-    return this;
   }
 
   goRight(step = 1) {
     this.coords.x += step;
-
-    return this;
   }
 
   goLeft(step = 1) {
     this.coords.x -= step;
-
-    return this;
   }
 
   getInfo() {
@@ -53,14 +45,10 @@ class FlyingRobot extends BaseRobot {
 
   goUp(step = 1) {
     this.coords.z += step;
-
-    return this;
   }
 
   goDown(step = 1) {
     this.coords.z -= step;
-
-    return this;
   }
 }
 
