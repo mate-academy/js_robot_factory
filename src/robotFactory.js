@@ -42,19 +42,6 @@ class FlyingRobot extends BaseRobot {
     this.coords.z = coords.z || 0;
   }
 
-  goForward() {
-    super.goForward();
-  }
-  goLeft() {
-    super.goLeft();
-  }
-  goBack() {
-    super.goBack();
-  }
-  goRight() {
-    super.goRight();
-  }
-
   goUp(step = 1) {
     this.coords.z += step;
   }
