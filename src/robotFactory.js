@@ -26,7 +26,6 @@ class BaseRobot {
       this.weight}`;
   }
 }
-
 class FlyingRobot extends BaseRobot {
   constructor(name, weight, coords, chipVersion) {
     super(name, weight, coords, chipVersion);
@@ -39,7 +38,6 @@ class FlyingRobot extends BaseRobot {
     this.coords.z -= step;
   }
 }
-
 class DeliveryDrone extends FlyingRobot {
   constructor(name, weight, coords, chipVersion, maxLoadWeight, currentLoad) {
     super(name, weight, coords, chipVersion);
