@@ -44,7 +44,7 @@ describe('BaseRobot class', () => {
       .toEqual({ x: 0, y: 0 });
   });
 
-  test('should set another coord to 0 by default if was passed only one', () => {
+  test('should set another coords to 0 by default if was passed only one', () => {
     const position = { x: 3 };
 
     const robot = new BaseRobot('Elon', 93, position, 0.1);
