@@ -6,16 +6,12 @@ class BaseRobot {
   }, chipVersion) {
     this.name = name;
     this.weight = weight;
-    this.coords = coords;
+
+    this.coords = {
+      x: coords.x || 0,
+      y: coords.y || 0,
+    };
     this.chipVersion = chipVersion;
-
-    if (this.coords.x === undefined) {
-      this.coords.x = 0;
-    }
-
-    if (this.coords.y === undefined) {
-      this.coords.y = 0;
-    }
   }
 
   getInfo() {
