@@ -1,7 +1,7 @@
 'use strict';
 
 class BaseRobot {
-  constructor(name, weight, coords = 0, chipVersion) {
+  constructor(name, weight, coords, chipVersion) {
     this.coords = {
       x: coords.x || 0,
       y: coords.y || 0,
@@ -11,35 +11,25 @@ class BaseRobot {
     this.chipVersion = chipVersion;
   }
   goForward(step = 1) {
-    if (step > 0) {
-      this.coords.y += step;
-    }
+    this.coords.y += step;
   }
   goBack(step = 1) {
-    if (step > 0) {
-      this.coords.y -= step;
-    }
+    this.coords.y -= step;
   }
   goRight(step = 1) {
-    if (step > 0) {
-      this.coords.x += step;
-    }
+    this.coords.x += step;
   }
   goLeft(step = 1) {
-    if (step > 0) {
-      this.coords.x -= step;
-    }
+    this.coords.x -= step;
   }
   getInfo() {
-    const first = `Robot: ${this.name}, Chip version: ${this.chipVersion},`;
-    const second = ` Weight: ${this.weight}`;
-
-    return first + second;
+    return `Robot: ${this.name}, Chip version: ${this.chipVersion},`
+    + ` Weight: ${this.weight}`;
   }
 }
 
 class FlyingRobot extends BaseRobot {
-  constructor(name, weight, coords = 0, chipVersion) {
+  constructor(name, weight, coords, chipVersion) {
     super(name, weight, coords, chipVersion);
     this.coords.z = coords.z || 0;
   }
@@ -56,7 +46,7 @@ class FlyingRobot extends BaseRobot {
 }
 
 class DeliveryDrone extends FlyingRobot {
-  constructor(name, weight, coords = 0,
+  constructor(name, weight, coords,
     chipVersion, maxLoadWeight, currentLoad = null) {
     super(name, weight, coords, chipVersion);
 
