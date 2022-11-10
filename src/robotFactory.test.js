@@ -37,7 +37,7 @@ describe('BaseRobot class', () => {
       .toEqual({ x: 3, y: 5 });
   });
 
-  test('should set coords to 0 by default', () => {
+  test('should set `coords` to 0 by default', () => {
     const robot = new BaseRobot('Elon', 93, {}, 0.1);
 
     expect(robot.coords)
