@@ -63,7 +63,8 @@ class DeliveryDrone extends FlyingRobot {
     coords,
     chipVersion,
     maxLoadWeight,
-    currentLoad) {
+    currentLoad
+  ) {
     super(name, weight, coords, chipVersion);
 
     this.maxLoadWeight = maxLoadWeight;
