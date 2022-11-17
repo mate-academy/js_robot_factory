@@ -16,7 +16,7 @@ class BaseRobot {
     const { name, chipVersion, weight } = this;
 
     return `Robot: ${name}, Chip version: ${chipVersion}, `
- + `Weight: ${weight}`;
+     + `Weight: ${weight}`;
   };
 
   goForward(step = 1) {
