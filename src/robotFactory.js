@@ -50,7 +50,7 @@ class FlyingRobot extends BaseRobot {
       z: 0,
     };
 
-    if (Object.keys(coords).length !== 0) {
+    if (Object.keys(coords).length) {
       this.coords = {
         ...this.coords,
         ...coords,
@@ -68,8 +68,14 @@ class FlyingRobot extends BaseRobot {
 }
 
 class DeliveryDrone extends FlyingRobot {
-  constructor(name, weight, coord = {},
-    chipVersion, maxLoadWeight, currentLoad = null) {
+  constructor(
+    name,
+    weight,
+    coord = {},
+    chipVersion,
+    maxLoadWeight,
+    currentLoad = null
+  ) {
     super(name, weight, coord, chipVersion);
     this.maxLoadWeight = maxLoadWeight;
     this.currentLoad = currentLoad;
