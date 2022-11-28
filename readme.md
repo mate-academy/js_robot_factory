@@ -7,7 +7,7 @@ Let's implement 3 classes with inheritance
 - `goForward`, `goBack`, `goRight` and `goLeft` methods take a `step` argument
   (1 by default) and move the robot by `step` in the appropriate direction
 - `getInfo` method returns a string in the next format `Robot: %name%, Chip
-  version: %chipVersion%, Weight: %weight%`
+version: %chipVersion%, Weight: %weight%`
 
 **FlyingRobot**
 - inherits all the methods from `BaseRobot`
