@@ -26,6 +26,31 @@ Let's implement 3 classes with inheritance
 - if the drone already has `currentLoad` do not change it
 - has `unhookLoad` method, that `currentLoad` property to `null`
 
+**Бейсробот**
+- конструктор принимает `имя`, `вес`, `координаты`, `chipVersion` и сохраняет их
+- `координаты` должны быть установлены на 0, если не переданы
+- методы `goForward`, `goBack`, `goRight` и `goLeft` принимают аргумент `step`
+  (по умолчанию 1) и перемещайте робота «шагом» в соответствующем направлении.
+- метод `getInfo` возвращает строку следующего формата `Robot: %name%, Chip
+  версия: %chipVersion%, вес: %weight%`
+
+**Летающий робот**
+- наследует все методы от `BaseRobot`
+- принимает те же аргументы, что и `BaseRobot`, и передает их конструктору родителя
+- может работать с координатами `z`
+- имеет методы `goUp` и `goDown`, меняющие координату z на заданный `шаг`
+
+**Дрон доставки**
+- наследует все методы от FlyingRobot и вызывает его конструктор
+- в дополнение к аргументам `FlyingRobot` он принимает `maxLoadWeight` и `currentLoad`
+  и сохраняет их.
+- `currentLoad` должен быть установлен в `null`, если не передан
+- имеет метод `hookLoad`, принимающий объект `cargo` и сохраняющий его в `currentLoad`
+  свойство, если оно пусто и `cargo.weight` не больше, чем
+  `maxLoadWeight` дрона.
+- если у дрона уже есть `currentLoad`, не меняйте его
+- имеет метод `unhookLoad`, свойство `currentLoad` равно `null`
+
 ```
 DeliveryDrone {
   name: string
