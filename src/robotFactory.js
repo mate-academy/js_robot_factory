@@ -1,8 +1,6 @@
 'use strict';
 
 class BaseRobot {
-  // static position = 1;
-
   constructor(name, weight, coords, chipVersion) {
     this.name = name;
     this.weight = weight;
