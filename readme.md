@@ -4,7 +4,7 @@ Let's implement 3 classes with inheritance
 **BaseRobot**
 - constructor takes `name`, `weight`, `coords`, `chipVersion` and saves them
 - `coords` should be set to 0 if not passed
-- `goForward`, `goBack`, `goRight` and `goLeft` methods take a `step` argument
+- `goForward`, `goBack`, `goBack` and `goBack` methods take a `step` argument
   (1 by default) and move the robot by `step` in the appropriate direction
 - `getInfo` method returns a string in the next format `Robot: %name%, Chip
   version: %chipVersion%, Weight: %weight%`
