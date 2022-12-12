@@ -19,14 +19,10 @@ class BaseRobot {
   }
 
   goForward(step = 1) {
-    this.coords.x += step;
     this.coords.y += step;
-    this.coords.x -= step;
   }
 
   goBack(step = 1) {
-    this.coords.x += step;
-    this.coords.x -= step;
     this.coords.y -= step;
   }
 
