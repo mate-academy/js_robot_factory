@@ -29,20 +29,19 @@ class BaseRobot {
   };
 
   getInfo() {
-    // eslint-disable-next-line max-len
-    return `Robot: ${this.name}, Chip version: ${this.chipVersion}, Weight: ${this.weight}`;
+    return `Robot: ${this.name}, `
+      + `Chip version: ${this.chipVersion}, `
+      + `Weight: ${this.weight}`;
   }
 
-  setCoords(coords, withZ) {
-    if (Object.keys(coords).length === 0 && !withZ) {
+  setCoords(coords) {
+    if (Object.keys(coords).length === 0) {
       coords.y = 0;
       coords.x = 0;
-    } else if (!coords.y && !withZ) {
+    } else if (!coords.y) {
       coords.y = 0;
-    } else if (!coords.x && !withZ) {
+    } else if (!coords.x) {
       coords.x = 0;
-    } else if (withZ && !coords.z) {
-      coords.z = 0;
     }
 
     return coords;
@@ -57,9 +56,13 @@ class FlyingRobot extends BaseRobot {
     chipVersion) {
     super(name, weight, coords, chipVersion);
 
+    if (!coords.z) {
+      coords.z = 0;
+    }
+
     this.name = name;
     this.weight = weight;
-    this.coords = this.setCoords(coords, true);
+    this.coords = coords;
     this.chipVersion = chipVersion;
   }
 
