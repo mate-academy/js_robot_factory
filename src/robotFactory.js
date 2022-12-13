@@ -12,11 +12,6 @@ class BaseRobot {
     };
   }
 
-  getInfo() {
-    return `Robot: ${this.name}, Chip version: ${this.chipVersion}, `
-    + `Weight: ${this.weight}`;
-  }
-
   goForward(step = 1) {
     this.coords.y += step;
   }
@@ -32,11 +27,17 @@ class BaseRobot {
   goLeft(step = 1) {
     this.coords.x -= step;
   }
+
+  getInfo() {
+    const { name, chipVersion, weight } = this;
+
+    return `Robot: ${name}, Chip version: ${chipVersion}, Weight: ${weight}`;
+  }
 }
 
 class FlyingRobot extends BaseRobot {
   constructor(name, weight, coords, chipVersion) {
-    super(name, weight, coords, chipVersion);
+    super(...arguments);
 
     this.coords.z = coords.z || 0;
   }
