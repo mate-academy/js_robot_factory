@@ -74,23 +74,3 @@ module.exports = {
   FlyingRobot,
   DeliveryDrone,
 };
-
-// const position = { x: 5, y: 0, z: 11 };
-
-// const elon = new BaseRobot('Elon', 93, position, 0.1);
-// const harold = new FlyingRobot('Harold', 3, position, 0.7);
-// const deliveryJon = new DeliveryDrone('Delivery Jon', 9, {}, 0.7, 78, null);
-
-// console.log(harold);
-// console.log(deliveryJon);
-
-// const cargo = {
-//   weight: 78, description: 'cargo 78 weight',
-// };
-
-// deliveryJon.hookLoad(cargo);
-// deliveryJon.unhookLoad();
-
-//   expect(robot.currentLoad)
-//     .toEqual(cargo);
-// });
