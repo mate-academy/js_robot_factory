@@ -27,7 +27,6 @@ class BaseRobot {
   goLeft(step = 1) {
     this.coords.x -= step;
   }
-
   getInfo() {
     return `Robot: ${this.name}, Chip version: ${
       this.chipVersion}, Weight: ${this.weight}`;
