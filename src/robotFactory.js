@@ -4,23 +4,12 @@ class BaseRobot {
   constructor(name, weight, coords, chipVersion) {
     this.name = name;
     this.weight = weight;
-
-    if (Object.keys(coords).length < 2) {
-      if (Object.keys(coords).includes('x')) {
-        this.coords = coords;
-        this.coords.y = 0;
-      } else if (Object.keys(coords).includes('y')) {
-        this.coords = coords;
-        this.coords.x = 0;
-      } else {
-        this.coords = {
-          x: 0, y: 0,
-        };
-      }
-    } else {
-      this.coords = coords;
-    }
     this.chipVersion = chipVersion;
+
+    this.coords = {
+      x: coords.x || 0,
+      y: coords.y || 0,
+    };
   }
 
   goForward(step = 1) {
@@ -40,8 +29,9 @@ class BaseRobot {
   }
 
   getInfo() {
-    return 'Robot: ' + this.name + ', Chip version: '
-    + this.chipVersion + ', Weight: ' + this.weight;
+    return 'Robot: ' + this.name
+    + ', Chip version: ' + this.chipVersion
+    + ', Weight: ' + this.weight;
   }
 }
 
@@ -49,13 +39,7 @@ class FlyingRobot extends BaseRobot {
   constructor(name, weight, coords, chipVersion) {
     super(name, weight, coords, chipVersion);
 
-    if (Object.keys(coords).length < 3) {
-      this.coords = {
-        x: 0, y: 0, z: 0,
-      };
-    } else {
-      this.coords = coords;
-    }
+    this.coords.z = coords.z || 0;
   }
 
   goUp(step = 1) {
