@@ -37,11 +37,8 @@ class BaseRobot {
   }
 
   getInfo() {
-    // These two variables are to avoid eslintmax-len error
-    const n = this.name;
-    const cV = this.chipVersion;
-
-    return `Robot: ${n}, Chip version: ${cV}, Weight: ${this.weight}`;
+    return `Robot: ${this.name}, `
+      + `Chip version: ${this.chipVersion}, Weight: ${this.weight}`;
   }
 }
 
