@@ -12,19 +12,25 @@ class BaseRobot {
 
     this.chipVersion = chipVersion;
   }
+
   getInfo() {
-    return `Robot: ${this.name}, Chip version: ${
-      this.chipVersion}, Weight: ${this.weight}`;
+    return `Robot: ${this.name}, `
+    + `Chip version: ${this.chipVersion}, `
+    + `Weight: ${this.weight}`;
   }
+
   goForward(step = 1) {
     this.coords.y += step;
   }
+
   goBack(step = 1) {
     this.coords.y -= step;
   }
+
   goLeft(step = 1) {
     this.coords.x -= step;
   }
+
   goRight(step = 1) {
     this.coords.x += step;
   }
@@ -36,9 +42,11 @@ class FlyingRobot extends BaseRobot {
 
     this.coords.z = coords.z || 0;
   }
+
   goUp(step = 1) {
     this.coords.z += step;
   }
+
   goDown(step = 1) {
     this.coords.z -= step;
   }
@@ -55,7 +63,8 @@ class DeliveryDrone extends FlyingRobot {
     if (this.currentLoad === null && cargo.weight <= this.maxLoadWeight) {
       this.currentLoad = cargo;
     }
-  };
+  }
+
   unhookLoad() {
     this.currentLoad = null;
   }
