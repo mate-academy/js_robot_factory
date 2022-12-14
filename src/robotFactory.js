@@ -16,12 +16,15 @@ class BaseRobot {
   goForward(step = 1) {
     this.coords.y += step;
   }
+
   goBack(step = 1) {
     this.coords.y -= step;
   }
+
   goRight(step = 1) {
     this.coords.x += step;
   }
+
   goLeft(step = 1) {
     this.coords.x -= step;
   }
@@ -43,6 +46,7 @@ class FlyingRobot extends BaseRobot {
   goUp(step = 1) {
     this.coords.z += step;
   }
+
   goDown(step = 1) {
     this.coords.z -= step;
   }
@@ -56,6 +60,7 @@ class DeliveryDrone extends FlyingRobot {
     this.maxLoadWeight = maxLoadWeight;
     this.currentLoad = currentLoad;
   }
+
   hookLoad(cargo) {
     if (!this.currentLoad && cargo.weight
       <= this.maxLoadWeight) {
