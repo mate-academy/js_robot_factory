@@ -4,10 +4,7 @@ class BaseRobot {
   constructor(
     name,
     weight,
-    coords = {
-      x: 0,
-      y: 0,
-    },
+    coords,
     chipVersion
   ) {
     this.name = name;
@@ -22,8 +19,8 @@ class BaseRobot {
   }
 
   getInfo() {
-    // eslint-disable-next-line max-len
-    return `Robot: ${this.name}, Chip version: ${this.chipVersion}, Weight: ${this.weight}`;
+    return 'Robot: ' + this.name + ', Chip version: '
+      + this.chipVersion + ', Weight: ' + this.weight;
   }
 
   goForward(step = 1) {
@@ -44,10 +41,7 @@ class FlyingRobot extends BaseRobot {
   constructor(name, weight, coords, chipVersion) {
     super(name, weight, coords, chipVersion);
 
-    this.coords = {
-      ...coords,
-      z: coords.z || 0,
-    };
+    this.coords.z = coords.z || 0;
   }
 
   goUp(step = 1) {
