@@ -22,26 +22,32 @@ class BaseRobot {
 
   goForward(step = 1) {
     this.coords.y += step;
+
+    return this;
   }
 
   goBack(step = 1) {
     this.coords.y -= step;
+
+    return this;
   }
 
   goRight(step = 1) {
     this.coords.x += step;
+
+    return this;
   }
 
   goLeft(step = 1) {
     this.coords.x -= step;
+
+    return this;
   }
 
   getInfo() {
-    const n = this.name;
-    const c = this.chipVersion;
-    const w = this.weight;
+    const { name, chipVersion, weight } = this;
 
-    return `Robot: ${n}, Chip version: ${c}, Weight: ${w}`;
+    return `Robot: ${name}, Chip version: ${chipVersion}, Weight: ${weight}`;
   }
 }
 
@@ -80,7 +86,7 @@ class DeliveryDrone extends FlyingRobot {
   }
 
   hookLoad(cargo) {
-    if (this.currentLoad === null && cargo.weight <= this.maxLoadWeight) {
+    if (!this.currentLoad && cargo.weight <= this.maxLoadWeight) {
       this.currentLoad = cargo;
     }
   }
