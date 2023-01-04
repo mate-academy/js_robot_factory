@@ -30,7 +30,6 @@ class BaseRobot {
   };
 
   getInfo() {
-    // eslint-disable-next-line max-len
     return `Robot: ${this.name}, Chip version: ${this.chipVersion}, Weight: ${this.weight}`;
   }
 }
@@ -63,11 +62,8 @@ class DeliveryDrone extends FlyingRobot {
   }
 
   hookLoad(cargo) {
-    // eslint-disable-next-line max-len
-    if (!this.currentLoad) {
-      if (cargo.weight < this.maxLoadWeight || cargo.weight === this.maxLoadWeight) {
-        this.currentLoad = cargo;
-      }
+    if (!this.currentLoad && cargo.weight <= this.maxLoadWeight) {
+      this.currentLoad = cargo;
     }
   }
 
