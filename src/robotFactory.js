@@ -13,11 +13,12 @@ class BaseRobot {
     this.chipVersion = chipVersion;
   }
   getInfo() {
-    const name = `Robot: ${this.name}, `;
-    const version = `Chip version: ${this.chipVersion}, `;
+    const name = `Robot: ${this.name}`;
+    const version = `Chip version: ${this.chipVersion}`;
     const weight = `Weight: ${this.weight}`;
+    const separator = ', ';
 
-    return name + version + weight;
+    return name + separator + version + separator + weight;
   }
 
   goForward(step = 1) {
