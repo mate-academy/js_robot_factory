@@ -29,8 +29,8 @@ class BaseRobot {
     this.coords.x += step;
   }
   getInfo() {
-    // eslint-disable-next-line max-len
-    return `Robot: ${this.name}, Chip version: ${this.chipVersion}, Weight: ${this.weight}`;
+    return `Robot: ${this.name}, `
+    + `Chip version: ${this.chipVersion}, Weight: ${this.weight}`;
   }
 }
 
@@ -51,8 +51,13 @@ class FlyingRobot extends BaseRobot {
 }
 
 class DeliveryDrone extends FlyingRobot {
-  constructor(name,
-    weight, coords, chipVersion, maxLoadWeight, currentLoad = null) {
+  constructor(
+    name,
+    weight,
+    coords,
+    chipVersion,
+    maxLoadWeight,
+    currentLoad = null) {
     super(name, weight, coords, chipVersion);
 
     this.maxLoadWeight = maxLoadWeight;
