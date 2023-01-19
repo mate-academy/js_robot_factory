@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 class BaseRobot {
   constructor(name, weight, coords, chipVersion) {
@@ -6,9 +6,8 @@ class BaseRobot {
     this.weight = weight;
 
     this.coords = {
-      x: 0,
-      y: 0,
-      ...coords,
+      x: coords.x || 0,
+      y: coords.y || 0,
     };
     this.chipVersion = chipVersion;
   }
@@ -31,8 +30,8 @@ class BaseRobot {
 
   getInfo() {
     return (
-      `Robot: ${this.name}, Chip version: `
-      + `${this.chipVersion}, Weight: ${this.weight}`
+      `Robot: ${this.name}, Chip version: ` +
+      `${this.chipVersion}, Weight: ${this.weight}`
     );
   }
 }
@@ -41,10 +40,7 @@ class FlyingRobot extends BaseRobot {
   constructor(name, weight, coords, chipVersion) {
     super(name, weight, coords, chipVersion);
 
-    this.coords = {
-      z: 0,
-      ...coords,
-    };
+    this.coords.z = coords.z || 0;
   }
 
   goUp(step = 1) {
@@ -71,10 +67,9 @@ class DeliveryDrone extends FlyingRobot {
   }
 
   hookLoad(cargo) {
-    this.currentLoad
-      = this.currentLoad === null && cargo.weight <= this.maxLoadWeight
-        ? cargo
-        : this.currentLoad;
+    if (!this.currentLoad && cargo.weight <= this.maxLoadWeight) {
+      this.currentLoad = cargo;
+    }
   }
 
   unhookLoad() {
