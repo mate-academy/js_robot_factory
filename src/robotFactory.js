@@ -46,11 +46,7 @@ class FlyingRobot extends BaseRobot {
       chipVersion,
     );
 
-    this.coords = {
-      x: x,
-      y: y,
-      z: z,
-    };
+    this.coords.z = z;
   }
 
   goUp(step = 1) {
