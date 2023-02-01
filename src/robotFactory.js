@@ -5,7 +5,8 @@ class BaseRobot {
     name,
     weight,
     coords,
-    chipVersion) {
+    chipVersion
+  ) {
     this.name = name;
     this.weight = weight;
     this.chipVersion = chipVersion;
