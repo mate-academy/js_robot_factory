@@ -29,11 +29,8 @@ class BaseRobot {
   }
 
   getInfo() {
-    const robot = `Robot: ${this.name}`;
-    const Chip = `Chip version: ${this.chipVersion}`;
-    const Weight = `Weight: ${this.weight}`;
-
-    return `${robot}, ${Chip}, ${Weight}`;
+    return `Robot: ${this.name}, \
+Chip version: ${this.chipVersion}, Weight: ${this.weight}`;
   }
 }
 
