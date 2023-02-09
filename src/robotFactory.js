@@ -6,8 +6,8 @@ class BaseRobot {
     this.weight = weight;
     this.chipVersion = chipVersion;
     this.coords = coords;
-    this.coords.x = (coords.x === undefined) ? 0 : coords.x;
-    this.coords.y = (coords.y === undefined) ? 0 : coords.y;
+    this.coords.x = (!coords.x) ? 0 : coords.x;
+    this.coords.y = (!coords.y) ? 0 : coords.y;
   };
   goForward(step = 1) {
     this.coords.y += step;
@@ -30,7 +30,7 @@ class BaseRobot {
 class FlyingRobot extends BaseRobot {
   constructor(name, weight, coords = {}, chipVersion) {
     super(name, weight, coords, chipVersion);
-    this.coords.z = coords.z === undefined ? 0 : coords.z;
+    this.coords.z = (!coords.z) ? 0 : coords.z;
   }
   goUp(step = 1) {
     this.coords.z += step;
