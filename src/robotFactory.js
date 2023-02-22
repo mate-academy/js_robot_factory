@@ -1,7 +1,8 @@
 'use strict';
 
 class BaseRobot {
-  constructor(name,
+  constructor(
+    name,
     weight,
     { x = 0, y = 0 },
     chipVersion
@@ -45,7 +46,12 @@ class FlyingRobot extends BaseRobot {
     coords,
     chipVersion
   ) {
-    super(name, weight, coords, chipVersion);
+    super(
+      name,
+      weight,
+      coords,
+      chipVersion
+    );
     this.coords.z = coords.z || 0;
   }
 
@@ -67,7 +73,12 @@ class DeliveryDrone extends FlyingRobot {
     maxLoadWeight,
     currentLoad = null
   ) {
-    super(name, weight, coords, chipVersion);
+    super(
+      name,
+      weight,
+      coords,
+      chipVersion
+    );
     this.maxLoadWeight = maxLoadWeight;
     this.currentLoad = currentLoad;
   }
