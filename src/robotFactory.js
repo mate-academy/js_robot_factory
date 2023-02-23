@@ -13,10 +13,8 @@ class BaseRobot {
   }
 
   getInfo() {
-    return 'Robot: ' + this.name
-      + ', Chip version: ' + this.chipVersion
-      + ', Weight: ' + this.weight;
-  // I can't do it with `` because of max line length
+    return `Robot: ${this.name}, Chip version: ${this.chipVersion}`
+      + `, Weight: ${this.weight}`;
   }
 
   goForward(step = 1) {
@@ -52,7 +50,14 @@ class FlyingRobot extends BaseRobot {
 }
 
 class DeliveryDrone extends FlyingRobot {
-  constructor(name, weight, coords, chipVersion, maxLoadWeight, currentLoad) {
+  constructor(
+    name,
+    weight,
+    coords,
+    chipVersion,
+    maxLoadWeight,
+    currentLoad
+  ) {
     super(name, weight, coords, chipVersion);
     this.maxLoadWeight = maxLoadWeight;
     this.currentLoad = currentLoad || null;
