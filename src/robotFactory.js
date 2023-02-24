@@ -14,8 +14,7 @@ class BaseRobot {
 
   getInfo() {
     return (
-      `Robot: ${this.name}, `
-      + `Chip version: ${this.chipVersion}, `
+      `Robot: ${this.name}, Chip version: ${this.chipVersion}, `
       + `Weight: ${this.weight}`
     );
   }
@@ -44,10 +43,7 @@ class FlyingRobot extends BaseRobot {
     super(
       name,
       weight,
-      {
-        x,
-        y,
-      },
+      { x, y },
       chipVersion
     );
 
