@@ -1,70 +1,64 @@
 'use strict';
 
 class BaseRobot {
-  constructor(name, weight, { x = 0, y = 0 } = {}, chipVersion) {
+  constructor(name, weight, coords, chipVersion) {
     this.name = name;
     this.weight = weight;
 
     this.coords = {
-      x: x,
-      y: y,
+      x: coords.x || 0,
+      y: coords.y || 0,
     };
     this.chipVersion = chipVersion;
-  }
-
-  goForward(step = 1) {
-    this.coords.y += step;
   }
 
   goBack(step = 1) {
     this.coords.y -= step;
   }
 
+  goLeft(step = 1) {
+    this.coords.x -= step;
+  }
+
   goRight(step = 1) {
     this.coords.x += step;
   }
 
-  goLeft(step = 1) {
-    this.coords.x = -step;
+  goForward(step = 1) {
+    this.coords.y += step;
   }
 
   getInfo() {
-    return `Robot: ${this.name}, Chip version: ${this.chipVersion},
-     Weight: ${this.weight}`;
+    return `Robot: ${this.name}, Chip version: ${this.chipVersion}, `+
+    `Weight: ${this.weight}`;
   }
 }
 
 class FlyingRobot extends BaseRobot {
-  constructor(name, weight, { x, y, z = 0 } = {}, chipVersion) {
-    super(name, weight, {
-      x, y,
-    }, chipVersion);
+  constructor(name, weight, coords, chipVersion) {
+    super(name, weight, coords, chipVersion);
+    this.coords.z = coords.z || 0;
   }
 
   goUp(step = 1) {
-    this.coords.z -= step;
+    this.coords.z += step;
   }
 
   goDown(step = 1) {
-    this.coords.z += step;
+    this.coords.z -= step;
   }
 }
 
-Object.setPrototypeOf(BaseRobot, FlyingRobot);
-
 class DeliveryDrone extends FlyingRobot {
-  constructor(name, weight, { x, y, z }, chipVersion,
-    maxLoadWeight, currentLoad = null) {
-    super(name, weight, {
-      x, y, z,
-    }, chipVersion);
-
+  constructor(name, weight, coords, chipVersion, maxLoadWeight,
+    currentLoad = null) {
+    super(name, weight, coords, chipVersion);
     this.maxLoadWeight = maxLoadWeight;
     this.currentLoad = currentLoad;
   }
 
   hookLoad(cargo) {
-    if (this.currentLoad === null && cargo.weight <= this.maxLoadWeight) {
+    if (!this.currentLoad && cargo.weight <= this.maxLoadWeight) {
       this.currentLoad = cargo;
     }
   }
