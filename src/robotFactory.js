@@ -34,9 +34,8 @@ class BaseRobot {
   };
 
   getInfo() {
-    return `Robot: ${this.name},`
-      + ' ' + `Chip version: ${this.chipVersion},`
-      + ' ' + `Weight: ${this.weight}`;
+    return `Robot: ${this.name}, `
+      + `Chip version: ${this.chipVersion}, Weight: ${this.weight}`;
   }
 }
 
@@ -86,11 +85,7 @@ class DeliveryDrone extends FlyingRobot {
   }
 
   hookLoad(cargo) {
-    if (!cargo.weight || cargo.weight > this.maxLoadWeight) {
-      return;
-    }
-
-    if (!this.currentLoad) {
+    if (this.currentLoad === null && cargo.weight <= this.maxLoadWeight) {
       this.currentLoad = cargo;
     }
   }
