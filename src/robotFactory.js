@@ -20,20 +20,20 @@ class BaseRobot {
     return `Robot: ${name}, Chip version: ${chipVersion}, Weight: ${weight}`;
   }
 
-  goForward(x = 1) {
-    this.coords.y += x;
+  goForward(step = 1) {
+    this.coords.y += step;
   }
 
-  goBack(x = 1) {
-    this.coords.y -= x;
+  goBack(step = 1) {
+    this.coords.y -= step;
   }
 
-  goLeft(x = 1) {
-    this.coords.x -= x;
+  goLeft(step = 1) {
+    this.coords.x -= step;
   }
 
-  goRight(x = 1) {
-    this.coords.x += x;
+  goRight(step = 1) {
+    this.coords.x += step;
   }
 }
 
@@ -46,12 +46,12 @@ class FlyingRobot extends BaseRobot {
     this.coords.z = z;
   }
 
-  goUp(x = 1) {
-    this.coords.z += x;
+  goUp(step = 1) {
+    this.coords.z += step;
   }
 
-  goDown(x = 1) {
-    this.coords.z -= x;
+  goDown(step = 1) {
+    this.coords.z -= step;
   }
 }
 
