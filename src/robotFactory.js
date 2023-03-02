@@ -8,8 +8,8 @@ class BaseRobot {
     this.weight = weight;
 
     this.coords = {
-      x: x,
-      y: y,
+      x,
+      y,
     };
 
     this.chipVersion = chipVersion;
@@ -72,7 +72,7 @@ class DeliveryDrone extends FlyingRobot {
   }
 
   hookLoad(cargo) {
-    const weight = cargo.weight;
+    const { weight } = cargo;
     const islessMaxLoad = weight <= this.maxLoadWeight;
 
     if (this.currentLoad === null && islessMaxLoad) {
