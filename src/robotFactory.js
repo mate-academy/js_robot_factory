@@ -7,26 +7,14 @@ class BaseRobot {
     coords,
     chipVersion
   ) {
-    const defaultCoords = {
-      ...coords,
-    };
-
-    if (coords.x) {
-      defaultCoords.x = coords.x;
-    } else {
-      defaultCoords.x = 0;
-    }
-
-    if (coords.y) {
-      defaultCoords.y = coords.y;
-    } else {
-      defaultCoords.y = 0;
-    }
-
-    this.coords = defaultCoords;
     this.name = name;
     this.weight = weight;
     this.chipVersion = chipVersion;
+
+    this.coords = {
+      x: coords.x || 0,
+      y: coords.y || 0,
+    };
   }
 
   goForward(step = 1) {
@@ -59,17 +47,9 @@ class FlyingRobot extends BaseRobot {
     coords,
     chipVersion
   ) {
-    const defaultCoords = {
-      ...coords,
-    };
+    super(name, weight, coords, chipVersion);
 
-    if (coords.z) {
-      defaultCoords.z = coords.z;
-    } else {
-      defaultCoords.z = 0;
-    }
-
-    super(name, weight, defaultCoords, chipVersion);
+    this.coords.z = coords.z || 0;
   }
 
   goUp(step = 1) {
