@@ -65,22 +65,19 @@ class DeliveryDrone extends FlyingRobot {
   constructor(
     name,
     weight,
-    coords = {
-      x: 0,
-      y: 0,
-      z: 0,
-    },
+    coords,
     chipVersion,
     maxLoadWeight,
     currentLoad = null,
   ) {
     super(name, weight, coords, chipVersion);
+
     this.maxLoadWeight = maxLoadWeight;
     this.currentLoad = currentLoad;
   }
 
   hookLoad(cargo) {
-    if (this.currentLoad === null && cargo.weight <= this.maxLoadWeight) {
+    if (!this.currentLoad && cargo.weight <= this.maxLoadWeight) {
       this.currentLoad = cargo;
     }
   }
