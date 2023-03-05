@@ -35,7 +35,7 @@ class BaseRobot {
 
   goLeft(step = 1) {
     if (step < 0) {
-      this.coords.y -= step;
+      this.coords.y += step;
     }
     this.coords.x -= step;
   }
