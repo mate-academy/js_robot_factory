@@ -60,8 +60,6 @@ class FlyingRobot extends BaseRobot {
       y,
       z,
     };
-
-    // this.coords.z = z;
   }
 
   goUp(step = 1) {
