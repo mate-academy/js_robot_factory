@@ -55,11 +55,7 @@ class FlyingRobot extends BaseRobot {
       chipVersion
     );
 
-    this.coords = {
-      x,
-      y,
-      z,
-    };
+    this.coords.z = z;
   }
 
   goUp(step = 1) {
@@ -90,12 +86,6 @@ class DeliveryDrone extends FlyingRobot {
       },
       chipVersion
     );
-
-    this.coords = {
-      x,
-      y,
-      z,
-    };
 
     this.maxLoadWeight = maxLoadWeight;
     this.currentLoad = currentLoad;
