@@ -88,7 +88,7 @@ class DeliveryDrone extends FlyingRobot {
     { x = 0, y = 0, z = 0 },
     chipVersion,
     maxLoadWeight,
-    currentLoad
+    currentLoad = null
   ) {
     super(
       name,
@@ -102,7 +102,7 @@ class DeliveryDrone extends FlyingRobot {
     );
 
     this.maxLoadWeight = maxLoadWeight;
-    this.currentLoad = currentLoad || null;
+    this.currentLoad = currentLoad;
   }
 
   hookLoad(cargo) {
