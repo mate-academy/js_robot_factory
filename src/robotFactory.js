@@ -6,9 +6,12 @@ class BaseRobot {
   ) {
     this.name = name;
     this.weight = weight;
-    this.coords = {};
-    this.coords.x = x;
-    this.coords.y = y;
+
+    this.coords = {
+      x,
+      y,
+    };
+
     this.chipVersion = chipVersion;
   }
 
@@ -49,10 +52,13 @@ class FlyingRobot extends BaseRobot {
       chipVersion
     );
 
-    this.coords = {};
-    this.coords.x = x;
-    this.coords.y = y;
-    this.coords.z = z;
+    this.coords = {
+      x,
+      y,
+      z,
+    };
+
+    // this.coords.z = z;
   }
 
   goUp(step = 1) {
