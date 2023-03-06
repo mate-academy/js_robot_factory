@@ -8,8 +8,8 @@ class BaseRobot {
     const { x = 0, y = 0 } = coords;
 
     this.coords = {
-      x: x,
-      y: y,
+      x,
+      y,
     };
     this.chipVersion = chipVersion;
   }
