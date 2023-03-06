@@ -30,9 +30,9 @@ class BaseRobot {
     this.coords.x -= step;
   }
 
-  /* eslint-disable */
   getInfo() {
-    return `Robot: ${this.name}, Chip version: ${this.chipVersion}, Weight: ${this.weight}`;
+    return `Robot: ${this.name}, Chip version: ${this.chipVersion}`
+    + ` Weight: ${this.weight}`;
   }
 }
 
