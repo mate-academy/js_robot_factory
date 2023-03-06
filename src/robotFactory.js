@@ -38,15 +38,12 @@ class BaseRobot {
 
 class FlyingRobot extends BaseRobot {
   constructor(name, weight, coords, chipVersion) {
-    const { x = 0, y = 0, z = 0 } = coords;
+    const { z = 0, ...otherCoords } = coords;
 
     super(
       name,
       weight,
-      {
-        x,
-        y,
-      },
+      otherCoords,
       chipVersion,
     );
 
