@@ -1,16 +1,14 @@
 'use strict';
 
 class BaseRobot {
-  constructor(name, weight, coords, chipVersion) {
+  constructor(name, weight, { x = 0, y = 0 }, chipVersion) {
     this.name = name;
     this.weight = weight;
     this.chipVersion = chipVersion;
 
-    const { x = 0, y = 0 } = coords;
-
     this.coords = {
-      x: x,
-      y: y,
+      x,
+      y,
     };
   }
 
@@ -38,12 +36,19 @@ class BaseRobot {
 }
 
 class FlyingRobot extends BaseRobot {
-  constructor(name, weight, coords, chipVersion) {
-    super(name, weight, coords, chipVersion);
+  constructor(
+    name,
+    weight,
+    coords,
+    chipVersion
+  ) {
+    super(
+      name,
+      weight,
+      coords,
+      chipVersion);
 
-    const { z = 0 } = coords;
-
-    this.coords.z = z;
+    this.coords.z = coords.z || 0;
   }
 
   goUp(step = 1) {
@@ -56,38 +61,23 @@ class FlyingRobot extends BaseRobot {
 }
 
 class DeliveryDrone extends FlyingRobot {
-  constructor(name, weight, coords, chipVersion, maxLoadWeight, currentLoad) {
+  constructor(
+    name,
+    weight,
+    coords,
+    chipVersion,
+    maxLoadWeight,
+    currentLoad = null,
+  ) {
     super(name, weight, coords, chipVersion);
 
     this.maxLoadWeight = maxLoadWeight;
-
-    if (currentLoad === undefined) {
-      this.currentLoad = null;
-    } else if (currentLoad === null) {
-      this.currentLoad = {
-        weight: null,
-        description: null,
-      };
-    } else {
-      this.currentLoad = {
-        weight: currentLoad.weight,
-        description: currentLoad.description,
-      };
-    }
+    this.currentLoad = currentLoad;
   }
 
   hookLoad(cargo) {
-    if (this.currentLoad.weight !== null) {
-      return this;
-    }
-
-    if (cargo !== null) {
-      this.currentLoad.weight = cargo.weight;
-      this.currentLoad.description = cargo.description;
-    }
-
-    if (cargo === null || cargo.weight > this.maxLoadWeight) {
-      this.currentLoad = null;
+    if (!this.currentLoad && cargo.weight <= this.maxLoadWeight) {
+      this.currentLoad = cargo;
     }
   }
 
