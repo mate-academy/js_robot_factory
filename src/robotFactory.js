@@ -75,7 +75,7 @@ class DeliveryDrone extends FlyingRobot {
     name,
     weight,
     {
-      ...baseCoords
+      baseCoords
     },
     chipVersion,
     maxLoadWeight,
