@@ -4,7 +4,7 @@ class BaseRobot {
   constructor(
     name,
     weight,
-    coords = {},
+    coords,
     chipVersion
   ) {
     const { x = 0, y = 0 } = coords;
@@ -45,7 +45,7 @@ class FlyingRobot extends BaseRobot {
   constructor(
     name,
     weight,
-    coords = {},
+    coords,
     chipVersion
   ) {
     super(name, weight, coords, chipVersion);
@@ -80,6 +80,7 @@ class DeliveryDrone extends FlyingRobot {
 
   hookLoad(cargo) {
     if (this.currentLoad === null
+      && {}.hasOwnProperty.call(cargo, 'weight')
       && cargo.weight <= this.maxLoadWeight
     ) {
       this.currentLoad = cargo;
