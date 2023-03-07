@@ -42,16 +42,13 @@ class FlyingRobot extends BaseRobot {
   constructor(
     name,
     weight,
-    { x = 0, y = 0, z = 0 },
+    { z = 0, ...otherCoords },
     chipVersion
   ) {
     super(
       name,
       weight,
-      {
-        x,
-        y,
-      },
+      otherCoords,
       chipVersion
     );
 
@@ -71,7 +68,7 @@ class DeliveryDrone extends FlyingRobot {
   constructor(
     name,
     weight,
-    { x = 0, y = 0, z = 0 },
+    coords,
     chipVersion,
     maxLoadWeight,
     currentLoad = null
@@ -79,11 +76,7 @@ class DeliveryDrone extends FlyingRobot {
     super(
       name,
       weight,
-      {
-        x,
-        y,
-        z,
-      },
+      coords,
       chipVersion
     );
 
