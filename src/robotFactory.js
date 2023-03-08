@@ -30,8 +30,8 @@ class BaseRobot {
   }
 
   getInfo() {
-    return `Robot: ${this.name}, Chip version: \
-${this.chipVersion}, Weight: ${this.weight}`;
+    return `Robot: ${this.name}, Chip version:`
+      + `${this.chipVersion}, Weight: ${this.weight}`;
   }
 }
 
@@ -56,7 +56,14 @@ class FlyingRobot extends BaseRobot {
 }
 
 class DeliveryDrone extends FlyingRobot {
-  constructor(name, weight, position, chipVersion, maxLoadWeight, cargo) {
+  constructor(
+    name,
+    weight,
+    position,
+    chipVersion,
+    maxLoadWeight,
+    cargo
+  ) {
     super(name, weight, position, chipVersion);
 
     this.maxLoadWeight = maxLoadWeight;
