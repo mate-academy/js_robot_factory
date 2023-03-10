@@ -28,8 +28,8 @@ class BaseRobot {
   };
 
   getInfo() {
-    // eslint-disable-next-line max-len
-    return `Robot: ${this.name}, Chip version: ${this.chipVersion}, Weight: ${this.weight}`;
+    return `Robot: ${this.name},`
+      + ` Chip version: ${this.chipVersion}, Weight: ${this.weight}`;
   }
 }
 
@@ -39,11 +39,7 @@ class FlyingRobot extends BaseRobot {
       x, y,
     }, chipVersion);
 
-    this.coords = {
-      x: x,
-      y: y,
-      z: z,
-    };
+    this.coords.z = z;
   }
 
   goUp(step = 1) {
@@ -56,8 +52,12 @@ class FlyingRobot extends BaseRobot {
 }
 
 class DeliveryDrone extends FlyingRobot {
-  constructor(name, weight, { x = 0, y = 0 }, chipVersion,
-    maxLoadWeight, currentLoad = null) {
+  constructor(name,
+    weight,
+    { x = 0, y = 0 },
+    chipVersion,
+    maxLoadWeight,
+    currentLoad = null) {
     super(name, weight, {}, chipVersion);
 
     this.maxLoadWeight = maxLoadWeight;
@@ -65,15 +65,8 @@ class DeliveryDrone extends FlyingRobot {
   }
 
   hookLoad(cargo) {
-    if (!this.currentLoad) {
-      if (cargo.weight <= this.maxLoadWeight) {
-        this.currentLoad = {
-          weight: cargo.weight,
-          description: `cargo ${cargo.weight} weight`,
-        };
-      } else {
-        this.currentLoad = null;
-      }
+    if (this.currentLoad === null && cargo.weight <= this.maxLoadWeight) {
+      this.currentLoad = cargo;
     }
   };
 
