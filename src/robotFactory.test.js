@@ -125,10 +125,10 @@ describe('BaseRobot instance', () => {
     const position = { x: -5, y: -8 };
     const robot = new BaseRobot('Elon', 93, position, 0.1);
 
-    robot.goForward();
+    robot.goForward(10);
 
     expect(robot.coords)
-      .toEqual({ x: -5, y: -7 });
+      .toEqual({ x: -5, y: 2 });
   });
 
   it('should go back by a given step', () => {
