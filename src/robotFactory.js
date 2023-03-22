@@ -8,7 +8,6 @@ class BaseRobot {
     this.coords = {
       x: coords.x || 0,
       y: coords.y || 0,
-      z: coords.z,
     };
     this.chipVersion = chipVersion;
   }
@@ -43,7 +42,7 @@ class FlyingRobot extends BaseRobot {
     chipVersion
   ) {
     super(name, weight, coords, chipVersion);
-    this.coords.z = this.coords.z || 0;
+    this.coords.z = coords.z || 0;
   }
 
   goUp(step = 1) {
