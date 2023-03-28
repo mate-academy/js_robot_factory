@@ -73,6 +73,12 @@ class DeliveryDrone extends FlyingRobot {
   unhookLoad() {
     this.currentLoad = null;
   };
+
+  validateCoordinates(coords) {
+    if (coords.x < 0 || coords.y < 0 || coords.z < 0) {
+      return 'Coordinates must be non-negative';
+    }
+  }
 }
 
 module.exports = {
