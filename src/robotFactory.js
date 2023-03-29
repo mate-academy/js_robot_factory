@@ -30,7 +30,7 @@ class BaseRobot {
 
   getInfo() {
     return `Robot: ${this.name}, Chip version: `
-    + `${this.chipVersion}, Weight: ${this.weight}`;
+      + `${this.chipVersion}, Weight: ${this.weight}`;
   }
 }
 
