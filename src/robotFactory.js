@@ -1,11 +1,9 @@
 'use strict';
 
 class BaseRobot {
-  // eslint-disable-next-line object-curly-newline
   constructor(name, weight, coords, chipVersion) {
     this.name = name;
     this.weight = weight;
-    this.coords = coords;
 
     this.coords = {
       x: coords.x || 0,
@@ -17,36 +15,28 @@ class BaseRobot {
 
   goForward(step = 1) {
     this.coords.y += step;
-
-    return this;
   }
 
   goBack(step = 1) {
     this.coords.y -= step;
-
-    return this;
   }
 
   goRight(step = 1) {
     this.coords.x += step;
-
-    return this;
   }
 
   goLeft(step = 1) {
     this.coords.x -= step;
-
-    return this;
   }
 
   getInfo() {
-    // eslint-disable-next-line max-len
-    return `Robot: ${this.name}, Chip version: ${this.chipVersion}, Weight: ${this.weight}`;
+    const { name, chipVersion, weight } = this;
+
+    return `Robot: ${name}, Chip version: ${chipVersion}, Weight: ${weight}`;
   }
 }
 
 class FlyingRobot extends BaseRobot {
-  // eslint-disable-next-line object-curly-newline
   constructor(name, weight, coords, chipVersion) {
     super(name, weight, coords, chipVersion);
 
@@ -67,8 +57,14 @@ class FlyingRobot extends BaseRobot {
 }
 
 class DeliveryDrone extends FlyingRobot {
-  // eslint-disable-next-line
-  constructor(name, weight, coords, chipVersion, maxLoadWeight, currentLoad = null) {
+  constructor(
+    name,
+    weight,
+    coords,
+    chipVersion,
+    maxLoadWeight,
+    currentLoad = null
+  ) {
     super(name, weight, coords, chipVersion);
 
     this.maxLoadWeight = maxLoadWeight;
@@ -76,7 +72,7 @@ class DeliveryDrone extends FlyingRobot {
   };
 
   hookLoad(cargo) {
-    if (this.currentLoad === null && cargo.weight <= this.maxLoadWeight) {
+    if (!this.currentLoad && cargo.weight <= this.maxLoadWeight) {
       this.currentLoad = cargo;
     }
   }
