@@ -9,8 +9,8 @@ class BaseRobot {
     this.chipVersion = chipVersion;
 
     this.coords = {
-      x: x,
-      y: y,
+      x,
+      y,
     };
   }
 
@@ -46,9 +46,9 @@ class FlyingRobot extends BaseRobot {
     const { x = 0, y = 0, z = 0 } = coords;
 
     this.coords = {
-      x: x,
-      y: y,
-      z: z,
+      x,
+      y,
+      z,
     };
   }
 
