@@ -4,7 +4,7 @@ class BaseRobot {
   constructor(
     name,
     weight,
-    coords = {},
+    coords,
     chipVersion
   ) {
     this.name = name;
@@ -44,7 +44,7 @@ class FlyingRobot extends BaseRobot {
   constructor(
     name,
     weight,
-    coords = {},
+    coords,
     chipVersion
   ) {
     super(name, weight, coords, chipVersion);
@@ -65,7 +65,7 @@ class DeliveryDrone extends FlyingRobot {
   constructor(
     name,
     weight,
-    coords = {},
+    coords,
     chipVersion,
     maxLoadWeight,
     currentLoad = null
