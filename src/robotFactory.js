@@ -9,6 +9,7 @@ class BaseRobot {
       x: coords.x || 0,
       y: coords.y || 0,
     };
+
     this.chipVersion = chipVersion;
   }
   goForward(step = 1) {
@@ -28,7 +29,8 @@ class BaseRobot {
   }
 
   getInfo() {
-    return `Robot: ${this.name}, Chip version: ${this.chipVersion}, Weight: ${this.weight}`; // eslint-disable-line
+    return 'Robot: ' + this.name + ', Chip version: ' + this.chipVersion
+      + ', Weight: ' + this.weight;
   }
 }
 
@@ -48,7 +50,8 @@ class FlyingRobot extends BaseRobot {
 }
 
 class DeliveryDrone extends FlyingRobot {
-  constructor(name, weight, coords, chipVersion, maxLoadWeight, currentLoad = null) { // eslint-disable-line
+  constructor(name, weight, coords, chipVersion,
+    maxLoadWeight, currentLoad = null) {
     super(name, weight, coords, chipVersion);
     this.maxLoadWeight = maxLoadWeight;
     this.currentLoad = currentLoad;
