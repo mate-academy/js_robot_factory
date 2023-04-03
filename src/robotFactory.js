@@ -1,18 +1,15 @@
 'use strict';
 
 class BaseRobot {
-  constructor(name, weight, coords = {}, chipVersion) {
-    // I didn't understand a little how to write it
-    // use only one word in js class as written in checklist
-    // I use it in another theme, but in js class don't work
-    // maybe need some wrapper
-    // so I wrote so
-
+  constructor(name, weight, coords, chipVersion) {
     this.name = name;
     this.weight = weight;
-    this.coords = coords;
-    this.coords.x = this.coords.x || 0;
-    this.coords.y = this.coords.y || 0;
+
+    this.coords = {
+      x: coords.x || 0,
+      y: coords.y || 0,
+    };
+
     this.chipVersion = chipVersion;
   }
 
@@ -41,15 +38,17 @@ class BaseRobot {
   }
 
   getInfo() {
-    return `Robot: ${this.name}, Chip version: ${this.chipVersion}, Weight: ${this.weight}`; // eslint-disable-line
+    const { name, chipVersion, weight } = this;
+
+    return `Robot: ${name}, Chip version: ${chipVersion}, Weight: ${weight}`;
   }
 }
 
 class FlyingRobot extends BaseRobot {
-  constructor(name, weight, coords = {}, chipVersion) {
+  constructor(name, weight, coords, chipVersion) {
     super(name, weight, coords, chipVersion);
 
-    this.coords.z = this.coords.z || 0;
+    this.coords.z = coords.z || 0;
   }
 
   goUp(step = 1) {
@@ -66,11 +65,12 @@ class FlyingRobot extends BaseRobot {
 }
 
 class DeliveryDrone extends FlyingRobot {
-  constructor(name, weight, coords = {
-    x: 0,
-    y: 0,
-    z: 0,
-  }, chipVersion, maxLoadWeight, currentLoad = null) {
+  constructor(name,
+    weight,
+    coords,
+    chipVersion,
+    maxLoadWeight,
+    currentLoad = null) {
     super(name, weight, coords, chipVersion);
 
     this.maxLoadWeight = maxLoadWeight;
@@ -78,7 +78,7 @@ class DeliveryDrone extends FlyingRobot {
   }
 
   hookLoad(cargo) {
-    if (this.currentLoad === null && cargo.weight <= this.maxLoadWeight) {
+    if (!this.currentLoad && cargo.weight <= this.maxLoadWeight) {
       this.currentLoad = cargo;
     }
   }
