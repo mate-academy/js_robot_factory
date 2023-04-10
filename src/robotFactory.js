@@ -17,7 +17,11 @@ class BaseRobot {
   }
 
   goForward(y = 1) {
-    this.coords.y += y;
+    if (y < 0) {
+      this.coords.y += y * -1;
+    } else {
+      this.coords.y += y;
+    }
   }
 
   goBack(y = 1) {
