@@ -41,11 +41,8 @@ class FlyingRobot extends BaseRobot {
 
     this.coords.x = coords.x;
     this.coords.y = coords.y;
-    this.coords.z = coords.z;
+    this.coords.z = coords.z || 0;
 
-    if (this.coords.z === undefined) {
-      this.coords.z = 0;
-    }
     this.weight = weight;
     this.chipVersion = chipVersion;
   }
