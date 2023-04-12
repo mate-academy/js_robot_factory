@@ -45,3 +45,52 @@ DeliveryDrone {
 ```
 
 **Read [the guideline](https://github.com/mate-academy/js_task-guideline/blob/master/README.md) before start**
+
+
+# Фабрика роботів
+Давайте реалізуємо 3 класи з успадкуванням
+
+**BaseRobot**
+- конструктор бере `name`, `weight`, `coords`, `chipVersion` і зберігає їх
+- `coords` має бути встановлено на 0, якщо не передано
+- методи `goForward`, `goBack`, `goRight` і `goLeft` приймають аргумент `step`
+  (1 за замовчуванням) і перемістіть робота `кроком` у відповідному напрямку
+- Метод getInfo повертає рядок у форматі Robot: %name%, Chip
+  версія: %chipVersion%, Вага: %weight%`
+
+**Літаючий Робот**
+- успадковує всі методи від `BaseRobot`
+- приймає ті самі аргументи, що й `BaseRobot`, і передає їх до батьківського конструктора
+- може працювати з `z` `coords`
+- має методи `goUp` і `goDown`, що змінюють координату `z` на заданий `крок`
+
+**DeliveryDrone**
+- успадковує всі методи від `FlyingRobot` і викликає його конструктор
+- на додаток до аргументів `FlyingRobot` приймає `maxLoadWeight` і `currentLoad`
+  і рятує їх.
+- `currentLoad` має бути встановлено на `null`, якщо не передано
+- має метод `hookLoad`, який бере об’єкт `cargo` і зберігає його в `currentLoad`
+  якщо він порожній і `cargo.weight` не перевищує
+  `maxLoadWeight` дрона.
+- якщо дрон вже має `currentLoad`, не змінюйте його
+- має метод `unhookLoad`, що властивість `currentLoad` має значення `null`
+
+```
+DeliveryDrone {
+  назва: рядок
+  вага: кількість
+  chipVersion: номер
+  maxLoadWeight: кількість
+  currentLoad: null || {
+    вага: кількість
+    опис: рядок
+  }
+  coords: {
+    x: число
+    y: число
+    z: число
+  }
+}
+```
+
+**Прочитайте [посібник](https://github.com/mate-academy/js_task-guideline/blob/master/README.md) перед початком**
