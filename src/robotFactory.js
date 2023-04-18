@@ -24,9 +24,8 @@ class BaseRobot {
     this.coords.x -= step;
   }
   getInfo() {
-    /* eslint-disable */
-    return `Robot: ${this.name}, Chip version: ${this.chipVersion}, Weight: ${this.weight}`;
-    /* eslint-enable */
+    return `Robot: ${this.name}, Chip version: ${this.chipVersion}, `
+    + `Weight: ${this.weight}`;
   }
 }
 
@@ -51,7 +50,7 @@ class DeliveryDrone extends FlyingRobot {
     this.currentLoad = currentLoad;
   }
   hookLoad(cargo) {
-    if (this.currentLoad === null && cargo.weight <= this.maxLoadWeight) {
+    if (!this.currentLoad && cargo.weight <= this.maxLoadWeight) {
       this.currentLoad = cargo;
     }
   }
