@@ -12,14 +12,11 @@ class BaseRobot {
     this.name = name;
     this.weight = weight;
 
-    if (coords.x === undefined) {
-      coords.x = 0;
-    }
+    this.coords = {
+      x: coords.x || 0,
+      y: coords.y || 0,
+    };
 
-    if (coords.y === undefined) {
-      coords.y = 0;
-    }
-    this.coords = coords;
     this.chipVersion = chipVersion;
   }
 
