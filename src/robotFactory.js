@@ -13,8 +13,10 @@ class BaseRobot {
   }
 
   getInfo() {
-    return `Robot: ${this.name}, Chip version:`
-      + ` ${this.chipVersion}, Weight: ${this.weight}`;
+    const { name, weight, chipVersion } = this;
+
+    return `Robot: ${name}, Chip version:`
+      + ` ${chipVersion}, Weight: ${weight}`;
   };
 
   goForward(step = 1) {
@@ -35,7 +37,7 @@ class BaseRobot {
 }
 
 class FlyingRobot extends BaseRobot {
-  constructor(name, weight, { x = 0, y = 0, z = 0 }, chipVersion) {
+  constructor(name, weight, { x, y, z = 0 }, chipVersion) {
     super(name, weight, {
       x, y,
     }, chipVersion);
@@ -53,18 +55,26 @@ class FlyingRobot extends BaseRobot {
 }
 
 class DeliveryDrone extends FlyingRobot {
-  constructor(name, weight,
-    { x = 0, y = 0, z = 0 }, chipVersion, maxLoadWeight, currentLoad = null) {
-    super(name, weight, {
-      x, y, z,
-    }, chipVersion);
+  constructor(
+    name,
+    weight,
+    coords,
+    chipVersion,
+    maxLoadWeight,
+    currentLoad = null) {
+    super(
+      name,
+      weight,
+      coords,
+      chipVersion
+    );
 
     this.maxLoadWeight = maxLoadWeight;
     this.currentLoad = currentLoad;
   };
 
   hookLoad(cargo) {
-    if (this.currentLoad === null && cargo.weight <= this.maxLoadWeight) {
+    if (!this.currentLoad && cargo.weight <= this.maxLoadWeight) {
       this.currentLoad = cargo;
     };
   };
