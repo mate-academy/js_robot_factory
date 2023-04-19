@@ -15,19 +15,27 @@ class BaseRobot {
   }
 
   goForward(step = 1) {
-    this.coords.y += step;
+    if (step > 0) {
+      this.coords.y += step;
+    }
   }
 
   goBack(step = 1) {
-    this.coords.y -= step;
+    if (step > 0) {
+      this.coords.y -= step;
+    }
   }
 
   goRight(step = 1) {
-    this.coords.x += step;
+    if (step > 0) {
+      this.coords.x += step;
+    }
   }
 
   goLeft(step = 1) {
-    this.coords.x -= step;
+    if (step > 0) {
+      this.coords.x -= step;
+    }
   }
 
   getInfo() {
@@ -45,28 +53,16 @@ class FlyingRobot extends BaseRobot {
     this.coords.z = coords.z || 0;
   }
 
-  goBack(step) {
-    super.goBack(step);
-  }
-
-  goForward(step) {
-    super.goForward(step);
-  }
-
-  goRight(step) {
-    super.goRight(step);
-  }
-
-  goLeft(step) {
-    super.goLeft(step);
-  }
-
   goUp(step = 1) {
-    this.coords.z += step;
+    if (step > 0) {
+      this.coords.z += step;
+    }
   }
 
   goDown(step = 1) {
-    this.coords.z -= step;
+    if (step > 0) {
+      this.coords.z -= step;
+    }
   }
 }
 
@@ -76,29 +72,6 @@ class DeliveryDrone extends FlyingRobot {
     super(name, weight, coords, chipVersion);
     this.maxLoadWeight = maxLoadWeight;
     this.currentLoad = currentLoad;
-  }
-  goBack(step) {
-    super.goBack(step);
-  }
-
-  goForward(step) {
-    super.goForward(step);
-  }
-
-  goRight(step) {
-    super.goRight(step);
-  }
-
-  goLeft(step) {
-    super.goLeft(step);
-  }
-
-  goUp(step) {
-    super.goUp(step);
-  }
-
-  goDown(step) {
-    super.goDown(step);
   }
 
   hookLoad(cargo) {
