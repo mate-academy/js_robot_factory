@@ -14,8 +14,8 @@ class BaseRobot {
     this.weight = weight;
 
     this.coords = {
-      x: coords.x || 0,
-      y: coords.y || 0,
+      x: coords.x,
+      y: coords.y,
     };
     this.chipVersion = chipVersion;
   }
@@ -60,7 +60,7 @@ class FlyingRobot extends BaseRobot {
       chipVersion
     );
 
-    this.coords.z = coords.z || 0;
+    this.coords.z = coords.z;
   }
 
   goUp(step = 1) {
