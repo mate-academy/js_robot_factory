@@ -1,10 +1,124 @@
 'use strict';
 
-class BaseRobot {}
+class BaseRobot {
+  constructor(name, weight, coords, chipVersion) {
+    this.name = name;
+    this.weight = weight;
 
-class FlyingRobot {}
+    this.coords = {
+      x: coords.x || 0,
+      y: coords.y || 0,
+    };
+    this.chipVersion = chipVersion;
+  };
 
-class DeliveryDrone {}
+  getInfo() {
+    return `Robot: ${this.name}, Chip version: ${
+      this.chipVersion}, Weight: ${this.weight}`;
+  }
+
+  goForward(step = 1) {
+    this.coords.y += step;
+  };
+
+  goBack(step = 1) {
+    this.coords.y -= step;
+  };
+
+  goRight(step = 1) {
+    this.coords.x += step;
+  };
+
+  goLeft(step = 1) {
+    this.coords.x -= step;
+  };
+};
+
+class FlyingRobot extends BaseRobot {
+  constructor(name, weight, coords, chipVersion) {
+    super(name, weight, chipVersion);
+
+    this.coords = {
+      x: coords.x || 0,
+      y: coords.y || 0,
+      z: coords.z || 0,
+    };
+    this.chipVersion = chipVersion;
+  }
+
+  goForward() {
+    super.goForward();
+  };
+
+  goBack() {
+    super.goBack();
+  };
+
+  goRight() {
+    super.goRight();
+  };
+
+  goLeft() {
+    super.goLeft();
+  };
+
+  goUp(step = 1) {
+    this.coords.z += step;
+  };
+
+  goDown(step = 1) {
+    this.coords.z -= step;
+  };
+};
+
+class DeliveryDrone extends FlyingRobot {
+  constructor(
+    name, weight, coords, chipVersion, maxLoadWeight, currentLoad = null
+  ) {
+    super(name, weight, coords, chipVersion);
+
+    this.maxLoadWeight = maxLoadWeight;
+    this.currentLoad = currentLoad;
+  }
+
+  goForward() {
+    super.goForward();
+  };
+
+  goBack() {
+    super.goBack();
+  };
+
+  goRight() {
+    super.goRight();
+  };
+
+  goLeft() {
+    super.goLeft();
+  };
+
+  goUp() {
+    super.goBack();
+  };
+
+  goDown() {
+    super.goDown();
+  };
+
+  hookLoad(cargo) {
+    if (
+      this.currentLoad === null && cargo.weight <= this.maxLoadWeight
+    ) {
+      this.currentLoad = cargo;
+    }
+
+    return this.currentLoad;
+  }
+
+  unhookLoad() {
+    this.currentLoad = null;
+  }
+};
 
 module.exports = {
   BaseRobot,
