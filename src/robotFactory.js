@@ -1,20 +1,17 @@
+/* eslint-disable object-curly-newline */
+/* eslint-disable max-len */
 'use strict';
 
 class BaseRobot {
   constructor(
     name,
     weight,
-    {
-      x = 0, y = 0,
-    } = {},
+    { x = 0, y = 0 } = {},
     chipVersion,
   ) {
     this.name = name;
     this.weight = weight;
-
-    this.coords = {
-      x, y,
-    };
+    this.coords = { x, y };
     this.chipVersion = chipVersion;
   }
   goForward(step = 1) {
@@ -30,7 +27,6 @@ class BaseRobot {
     this.coords.x += step;
   }
   getInfo() {
-    // eslint-disable-next-line max-len
     return `Robot: ${this.name}, Chip version: ${this.chipVersion}, Weight: ${this.weight}`;
   }
 }
@@ -39,19 +35,12 @@ class FlyingRobot extends BaseRobot {
   constructor(
     name,
     weight,
-    {
-      x = 0,
-      y = 0,
-      z = 0,
-    } = {},
+    { x = 0, y = 0, z = 0 } = {},
     chipVersion,
   ) {
-    super(name, weight, chipVersion);
+    super(name, weight, { x, y }, chipVersion);
 
-    this.coords = {
-      x, y, z,
-    };
-    this.chipVersion = chipVersion;
+    this.coords.z = z;
   }
 
   goUp(step = 1) {
@@ -66,14 +55,12 @@ class DeliveryDrone extends FlyingRobot {
   constructor(
     name,
     weight,
-    {
-      x = 0, y = 0, z = 0,
-    } = {},
+    { x = 0, y = 0, z = 0 } = {},
     chipVersion,
     maxLoadWeight,
     currentLoad = null
   ) {
-    super(name, weight, x, y, z, chipVersion);
+    super(name, weight, { x, y, z }, chipVersion);
     this.maxLoadWeight = maxLoadWeight;
     this.currentLoad = currentLoad;
   }
