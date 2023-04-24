@@ -29,11 +29,10 @@ class BaseRobot {
   }
 
   getInfo() {
-    let info = `Robot: ${this.name}, Chip version: ${this.chipVersion},`;
-
-    info += ` Weight: ${this.weight}`;
-
-    return info;
+    return (
+      `Robot: ${this.name}, Chip version: ${this.chipVersion},`
+      + ` Weight: ${this.weight}`
+    );
   }
 }
 
