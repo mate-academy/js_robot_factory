@@ -9,27 +9,12 @@ class BaseRobot {
       x: 0,
       y: 0,
     };
-    this.setCoords(coords);
-    this.chipVersion = chipVersion;
-  }
 
-  setCoords(
-    coords = {
-      x: 0,
-      y: 0,
-    }
-  ) {
     this.coords = {
-      x: 0,
-      y: 0,
+      ...this.coords,
+      ...coords,
     };
-
-    if (Object.keys(coords).length !== 0) {
-      this.coords = {
-        ...this.coords,
-        ...coords,
-      };
-    }
+    this.chipVersion = chipVersion;
   }
 
   goForward(step = 1) {
@@ -58,24 +43,7 @@ class BaseRobot {
 class FlyingRobot extends BaseRobot {
   constructor(name, weight, coords, chipVersion) {
     super(name, weight, coords, chipVersion);
-    this.setCoords(coords);
-  }
-
-  setCoords(
-    coords = {
-      x: 0,
-      y: 0,
-      z: 0,
-    }
-  ) {
-    this.coords.z = 0;
-
-    if (Object.keys(coords).length !== 0) {
-      this.coords = {
-        ...this.coords,
-        ...coords,
-      };
-    }
+    this.coords.z = this.coords.z || 0;
   }
 
   goUp(step = 1) {
