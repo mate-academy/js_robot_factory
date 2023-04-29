@@ -1,7 +1,12 @@
 'use strict';
 
 class BaseRobot {
-  constructor(name, weight, coords, chipVersion) {
+  constructor(
+    name,
+    weight,
+    coords,
+    chipVersion
+  ) {
     this.name = name;
     this.weight = weight;
 
@@ -29,12 +34,18 @@ class BaseRobot {
   }
 
   getInfo() {
-    return `Robot: ${this.name}, Chip version: ${this.chipVersion}, Weight: ${this.weight}`; // eslint-disable-line
+    return `Robot: ${this.name}, Chip version:\
+ ${this.chipVersion}, Weight: ${this.weight}`;
   }
 }
 
 class FlyingRobot extends BaseRobot {
-  constructor(name, weight, coords, chipVersion) {
+  constructor(
+    name,
+    weight,
+    coords,
+    chipVersion
+  ) {
     super(name, weight, coords, chipVersion);
     this.coords.z = coords.z || 0;
   }
@@ -49,7 +60,14 @@ class FlyingRobot extends BaseRobot {
 }
 
 class DeliveryDrone extends FlyingRobot {
-  constructor(name, weight, coords, chipVersion, maxLoadWeight, currentLoad) {
+  constructor(
+    name,
+    weight,
+    coords,
+    chipVersion,
+    maxLoadWeight,
+    currentLoad
+  ) {
     super(name, weight, coords, chipVersion);
     this.maxLoadWeight = maxLoadWeight;
     this.currentLoad = currentLoad || null;
