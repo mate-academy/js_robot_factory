@@ -35,7 +35,8 @@ class BaseRobot {
 }
 
 class FlyingRobot extends BaseRobot {
-  constructor(name, weight, coords = {}, chipVersion) {
+  constructor(
+    name, weight, coords = {}, chipVersion) {
     super(name, weight, coords, chipVersion);
     this.coords.z = coords.z || 0;
   }
@@ -59,10 +60,6 @@ class DeliveryDrone extends FlyingRobot {
   }
 
   hookLoad(cargo) {
-    if (cargo.weight > this.maxLoadWeight && !this.currentLoad) {
-      this.currentLoad = null;
-    }
-
     if (cargo.weight <= this.maxLoadWeight && !this.currentLoad) {
       this.currentLoad = cargo;
     }
