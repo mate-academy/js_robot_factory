@@ -7,10 +7,8 @@ class BaseRobot {
     this.name = name;
     this.weight = weight;
 
-    this.coords = {
-      x: x,
-      y: y,
-    };
+    // eslint-disable-next-line object-curly-newline
+    this.coords = { x, y };
     this.chipVersion = chipVersion;
   }
 
@@ -56,7 +54,13 @@ class FlyingRobot extends BaseRobot {
 
 class DeliveryDrone extends FlyingRobot {
   constructor(
-    name, weight, coords = {}, chipVersion, maxLoadWeight, currentLoad = null) {
+    name,
+    weight,
+    coords = {},
+    chipVersion,
+    maxLoadWeight,
+    currentLoad = null
+  ) {
     super(name, weight, coords, chipVersion);
 
     this.maxLoadWeight = maxLoadWeight;
