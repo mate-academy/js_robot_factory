@@ -68,8 +68,6 @@ class DeliveryDrone extends FlyingRobot {
 
   unhookLoad() {
     this.currentLoad = null;
-
-    // return this.currentLoad;
   }
 }
 
