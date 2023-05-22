@@ -4,7 +4,7 @@ class BaseRobot {
   constructor(
     name,
     weight,
-    { x = 0, y = 0 },
+    coords,
     chipVersion
   ) {
     this.name = name;
@@ -12,8 +12,8 @@ class BaseRobot {
     this.chipVersion = chipVersion;
 
     this.coords = {
-      x,
-      y,
+      x: coords.x || 0,
+      y: coords.y || 0,
     };
   }
 
