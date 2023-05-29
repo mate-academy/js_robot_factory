@@ -31,30 +31,30 @@ class BaseRobot {
     }
 
     this.chipVersion = chipVersion;
-  }
+  };
 
   goForward(step = 1) {
     this.coords.y += step;
-  }
+  };
 
   goBack(step = 1) {
     this.coords.y -= step;
-  }
+  };
 
   goRight(step = 1) {
     this.coords.x += step;
-  }
+  };
 
   goLeft(step = 1) {
     this.coords.x -= step;
-  }
+  };
 
   getInfo() {
     return (
       `Robot: ${this.name}, Chip version: ${this.chipVersion},`
       + ` Weight: ${this.weight}`
     );
-  }
+  };
 }
 
 class FlyingRobot extends BaseRobot {
@@ -84,17 +84,50 @@ class FlyingRobot extends BaseRobot {
   };
 }
 
-class DeliveryDrone {}
+class DeliveryDrone extends FlyingRobot {
+  constructor(
+    name,
+    weight,
+    coords,
+    chipVersion,
+    maxLoadWeight,
+    currentLoad = null,
+  ) {
+    super(name, weight, coords, chipVersion);
+    this.maxLoadWeight = maxLoadWeight;
+    this.currentLoad = currentLoad;
+  };
 
-// const robert = new BaseRobot();
+  hookLoad(load) {
+    if (
+      this.currentLoad === null
+      && load.weight <= this.maxLoadWeight) {
+      this.currentLoad = load;
+    }
+  };
+
+  unhookLoad() {
+    this.currentLoad = null;
+  }
+}
+
 const position = {
   x: 0, y: 0, z: 7,
 };
+
 const robot = new FlyingRobot('Elon', 93, position, 0.1);
 
-console.log(robot.goForward());
 robot.goForward();
-console.log(robot);
+// console.log(robot);
+
+const cargo = {
+  weight: 57,
+  description: 'Some cargo',
+};
+
+const robot2 = new DeliveryDrone('Elon', 93, position, 0.1, 78, cargo);
+
+console.log(robot2);
 
 module.exports = {
   BaseRobot,
