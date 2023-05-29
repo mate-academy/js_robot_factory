@@ -5,13 +5,14 @@ class BaseRobot {
     name,
     weight,
     coords,
-    chipVersion) {
+    chipVersion,
+  ) {
     this.name = name;
     this.weight = weight;
 
     this.coords = {
-      x: coords.hasOwnProperty('x') ? coords.x : 0,
-      y: coords.hasOwnProperty('y') ? coords.y : 0,
+      x: coords.x || 0,
+      y: coords.y || 0,
     };
 
     this.chipVersion = chipVersion;
@@ -45,13 +46,14 @@ class FlyingRobot extends BaseRobot {
     name,
     weight,
     coords,
-    chipVersion) {
+    chipVersion,
+  ) {
     super(name, weight, coords, chipVersion);
 
     this.coords = {
-      x: coords.hasOwnProperty('x') ? coords.x : 0,
-      y: coords.hasOwnProperty('y') ? coords.y : 0,
-      z: coords.hasOwnProperty('z') ? coords.z : 0,
+      x: coords.x || 0,
+      y: coords.y || 0,
+      z: coords.z || 0,
     };
   }
 
@@ -71,7 +73,8 @@ class DeliveryDrone extends FlyingRobot {
     coords,
     chipVersion,
     maxLoadWeight,
-    currentLoad = null) {
+    currentLoad = null,
+  ) {
     super(name, weight, coords, chipVersion);
 
     this.maxLoadWeight = maxLoadWeight;
