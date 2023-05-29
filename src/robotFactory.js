@@ -5,15 +5,18 @@ class BaseRobot {
     this.name = name;
     this.weight = weight;
     this.chipVersion = chipVersion;
-    this.coords = coords;
-    this.coords.x = coords.x || 0;
-    this.coords.y = coords.y || 0;
+
+    this.coords = {
+      x: coords.x || 0,
+      y: coords.y || 0,
+    };
   }
 
   getInfo() {
     return (
-      `Robot: ${this.name},`
-      + ` Chip version: ${this.chipVersion}, Weight: ${this.weight}`
+      `Robot: ${this.name}, `
+      + `Chip version: ${this.chipVersion}, `
+      + `Weight: ${this.weight}`
     );
   }
 
@@ -56,14 +59,15 @@ class DeliveryDrone extends FlyingRobot {
     coords,
     chipVersion,
     maxLoadWeight,
-    currentLoad = null) {
+    currentLoad = null
+  ) {
     super(name, weight, coords, chipVersion);
     this.maxLoadWeight = maxLoadWeight;
     this.currentLoad = currentLoad;
   }
 
   hookLoad(cargo) {
-    if (this.currentLoad !== null) {
+    if (this.currentLoad) {
       return 'The drone already has cargo';
     }
 
@@ -74,7 +78,7 @@ class DeliveryDrone extends FlyingRobot {
     }
 
     return `Maximum capacity of this drone is ${this.maxLoadWeight}.
-    The cargo exceeds capacity by ${cargo.weight - this.maxLoadWeight}`;
+    The cargo exceeds capacity by ${cargo.weight - this.maxLoadWeight} `;
   }
 
   unhookLoad() {
