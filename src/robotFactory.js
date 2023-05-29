@@ -2,14 +2,12 @@
 
 class BaseRobot {
   constructor(name, weight, position, chipVersion) {
-    const { x = 0, y = 0 } = { ...position };
-
     this.name = name;
     this.weight = weight;
 
     this.coords = {
-      x: x,
-      y: y,
+      x: position.x || 0,
+      y: position.y || 0,
     };
 
     this.chipVersion = chipVersion;
@@ -32,11 +30,11 @@ class BaseRobot {
   }
 
   getInfo() {
-    const nameInfo = `Robot: ${this.name}, `;
-    const chipInfo = `Chip version: ${this.chipVersion}, `;
-    const weightInfo = `Weight: ${this.weight}`;
+    const name = this.name;
+    const chip = this.chipVersion;
+    const weight = this.weight;
 
-    return nameInfo + chipInfo + weightInfo;
+    return `Robot: ${name}, Chip version: ${chip}, Weight: ${weight}`;
   }
 }
 
@@ -44,12 +42,10 @@ class FlyingRobot extends BaseRobot {
   constructor(name, weight, position, chipVersion) {
     super(name, weight, position, chipVersion);
 
-    const { x = 0, y = 0, z = 0 } = position;
-
     this.coords = {
-      x: x,
-      y: y,
-      z: z,
+      x: position.x || 0,
+      y: position.y || 0,
+      z: position.z || 0,
     };
   }
 
@@ -77,7 +73,10 @@ class DeliveryDrone extends FlyingRobot {
   }
 
   hookLoad(cargo) {
-    if (this.currentLoad === null && cargo.weight <= this.maxLoadWeight) {
+    const canLoad = this.currentLoad === null
+      && cargo.weight <= this.maxLoadWeight;
+
+    if (canLoad) {
       this.currentLoad = cargo;
     }
   };
