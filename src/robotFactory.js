@@ -82,7 +82,7 @@ class DeliveryDrone extends FlyingRobot {
   }
 
   unhookLoad() {
-    if (this.currentLoad === null) {
+    if (!this.currentLoad) {
       return 'The cargo compartment is already empty';
     }
 
