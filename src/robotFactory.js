@@ -5,18 +5,10 @@ class BaseRobot {
     this.name = name;
     this.weight = weight;
 
-    this.coords = coords || {
-      x: 0,
-      y: 0,
+    this.coords = {
+      x: coords.x || 0,
+      y: coords.y || 0,
     };
-
-    if (!this.coords.x) {
-      this.coords.x = 0;
-    }
-
-    if (!this.coords.y) {
-      this.coords.y = 0;
-    }
 
     this.chipVersion = chipVersion;
   }
@@ -91,8 +83,7 @@ class DeliveryDrone extends FlyingRobot {
   }
 
   hookLoad(cargo) {
-    const loadIsEmpty = this.currentLoad === null
-      || Object.keys(this.currentLoad).length === 0;
+    const loadIsEmpty = !this.currentLoad;
 
     if (loadIsEmpty && cargo.weight <= this.maxLoadWeight) {
       this.currentLoad = cargo;
