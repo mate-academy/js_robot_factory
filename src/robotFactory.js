@@ -1,6 +1,21 @@
 'use strict';
 
 class BaseRobot {
+  constructor(
+    name,
+    weight,
+    coords,
+    chipVersion) {
+    this.name = name;
+    this.weight = weight;
+
+    this.coords = {
+      x: coords.x || 0,
+      y: coords.y || 0,
+    };
+    this.chipVersion = chipVersion;
+  }
+
   getInfo() {
     return `Robot: ${this.name},`
       + ` Chip version: ${this.chipVersion},`
@@ -22,25 +37,19 @@ class BaseRobot {
   goLeft(step = 1) {
     this.coords.x -= step;
   }
-
-  constructor(
-    name,
-    weight,
-    coords = {
-      x: 0,
-      y: 0,
-    },
-    chipVersion) {
-    this.name = name;
-    this.weight = weight;
-    this.coords = coords;
-    this.chipVersion = chipVersion;
-    this.coords.x = coords.x || 0;
-    this.coords.y = coords.y || 0;
-  }
 }
 
 class FlyingRobot extends BaseRobot {
+  constructor(
+    name,
+    weight,
+    coords,
+    chipVersion) {
+    super(name, weight, coords, chipVersion);
+    this.coords = coords;
+    this.coords.z = coords.z || 0;
+  }
+
   goUp(step = 1) {
     this.coords.z += step;
   }
@@ -48,25 +57,21 @@ class FlyingRobot extends BaseRobot {
   goDown(step = 1) {
     this.coords.z -= step;
   }
-
-  constructor(
-    name,
-    weight,
-    coords = {
-      x: 0,
-      y: 0,
-      z: 0,
-    },
-    chipVersion) {
-    super(name, weight, coords, chipVersion);
-    this.coords = coords;
-    this.coords.x = coords.x || 0;
-    this.coords.y = coords.y || 0;
-    this.coords.z = coords.z || 0;
-  }
 }
 
 class DeliveryDrone extends FlyingRobot {
+  constructor(
+    name,
+    weight,
+    coords,
+    chipVersion,
+    maxLoadWeight,
+    currentLoad = null) {
+    super(name, weight, coords, chipVersion);
+    this.maxLoadWeight = maxLoadWeight;
+    this.currentLoad = currentLoad;
+  }
+
   hookLoad(cargo) {
     if (this.currentLoad === null && cargo.weight <= this.maxLoadWeight) {
       this.currentLoad = cargo;
@@ -75,22 +80,6 @@ class DeliveryDrone extends FlyingRobot {
 
   unhookLoad() {
     this.currentLoad = null;
-  }
-
-  constructor(
-    name,
-    weight,
-    coords = {
-      x: 0,
-      y: 0,
-      z: 0,
-    },
-    chipVersion,
-    maxLoadWeight,
-    currentLoad = null) {
-    super(name, weight, coords, chipVersion);
-    this.maxLoadWeight = maxLoadWeight;
-    this.currentLoad = currentLoad;
   }
 }
 
