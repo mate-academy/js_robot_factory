@@ -5,15 +5,11 @@ class BaseRobot {
     this.name = name;
     this.weight = weight;
     this.chipVersion = chipVersion;
-    this.coords = coords;
 
-    if (!this.coords.hasOwnProperty('x')) {
-      this.coords.x = 0;
-    }
-
-    if (!this.coords.hasOwnProperty('y')) {
-      this.coords.y = 0;
-    }
+    this.coords = {
+      x: coords.x || 0,
+      y: coords.y || 0,
+    };
   }
 
   goForward(step = 1) {
@@ -42,24 +38,11 @@ class FlyingRobot extends BaseRobot {
   constructor(name, weight, coords, chipVersion) {
     super(name, weight, coords, chipVersion);
 
-    if (!this.coords.hasOwnProperty('z')) {
-      this.coords.z = 0;
-    }
-  }
-  goForward(step = 1) {
-    super.goForward(step);
-  }
-
-  goBack(step = 1) {
-    super.goBack(step);
-  }
-
-  goRight(step = 1) {
-    super.goRight(step);
-  }
-
-  goLeft(step = 1) {
-    super.goLeft(step);
+    this.coords = {
+      x: coords.x || 0,
+      y: coords.y || 0,
+      z: coords.z || 0,
+    };
   }
 
   goUp(step = 1) {
@@ -69,10 +52,6 @@ class FlyingRobot extends BaseRobot {
   goDown(step = 1) {
     this.coords.z -= step;
   }
-
-  getInfo() {
-    super.getInfo();
-  }
 }
 
 class DeliveryDrone extends FlyingRobot {
@@ -81,33 +60,6 @@ class DeliveryDrone extends FlyingRobot {
     super(name, weight, coords, chipVersion);
     this.maxLoadWeight = maxLoadWeight;
     this.currentLoad = currentLoad;
-  }
-  goForward(step = 1) {
-    super.goForward(step);
-  }
-
-  goBack(step = 1) {
-    super.goBack(step);
-  }
-
-  goRight(step = 1) {
-    super.goRight(step);
-  }
-
-  goLeft(step = 1) {
-    super.goLeft(step);
-  }
-
-  goUp(step = 1) {
-    super.goUp(step);
-  }
-
-  goDown(step = 1) {
-    super.goDown(step);
-  }
-
-  getInfo() {
-    super.getInfo();
   }
 
   hookLoad(cargo) {
