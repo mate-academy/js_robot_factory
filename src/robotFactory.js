@@ -1,10 +1,10 @@
-/*eslint-disable*/
-"use strict";
+'use strict';
 
 class BaseRobot {
   constructor(name, weight, coords, chipVersion) {
     this.name = name;
     this.weight = weight;
+
     this.coords = {
       x: coords.x || 0,
       y: coords.y || 0,
@@ -37,13 +37,16 @@ class BaseRobot {
   }
 
   getInfo() {
-    return `Robot: ${this.name}, Chip version: ${this.chipVersion}, Weight: ${this.weight}`;
+    return `Robot: ${this.name},
+     Chip version: ${this.chipVersion},
+      Weight: ${this.weight}`;
   }
 }
 
 class FlyingRobot extends BaseRobot {
   constructor(name, weight, coords, chipVersion) {
     super(name, weight, coords, chipVersion);
+
     this.coords = {
       x: coords.x || 0,
       y: coords.y || 0,
