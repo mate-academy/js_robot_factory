@@ -6,8 +6,10 @@ class BaseRobot {
     this.weight = weight;
     this.chipVersion = chipVersion;
 
+    const { x = 0, y = 0 } = coords;
+
     this.coords = {
-      x: 0, y: 0, ...coords,
+      x, y,
     };
   }
 
@@ -37,9 +39,10 @@ class FlyingRobot extends BaseRobot {
   constructor(name, weight, coords, chipVersion) {
     super(name, weight, coords, chipVersion);
 
+    const { x = 0, y = 0, z = 0 } = coords;
+
     this.coords = {
-      z: 0,
-      ...coords,
+      x, y, z,
     };
   }
 
