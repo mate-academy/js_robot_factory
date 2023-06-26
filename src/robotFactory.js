@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 class BaseRobot {
   constructor(name, weight, coords, chipVersion) {
@@ -37,9 +37,8 @@ class BaseRobot {
   }
 
   getInfo() {
-    return `Robot: ${this.name},
-     Chip version: ${this.chipVersion},
-      Weight: ${this.weight}`;
+    // eslint-disable-next-line
+    return `Robot: ${this.name}, Chip version: ${this.chipVersion}, Weight: ${this.weight}`;
   }
 }
 
