@@ -37,8 +37,9 @@ class BaseRobot {
   }
 
   getInfo() {
-    // eslint-disable-next-line
-    return `Robot: ${this.name}, Chip version: ${this.chipVersion}, Weight: ${this.weight}`;
+    const { name, weight, chipVersion } = this;
+
+    return `Robot: ${name}, Chip version: ${chipVersion}, Weight: ${weight}`;
   }
 }
 
