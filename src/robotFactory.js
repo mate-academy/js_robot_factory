@@ -1,7 +1,7 @@
 'use strict';
 
 class BaseRobot {
-  constructor(name, weight, { x = 0, y = 0 }, chipVersion) {
+  constructor(name, weight, { x = 0, y = 0 } = {}, chipVersion) {
     this.name = name;
     this.weight = weight;
     this.chipVersion = chipVersion;
@@ -26,20 +26,17 @@ class BaseRobot {
   }
 
   getInfo() {
-    return `Robot: ${this.name}, Chip version: ${this.chipVersion}, `
-    + `Weight: ${this.weight}`;
+    // eslint-disable-next-line max-len
+    return `Robot: ${this.name}, Chip version: ${this.chipVersion}, ` + `Weight: ${this.weight}`;
   }
 }
 
 class FlyingRobot extends BaseRobot {
-  constructor(name, weight, { x = 0, y = 0, z = 0 }, chipVersion) {
-    const coords = {
-      x: x,
-      y: y,
-    };
-
-    super(name, weight, coords, chipVersion);
-
+  constructor(name, weight, { x = 0, y = 0, z = 0 } = {}, chipVersion) {
+    super(name, weight, {
+      x,
+      y,
+    }, chipVersion);
     this.coords.z = z;
   }
 
@@ -54,16 +51,14 @@ class FlyingRobot extends BaseRobot {
 
 class DeliveryDrone extends FlyingRobot {
   constructor(
-    name, weight, { x = 0, y = 0, z = 0 }, chipVersion,
+    name, weight, { x = 0, y = 0, z = 0 } = {}, chipVersion,
     maxLoadWeight, currentLoad = null
   ) {
-    const coords = {
-      x: x,
-      y: y,
-      z: z,
-    };
-
-    super(name, weight, coords, chipVersion);
+    super(name, weight, {
+      x,
+      y,
+      z,
+    }, chipVersion);
 
     this.maxLoadWeight = maxLoadWeight;
     this.currentLoad = currentLoad;
