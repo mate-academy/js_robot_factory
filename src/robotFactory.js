@@ -7,8 +7,8 @@ class BaseRobot {
     this.chipVersion = chipVersion;
 
     this.coords = {
-      x: coords && coords.x !== undefined ? coords.x : 0,
-      y: coords && coords.y !== undefined ? coords.y : 0,
+      x: coords.x || 0,
+      y: coords.y || 0,
     };
   }
 
@@ -39,9 +39,9 @@ class FlyingRobot extends BaseRobot {
     super(name, weight, coords, chipVersion);
 
     this.coords = {
-      x: coords.x === undefined ? 0 : coords.x,
-      y: coords.y === undefined ? 0 : coords.y,
-      z: coords.z === undefined ? 0 : coords.z,
+      x: coords.x || 0,
+      y: coords.y || 0,
+      z: coords.z || 0,
     };
   }
 
