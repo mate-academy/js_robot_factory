@@ -62,14 +62,16 @@ class FlyingRobot extends BaseRobot {
     { x = 0, y = 0, z = 0 } = {},
     chipVersion
   ) {
-    super(name, weight, true, chipVersion);
+    super(name,
+      weight,
+      {
+        x,
+        y,
+      },
+      chipVersion);
 
-    this.coords = {
-      x,
-      y,
-      z,
-    };
-  }
+    this.coords.z = z;
+  };
 
   goUp(step = 1) {
     if (step > 0) {
@@ -98,12 +100,6 @@ class DeliveryDrone extends FlyingRobot {
     currentLoad = null,
   ) {
     super(name, weight, true, chipVersion);
-
-    this.coords = {
-      x,
-      y,
-      z,
-    };
     this.maxLoadWeight = maxLoadWeight;
     this.currentLoad = currentLoad;
 
