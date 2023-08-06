@@ -1,19 +1,19 @@
 'use strict';
 
 class BaseRobot {
-  constructor(name, weight, coords = {
-    x: 0, y: 0,
+  constructor(name, weight, {
+    x = 0,
+    y = 0,
   }, chipVersion) {
-    this.name = name;
-    this.weight = weight;
-
-    this.coords = {
-      x: coords.x,
-      y: coords.y,
-      z: coords.z,
-    };
-
-    this.chipVersion = chipVersion;
+    Object.assign(this, {
+      name,
+      weight,
+      coords: {
+        x,
+        y,
+      },
+      chipVersion,
+    });
   }
 
   goForward(step = 1) {
@@ -44,8 +44,8 @@ class FlyingRobot extends BaseRobot {
   }, chipVersion) {
     super(name, weight, coords, chipVersion);
 
-    if (this.coords.z === undefined) {
-      this.coords.z = 0;
+    if (!this.coords.z) {
+      this.coords.z = arguments[2].z || 0;
     }
   }
 
