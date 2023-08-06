@@ -1,27 +1,17 @@
 'use strict';
 
 class BaseRobot {
-  constructor(name, weight, coords = { x: 0, y: 0 }, chipVersion) {
+  constructor(name, weight, coords = {
+    x: 0, y: 0,
+  }, chipVersion) {
     this.name = name;
     this.weight = weight;
 
-    if (coords && typeof coords === 'object') {
-      if ('x' in coords) {
-        this.coords = {
-          x: coords.x,
-          y: coords.y || 0,
-          z: coords.z || 0,
-        };
-      } else {
-        this.coords = {
-          x: 0,
-          y: coords.y || 0,
-          z: coords.z || 0,
-        };
-      }
-    } else {
-      this.coords = { x: 0, y: 0 };
-    }
+    this.coords = {
+      x: coords.x,
+      y: coords.y,
+      z: coords.z,
+    };
 
     this.chipVersion = chipVersion;
   }
