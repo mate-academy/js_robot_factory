@@ -8,22 +8,31 @@ class BaseRobot {
     this.weight = weight;
 
     this.coords = {
-      x, y,
+      x,
+      y,
     };
     this.chipVersion = chipVersion;
   }
 
   goForward(step = 1) {
-    this.coords.y += step;
+    if (step > 0) {
+      this.coords.y += step;
+    }
   }
   goBack(step = 1) {
-    this.coords.y -= step;
+    if (step > 0) {
+      this.coords.y -= step;
+    }
   }
   goRight(step = 1) {
-    this.coords.x += step;
+    if (step > 0) {
+      this.coords.x += step;
+    }
   }
   goLeft(step = 1) {
-    this.coords.x -= step;
+    if (step > 0) {
+      this.coords.x -= step;
+    }
   }
   getInfo() {
     const robotNameString = `Robot: ${this.name}`;
@@ -40,20 +49,30 @@ class FlyingRobot extends BaseRobot {
 
     const { z = 0 } = coords;
 
-    this.coords = Object.assign(this.coords, { z });
+    this.coords.z = z;
   }
 
   goUp(step = 1) {
-    this.coords.z += step;
+    if (step > 0) {
+      this.coords.z += step;
+    }
   }
   goDown(step = 1) {
-    this.coords.z -= step;
+    if (step > 0) {
+      this.coords.z -= step;
+    }
   }
 }
 
 class DeliveryDrone extends FlyingRobot {
   constructor(
-    name, weight, coords = {}, chipVersion, maxLoadWeight, currentLoad) {
+    name,
+    weight,
+    coords = {},
+    chipVersion,
+    maxLoadWeight,
+    currentLoad
+  ) {
     super(name, weight, coords, chipVersion);
     this.maxLoadWeight = maxLoadWeight;
     this.currentLoad = currentLoad || null;
