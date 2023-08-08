@@ -39,11 +39,11 @@ class BaseRobot {
 }
 
 class FlyingRobot extends BaseRobot {
-  constructor() {
-    super(...arguments);
+  constructor(name, weight, coords, chipVersion) {
+    super(name, weight, coords, chipVersion);
 
     if (!this.coords.z) {
-      this.coords.z = arguments[2].z || 0;
+      this.coords.z = coords.z || 0;
     }
   }
 
@@ -57,13 +57,10 @@ class FlyingRobot extends BaseRobot {
 }
 
 class DeliveryDrone extends FlyingRobot {
-  constructor() {
-    super(...arguments);
-
-    Object.assign(this, {
-      maxLoadWeight: arguments[4],
-      currentLoad: arguments[5] || null,
-    });
+  constructor(name, weight, coords, chipVersion, maxLoadWeight, currentLoad) {
+    super(name, weight, coords, chipVersion);
+    this.maxLoadWeight = maxLoadWeight;
+    this.currentLoad = currentLoad || null;
   }
 
   hookLoad(cargo) {
