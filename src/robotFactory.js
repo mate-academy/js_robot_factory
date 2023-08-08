@@ -5,15 +5,15 @@ class BaseRobot {
     x = 0,
     y = 0,
   }, chipVersion) {
-    Object.assign(this, {
-      name,
-      weight,
-      coords: {
-        x,
-        y,
-      },
-      chipVersion,
-    });
+    this.name = name;
+    this.weight = weight;
+
+    this.coords = {
+      x,
+      y,
+    };
+
+    this.chipVersion = chipVersion;
   }
 
   goForward(step = 1) {
