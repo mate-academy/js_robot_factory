@@ -4,12 +4,16 @@ class BaseRobot {
   constructor(name, weight, coords = {
     x: 0, y: 0,
   }, chipVersion) {
-    this.name = name;
-    this.weight = weight;
-    this.coords = coords;
-    this.chipVersion = chipVersion;
-  }
+    if (coords.x !== undefined && coords.y === undefined) {
+      coords.y = 0;
+    } else if (coords.y !== undefined && coords.x === undefined) {
+      coords.x = 0;
+    }
 
+    Object.assign(this, {
+      name, weight, coords, chipVersion,
+    });
+  }
   goForward(step = 1) {
     this.coords.y += step;
   }
@@ -27,8 +31,8 @@ class BaseRobot {
   }
 
   getInfo() {
-    return `Robot: ${this.name}, Chip version: ${this.chipVersion},
-    Weight: ${this.weight}`;
+    // eslint-disable-next-line max-len
+    return `Robot: ${this.name}, Chip version: ${this.chipVersion}, Weight: ${this.weight}`;
   }
 }
 
@@ -53,8 +57,10 @@ class DeliveryDrone extends FlyingRobot {
     x: 0, y: 0, z: 0,
   }, chipVersion, maxLoadWeight, currentLoad = null) {
     super(name, weight, coords, chipVersion);
-    this.maxLoadWeight = maxLoadWeight;
-    this.currentLoad = currentLoad;
+
+    Object.assign(this, {
+      maxLoadWeight, currentLoad,
+    });
   }
 
   hookLoad(cargo) {
