@@ -6,8 +6,8 @@ class BaseRobot {
     this.weight = weight;
 
     this.coords = {
-      x: coords.x !== undefined ? coords.x : 0,
-      y: coords.y !== undefined ? coords.y : 0,
+      x: coords.hasOwnProperty('x') ? coords.x : 0,
+      y: coords.hasOwnProperty('y') ? coords.y : 0,
     };
     this.chipVersion = chipVersion;
   }
@@ -39,13 +39,9 @@ class FlyingRobot extends BaseRobot {
     super(name, weight, coords, chipVersion);
 
     this.coords = {
-      x: coords.x !== undefined ? coords.x : 0,
-      y: coords.y !== undefined ? coords.y : 0,
-      z: coords.z !== undefined ? coords.z : 0,
+      ...this.coords,
+      z: coords.hasOwnProperty('z') ? coords.z : 0,
     };
-    // super(weight);
-    // super(coords);
-    // super(chipVersion);
   }
 
   goUp(step = 1) {
@@ -62,21 +58,13 @@ class DeliveryDrone extends FlyingRobot {
     chipVersion, maxLoadWeight, currentLoad = null) {
     super(name, weight, coords, chipVersion);
 
-    this.coords = {
-      x: coords.x !== undefined ? coords.x : 0,
-      y: coords.y !== undefined ? coords.y : 0,
-      z: coords.z !== undefined ? coords.z : 0,
-    };
-
     this.maxLoadWeight = maxLoadWeight;
     this.currentLoad = currentLoad;
   }
 
   hookLoad(cargo) {
-    this.cargo = cargo;
-
-    if (this.currentLoad === null && this.cargo.weight <= this.maxLoadWeight) {
-      this.currentLoad = this.cargo;
+    if (this.currentLoad === null && cargo.weight <= this.maxLoadWeight) {
+      this.currentLoad = cargo;
     }
   }
 
