@@ -4,10 +4,12 @@ class BaseRobot {
   constructor(name, weight, position, chipVersion) {
     this.name = name;
     this.weight = weight;
-    this.coords = {};
-    this.coords.x = position.x || 0;
-    this.coords.y = position.y || 0;
     this.chipVersion = chipVersion;
+
+    this.coords = {
+      x: position.x || 0,
+      y: position.y || 0,
+    };
   }
 
   getInfo() {
@@ -17,19 +19,27 @@ class BaseRobot {
   }
 
   goForward(step = 1) {
-    this.coords.y += step;
+    if (step > 0) {
+      this.coords.y += step;
+    }
   }
 
   goBack(step = 1) {
-    this.coords.y -= step;
+    if (step > 0) {
+      this.coords.y -= step;
+    }
   }
 
   goLeft(step = 1) {
-    this.coords.x -= step;
+    if (step > 0) {
+      this.coords.x -= step;
+    }
   }
 
   goRight(step = 1) {
-    this.coords.x += step;
+    if (step > 0) {
+      this.coords.x += step;
+    }
   }
 }
 
