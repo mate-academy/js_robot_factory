@@ -1,24 +1,24 @@
 'use strict';
 
-const BASIC_COORDS_X_Y = {
-  x: 0,
-  y: 0,
-};
-
-const BASIC_COORDS_X_Y_Z = {
+const BASIC_COORDS = {
   x: 0,
   y: 0,
   z: 0,
 };
 
 class BaseRobot {
-  constructor(name, weight, coords, chipVersion) {
+  constructor(
+    name,
+    weight,
+    coords,
+    chipVersion
+  ) {
     this.name = name;
     this.weight = weight;
 
     this.coords = {
-      ...BASIC_COORDS_X_Y,
-      ...coords,
+      x: coords.x || BASIC_COORDS.x,
+      y: coords.y || BASIC_COORDS.y,
     };
     this.chipVersion = chipVersion;
   }
@@ -47,13 +47,20 @@ class BaseRobot {
 }
 
 class FlyingRobot extends BaseRobot {
-  constructor(name, weight, coords, chipVersion) {
-    super(name, weight, coords, chipVersion);
+  constructor(
+    name,
+    weight,
+    coords,
+    chipVersion
+  ) {
+    super(
+      name,
+      weight,
+      coords,
+      chipVersion
+    );
 
-    this.coords = {
-      ...BASIC_COORDS_X_Y_Z,
-      ...coords,
-    };
+    this.coords.z = coords.z || BASIC_COORDS.z;
   }
 
   goUp(step = 1) {
@@ -66,8 +73,20 @@ class FlyingRobot extends BaseRobot {
 }
 
 class DeliveryDrone extends FlyingRobot {
-  constructor(name, weight, coords, chipVersion, maxLoadWeight, currentLoad) {
-    super(name, weight, coords, chipVersion);
+  constructor(
+    name,
+    weight,
+    coords,
+    chipVersion,
+    maxLoadWeight,
+    currentLoad
+  ) {
+    super(
+      name,
+      weight,
+      coords,
+      chipVersion
+    );
 
     this.maxLoadWeight = maxLoadWeight;
     this.currentLoad = currentLoad || null;
