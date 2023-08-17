@@ -2,7 +2,7 @@
 
 const DEFAULT_COORD = 0;
 const DEFAULT_STEP = 1;
-const EMPTY = null;
+const EMPTY_VALUE = null;
 
 class BaseRobot {
   constructor(name, weight, coords, chipVersion) {
@@ -62,7 +62,7 @@ class DeliveryDrone extends FlyingRobot {
     coords,
     chipVersion,
     maxLoadWeight,
-    currentLoad = EMPTY
+    currentLoad = EMPTY_VALUE
   ) {
     super(name, weight, coords, chipVersion);
 
@@ -79,7 +79,7 @@ class DeliveryDrone extends FlyingRobot {
   }
 
   unhookLoad() {
-    this.currentLoad = EMPTY;
+    this.currentLoad = EMPTY_VALUE;
   }
 }
 
