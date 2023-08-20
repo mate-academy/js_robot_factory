@@ -1,7 +1,7 @@
 'use strict';
 
 const ROBOT_BASE_COORD = 0;
-const STEP_BASE_COORD = 1;
+const BASE_STEP = 1;
 
 class BaseRobot {
   constructor(name, weight, coords, chipVersion) {
@@ -21,25 +21,25 @@ class BaseRobot {
     + `Weight: ${this.weight}`;
   }
 
-  goForward(step = STEP_BASE_COORD) {
+  goForward(step = BASE_STEP) {
     this.coords.y += step;
 
     return this;
   }
 
-  goBack(step = STEP_BASE_COORD) {
+  goBack(step = BASE_STEP) {
     this.coords.y -= step;
 
     return this;
   }
 
-  goRight(step = STEP_BASE_COORD) {
+  goRight(step = BASE_STEP) {
     this.coords.x += step;
 
     return this;
   }
 
-  goLeft(step = STEP_BASE_COORD) {
+  goLeft(step = BASE_STEP) {
     this.coords.x -= step;
 
     return this;
@@ -53,13 +53,13 @@ class FlyingRobot extends BaseRobot {
     this.coords.z = coords.z || ROBOT_BASE_COORD;
   }
 
-  goUp(step = STEP_BASE_COORD) {
+  goUp(step = BASE_STEP) {
     this.coords.z += step;
 
     return this;
   }
 
-  goDown(step = STEP_BASE_COORD) {
+  goDown(step = BASE_STEP) {
     this.coords.z -= step;
 
     return this;
