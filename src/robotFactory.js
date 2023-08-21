@@ -1,5 +1,11 @@
 'use strict';
 
+const defaultCoords = {
+  x: 0,
+  y: 0,
+  z: 0,
+};
+
 class BaseRobot {
   constructor(name, weight, coords, chipVersion) {
     this.name = name;
@@ -7,8 +13,8 @@ class BaseRobot {
     this.chipVersion = chipVersion;
 
     this.coords = {
-      x: coords.x || 0,
-      y: coords.y || 0,
+      x: coords.x || defaultCoords.x,
+      y: coords.y || defaultCoords.y,
     };
   }
 
@@ -41,7 +47,7 @@ class FlyingRobot extends BaseRobot {
 
     this.coords = {
       ...coords,
-      z: coords.z || 0,
+      z: coords.z || defaultCoords.z,
     };
   }
 
@@ -64,6 +70,7 @@ class DeliveryDrone extends FlyingRobot {
     currentLoad = null,
   ) {
     super(name, weight, coords, chipVersion);
+
     this.maxLoadWeight = maxLoadWeight;
     this.currentLoad = currentLoad;
   }
