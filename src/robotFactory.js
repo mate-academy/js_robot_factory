@@ -1,8 +1,11 @@
 'use strict';
 
-const START_COORD_X = 0;
-const START_COORD_Y = 0;
-const START_COORD_Z = 0;
+const DEFAULT_STEP = 1;
+const DEFAULT_COORDS = {
+  x: 0,
+  y: 0,
+  z: 0,
+};
 
 class BaseRobot {
   constructor(name, weight, coords, chipVersion) {
@@ -11,24 +14,24 @@ class BaseRobot {
     this.chipVersion = chipVersion;
 
     this.coords = {
-      x: coords.x || START_COORD_X,
-      y: coords.y || START_COORD_Y,
+      x: coords.x || DEFAULT_COORDS.x,
+      y: coords.y || DEFAULT_COORDS.y,
     };
   }
 
-  goForward(step = 1) {
+  goForward(step = DEFAULT_STEP) {
     this.coords.y += step;
   }
 
-  goBack(step = 1) {
+  goBack(step = DEFAULT_STEP) {
     this.coords.y -= step;
   }
 
-  goRight(step = 1) {
+  goRight(step = DEFAULT_STEP) {
     this.coords.x += step;
   }
 
-  goLeft(step = 1) {
+  goLeft(step = DEFAULT_STEP) {
     this.coords.x -= step;
   }
 
@@ -42,23 +45,30 @@ class FlyingRobot extends BaseRobot {
   constructor(name, weight, coords, chipVersion) {
     super(name, weight, coords, chipVersion);
 
-    this.coords.z = coords.z || START_COORD_Z;
+    this.coords.z = coords.z || DEFAULT_COORDS.z;
   }
 
-  goUp(step = 1) {
+  goUp(step = DEFAULT_STEP) {
     this.coords.z += step;
   }
 
-  goDown(step = 1) {
+  goDown(step = DEFAULT_STEP) {
     this.coords.z -= step;
   }
 }
 
 class DeliveryDrone extends FlyingRobot {
-  constructor(name, weight, coords, chipVersion, maxLoadWeight, currentLoad) {
-    super(name, weight, coords, chipVersion, maxLoadWeight, currentLoad);
+  constructor(
+    name,
+    weight,
+    coords,
+    chipVersion,
+    maxLoadWeight,
+    currentLoad = null,
+  ) {
+    super(name, weight, coords, chipVersion);
 
-    this.currentLoad = currentLoad || null;
+    this.currentLoad = currentLoad;
     this.maxLoadWeight = maxLoadWeight;
   }
 
