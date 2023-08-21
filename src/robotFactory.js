@@ -1,5 +1,8 @@
 'use strict';
 
+const DEFAULT_COORD = 0;
+const DEFAULT_STEP = 1;
+
 class BaseRobot {
   constructor(name, weight, coords, chipVersion) {
     this.name = name;
@@ -7,24 +10,24 @@ class BaseRobot {
     this.chipVersion = chipVersion;
 
     this.coords = {
-      x: coords.x || 0,
-      y: coords.y || 0,
+      x: coords.x || DEFAULT_COORD,
+      y: coords.y || DEFAULT_COORD,
     };
   }
 
-  goForward(step = 1) {
+  goForward(step = DEFAULT_STEP) {
     this.coords.y += step;
   }
 
-  goBack(step = 1) {
+  goBack(step = DEFAULT_STEP) {
     this.coords.y -= step;
   }
 
-  goRight(step = 1) {
+  goRight(step = DEFAULT_STEP) {
     this.coords.x += step;
   }
 
-  goLeft(step = 1) {
+  goLeft(step = DEFAULT_STEP) {
     this.coords.x -= step;
   }
 
@@ -38,14 +41,15 @@ class BaseRobot {
 class FlyingRobot extends BaseRobot {
   constructor(name, weight, coords, chipVersion) {
     super(name, weight, coords, chipVersion);
-    this.coords.z = coords.z || 0;
+
+    this.coords.z = coords.z || DEFAULT_COORD;
   };
 
-  goUp(step = 1) {
+  goUp(step = DEFAULT_STEP) {
     this.coords.z += step;
   }
 
-  goDown(step = 1) {
+  goDown(step = DEFAULT_STEP) {
     this.coords.z -= step;
   }
 }
@@ -60,6 +64,7 @@ class DeliveryDrone extends FlyingRobot {
     currentLoad = null
   ) {
     super(name, weight, coords, chipVersion);
+
     this.currentLoad = currentLoad;
     this.maxLoadWeight = maxLoadWeight;
   };
