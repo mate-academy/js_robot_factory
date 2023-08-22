@@ -1,43 +1,39 @@
 'use strict';
 
+const BASIC_STEP = 1;
+const STARTING_COORDS = {
+  x: 0,
+  y: 0,
+  z: 0,
+};
+
 class BaseRobot {
   constructor(name, weight, coords, chipVersion) {
     this.name = name;
     this.weight = weight;
-    this.coords = coords;
+
+    this.coords = {
+      x: coords.x || STARTING_COORDS.x,
+      y: coords.y || STARTING_COORDS.y,
+    };
+
     this.chipVersion = chipVersion;
-
-    if (!coords.y) {
-      this.coords.y = 0;
-    }
-
-    if (!coords.x) {
-      this.coords.x = 0;
-    }
   }
 
-  goForward(step = 1) {
+  goForward(step = BASIC_STEP) {
     this.coords.y += step;
-
-    return this.coords.x;
   }
 
-  goBack(step = 1) {
+  goBack(step = BASIC_STEP) {
     this.coords.y -= step;
-
-    return this.coords.x;
   }
 
-  goRight(step = 1) {
+  goRight(step = BASIC_STEP) {
     this.coords.x += step;
-
-    return this.coords.x;
   }
 
-  goLeft(step = 1) {
+  goLeft(step = BASIC_STEP) {
     this.coords.x -= step;
-
-    return this.coords.x;
   }
 
   getInfo() {
@@ -50,43 +46,34 @@ class FlyingRobot extends BaseRobot {
   constructor(name, weight, coords, chipVersion) {
     super(name, weight, coords, chipVersion);
 
-    if (!coords.z) {
-      this.coords.z = 0;
-    }
+    this.coords.z = coords.z || STARTING_COORDS.z;
   }
 
-  goUp(step = 1) {
+  goUp(step = BASIC_STEP) {
     this.coords.z += step;
-
-    return this.coords.z;
   }
 
-  goDown(step = 1) {
+  goDown(step = BASIC_STEP) {
     this.coords.z -= step;
-
-    return this.coords.z;
   }
 }
 
 class DeliveryDrone extends FlyingRobot {
-  constructor(name, weight, coords, chipVersion, maxLoadWeight, currentLoad) {
+  constructor(name, weight, coords, chipVersion, maxLoadWeight,
+    currentLoad = null) {
     super(name, weight, coords, chipVersion);
-    this.maxLoadWeight = maxLoadWeight || null;
-    this.currentLoad = currentLoad || null;
+    this.maxLoadWeight = maxLoadWeight;
+    this.currentLoad = currentLoad;
   }
 
   hookLoad(cargo) {
-    if (cargo.weight <= this.maxLoadWeight) {
-      if (this.currentLoad === null) {
-        this.currentLoad = cargo;
-      }
+    if (cargo.weight <= this.maxLoadWeight && !this.currentLoad) {
+      this.currentLoad = cargo;
     }
   }
 
   unhookLoad() {
     this.currentLoad = null;
-
-    return this.currentLoad;
   }
 }
 
