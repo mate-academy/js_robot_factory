@@ -1,18 +1,16 @@
 'use strict';
 
 class BaseRobot {
-  constructor(name, weight, coords, chipVersion) {
-    if (coords.x === undefined) {
-      coords.x = 0;
-    }
-
-    if (coords.y === undefined) {
-      coords.y = 0;
-    }
-
+  constructor(name, weight, coords = {}, chipVersion) {
     this.name = name;
     this.weight = weight;
-    this.coords = coords;
+
+    const { x = 0, y = 0 } = coords;
+
+    this.coords = {
+      x,
+      y,
+    };
     this.chipVersion = chipVersion;
   }
 
@@ -39,14 +37,16 @@ Weight: ${this.weight}`;
 }
 
 class FlyingRobot extends BaseRobot {
-  constructor(name, weight, coords, chipVersion) {
+  constructor(name, weight, coords = {}, chipVersion) {
     super(name, weight, coords, chipVersion);
 
-    if (coords.z === undefined) {
-      coords.z = 0;
-    }
+    const { x = 0, y = 0, z = 0 } = coords;
 
-    this.coords = coords;
+    this.coords = {
+      x,
+      y,
+      z,
+    };
   }
 
   goUp(step = 1) {
