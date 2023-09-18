@@ -1,6 +1,6 @@
 'use strict';
 
-const STEP = 1;
+const BASE_STEP = 1;
 const BASE_COORDS = 0;
 
 class BaseRobot {
@@ -16,28 +16,28 @@ class BaseRobot {
     this.chipVersion = chipVersion;
   }
 
-  goForward(step = STEP) {
+  goForward(step = BASE_STEP) {
     this.coords.y += step;
   }
 
-  goBack(step = STEP) {
+  goBack(step = BASE_STEP) {
     this.coords.y -= step;
   }
 
-  goRight(step = STEP) {
+  goRight(step = BASE_STEP) {
     this.coords.x += step;
   }
 
-  goLeft(step = STEP) {
+  goLeft(step = BASE_STEP) {
     this.coords.x -= step;
   }
 
   getInfo() {
-    const NAME = this.name;
-    const CHIP_VERSION = this.chipVersion;
-    const WEIGHT = this.weight;
+    const name = this.name;
+    const chipVersion = this.chipVersion;
+    const weight = this.weight;
 
-    return `Robot: ${NAME}, Chip version: ${CHIP_VERSION}, Weight: ${WEIGHT}`;
+    return `Robot: ${name}, Chip version: ${chipVersion}, Weight: ${weight}`;
   }
 }
 
@@ -47,11 +47,11 @@ class FlyingRobot extends BaseRobot {
     this.coords.z = coords.z || BASE_COORDS;
   }
 
-  goUp(step = STEP) {
+  goUp(step = BASE_STEP) {
     this.coords.z += step;
   }
 
-  goDown(step = STEP) {
+  goDown(step = BASE_STEP) {
     this.coords.z -= step;
   }
 }
